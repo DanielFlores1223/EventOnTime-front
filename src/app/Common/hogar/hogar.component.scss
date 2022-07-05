@@ -1,4 +1,50 @@
-img{
+/*img{
     width: 100%;
+    height: 600px;
+}*/
+
+.imgnormalizada img {
+    width: auto;
     height: 500px;
+    max-height: 500px;
+  }
+  
+  .nosotros{
+    background:#071F4E;
+    width: 100%;
+    color: #E4A193;
+    height: auto;
+  }
+  .nosotros1{
+    height: 500px;
+    background: #071F4E;
+    color: #E4A193;
+  }
+.card{
+    height: 400px;
 }
+
+/*.circulo{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 83.51px;
+    height: 80px;
+
+    background: #FFFFFF;
+    border: 1.5px solid #000000;
+}*/
+
+  .card-body{
+    width: 315px;
+    height: auto;
+    margin-left: 50px;
+    margin-top: 3px;
+
+    background: #FFFFFF;
+    border-radius: 10px;
+  }
+
+  .eventos{
+    color: #E4A193;
+  }

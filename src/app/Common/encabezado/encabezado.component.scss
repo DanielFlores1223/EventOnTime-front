@@ -1,9 +1,8 @@
-li{
+.navbar-dark{
     font-size: 20px;
-    color: #ffffffff;
 }
 
-li a:hover{
+.navbar-dark:hover{
     color: #E4A193;
 }
 
@@ -23,3 +22,16 @@ li a:hover{
     margin-left: 150px;
     
 }
+
+.dropdown-menu{
+    background-color: #535E8A;
+}
+
+.dropdown-item{
+    color: #ffff;
+}
+
+.dropdown-item:hover{
+    color: #E4A193;
+}
+
