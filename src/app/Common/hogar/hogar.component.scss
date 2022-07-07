@@ -20,9 +20,9 @@
     background: #071F4E;
     color: #E4A193;
   }
-.card{
+/*.card{
     height: 400px;
-}
+}*/
 
 /*.circulo{
     box-sizing: border-box;
@@ -35,7 +35,7 @@
     border: 1.5px solid #000000;
 }*/
 
-  .card-body{
+  .marca{
     width: 315px;
     height: auto;
     margin-left: 50px;
@@ -78,7 +78,9 @@ a{
   color: #E4A193;
 }
 
+/*--------------------------------------------------*/
 /*-----------------------GALERIA--------------------*/
+/*--------------------------------------------------*/
 .galeria-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -195,5 +197,69 @@ a{
     grid-column-start: span 2;
   }
 }
+/*--------------------------------------------------*/
+/*-----------------------PLANES---------------------*/
+/*--------------------------------------------------*/
+.card{
+  width: 330px;
+}
+
+.precios{
+  width: 330px;
+  height: 495px;
+  display: grid;
+  grid-template-rows: 1fr,1fr;
+  background: #071F4E;
+  border-radius: 10px;
+}
+.titulo{
+ color: #fff;
+}
+
+.card-header{
+  background: none;
+}
+/*--------------------------------------------------*/
+/*-----------------------CONTACTO---------------------*/
+/*--------------------------------------------------*/
+.detalles{
+  width: 100%;
+  height: 470px;
+  /*height: 470px;*/
+  background: #535E8A;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.formulario{
+  position: absolute;
+  width: 500px;
+  height: auto;
+  display: grid;
+
+  background: #F2F2F2;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 570px;
+}
+
+.texto{
+  width: 500px;
+  text-align: justify;
+  color: #fff;
+}
+
+.texto-de{
+  color: rgb(255, 255, 255, 0.5);
+}
 
 
+
+/*--------------------------------------------------*/
+/*-----------------------FOOTER---------------------*/
+/*--------------------------------------------------*/
+.footer{
+  width: 100%;
+  height: 390px;
+  background: rgb(83, 94, 138, 0.6);
+}
