@@ -232,11 +232,11 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color: #E4A193;
   text-decoration: underline;
 }
 a:hover {
-  color: #0a58ca;
+  color: #E4A193;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -3966,7 +3966,7 @@ textarea.form-control-lg {
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
+  color: #E4A193;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -3984,7 +3984,7 @@ textarea.form-control-lg {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #0d6efd;
+  background-color: #E4A193;
 }
 
 .nav-fill > .nav-link,
@@ -4096,10 +4096,12 @@ textarea.form-control-lg {
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(228, 161, 147)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-  color: #0e0d0d;
+  color: #E4A193;
+
 }
 
 .navbar-nav-scroll {
