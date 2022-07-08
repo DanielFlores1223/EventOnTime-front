@@ -234,6 +234,7 @@ sup {
 a {
   color: #E4A193;
   text-decoration: underline;
+  font-family: 'Poppins';
 }
 a:hover {
   color: #E4A193;
@@ -2761,6 +2762,7 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
   padding: 0.5rem 1rem;
+  font-family: 'Poppins';
   font-size: 1.25rem;
   border-radius: 0.3rem;
 }
@@ -3764,7 +3766,7 @@ textarea.form-control-lg {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #0d6efd;
+  background-color: #fff;
 }
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #adb5bd;
