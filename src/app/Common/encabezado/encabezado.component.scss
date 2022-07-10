@@ -1,15 +1,22 @@
-li{
+
+.navbar-text-size{
     font-size: 20px;
-    color: #ffffffff;
 }
 
-li a:hover{
+@media screen and (max-width: 768px){
+
+}
+
+a:hover, a:focus{
     color: #E4A193;
 }
 
-.dropdown-item{
-    color: #535E8A;
+
+/*
+.navbar-dark:hover{
+    color: #E4A193;
 }
+
 
 .color{
     background-color: #535E8A;
@@ -23,3 +30,16 @@ li a:hover{
     margin-left: 150px;
     
 }
+
+.dropdown-menu{
+    background-color: #535E8A;
+}
+
+.dropdown-item{
+    color: #ffff;
+}
+
+.dropdown-item:hover{
+    color: #E4A193;
+}
+*/
