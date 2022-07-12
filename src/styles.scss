@@ -12,7 +12,7 @@
   --bs-pink: #d63384;
   --bs-red: #dc3545;
   --bs-orange: #fd7e14;
-  --bs-yellow: #ffc107;
+  --bs-yellow: #F6B33E;
   --bs-green: #198754;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
@@ -28,13 +28,13 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
+  --bs-primary: #071F4E;
+  --bs-secondary: #E4A193;
+  --bs-success: #535E8A;
+  --bs-info: #EDEDED;
+  --bs-warning: #F6B33E;
   --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
+  --bs-light: #F2F2F2;
   --bs-dark: #212529;
   --bs-primary-rgb: 83, 94, 138;
   --bs-secondary-rgb: 108, 117, 125;
@@ -102,6 +102,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   font-weight: 500;
   line-height: 1.2;
   font-family:Poppins;
+  color: var(--bs-secondary);
 }
 
 h1, .h1 {
@@ -235,6 +236,7 @@ a {
   color: #E4A193;
   text-decoration: underline;
   font-family: 'Poppins';
+  cursor: pointer;
 }
 a:hover {
   color: #E4A193;
@@ -329,6 +331,8 @@ th {
 
 label {
   display: inline-block;
+  font-family: 'Poppins';
+  color: var(--bs-primary);
 }
 
 button {
@@ -2226,6 +2230,7 @@ progress {
   opacity: 1;
 }
 .form-control::placeholder {
+  font-family: 'Poppins';
   color: #6c757d;
   opacity: 1;
 }
@@ -2976,6 +2981,7 @@ textarea.form-control-lg {
 }
 
 .btn {
+  font-family: 'Poppins';
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
@@ -3012,28 +3018,28 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #071F4E;
-  border-color: #071F4E;
+  color: var(--bs-primary);
+  background-color: none;
+  border-color: var(--bs-warning);
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+  background-color: var(--bs-warning);
+  border-color: var(--bs-warning);
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
-  color: #fff;
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
-  box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+  color: var(--bs-warning);
+  background-color: transparent;
+  border-color: var(--bs-warning);
+  box-shadow: 0 0 0 0.25rem rgba(246, 179, 62, 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #0a58ca;
-  border-color: #0a53be;
+  background-color: var(--bs-warning);
+  border-color: var(--bs-warning);
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(246, 179, 62, 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
@@ -3043,24 +3049,24 @@ textarea.form-control-lg {
 
 .btn-secondary {
   color: #fff;
-  background-color: #E4A193;
-  border-color: #E4A193;
+  background-color: var(--bs-yellow);
+  border-color: var(--bs-yellow);
 }
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
+  background-color: var(--bs-yellow);
+  border-color: var(--bs-yellow);
 }
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
-  box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
+  background-color: var(--bs-yellow);
+  border-color: var(--bs-yellow);
+  box-shadow: 0 0 0 0.25rem rgba(246, 179, 62, 0.5);
 }
 .btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #565e64;
-  border-color: #51585e;
+  background-color: var(--bs-yellow);
+  border-color: var(--bs-yellow);
 }
 .btn-check:checked + .btn-secondary:focus, .btn-check:active + .btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus, .show > .btn-secondary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
@@ -4510,7 +4516,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #F2F2F2;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;

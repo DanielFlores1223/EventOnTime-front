@@ -1,4 +1,4 @@
-
+<app-encabezado></app-encabezado>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -8,9 +8,9 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active text-end imgnormalizada">
-        <img src="../../../assets/Imagenes/Carrocel/car-personal.png" class="d-block w-100" alt="..." style="object-fit: cover;">
+        <img src="../../../assets/Imagenes/Carrocel/car-personal.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block text-end">
-            <button type="button" class="btn btn-warning">Más información</button>
+            <button type="button" class="btn btn-warning" routerLink="/login">Más información</button>
         </div>
       </div>
       <div class="carousel-item text-end imgnormalizada">
@@ -48,7 +48,7 @@
 <!-------------------------------------------------------------------->
 <div class="container-xxl text-center nosotros1 " id="nosotros">
   <br>
-  <h1>NOSOTROS</h1>
+  <h1 id="Nosotros" style="font-family: 'Nunito';"><b>NOSOTROS</b></h1>
     <!-- Three columns of text below the carousel -->
     <br>
     <div class="row  nosotros justify-content-center">
@@ -100,16 +100,17 @@
     <br><br>
     <div class="container marketing text-center eventos " id="eventos">
       <br>
-      <h1>EVENTOS</h1>   
+      <h1 id="Eventos" style="font-family: 'Nunito';"><b>EVENTOS</b></h1>   
     <hr class="featurette-divider">
 
     <div class="row featurette">
       <div class="col-md-7">
+        <br><br><br><br><br>
         <h2 class="featurette-heading fw-normal lh-1 text-center ">Personal <br><br>
           <span class="text-muted">Festeja a lo grande tu cumpleaños, 
             con tus seres queridos</span></h2>
             <br><br>
-            <button class="btn btn-warning">Inicia Ahora</button>
+           <!---- <button class="btn btn-warning">Inicia Ahora</button>-->
         </div>
       <div class="col-md-5">
         <img src="../../../assets/Imagenes/seleccion-eventos/personal.png">
@@ -173,7 +174,7 @@
 
     <div class="container eventos">
       <br><br>
-      <h1>SERVICIOS</h1>
+      <h1 id="Servicios" style="font-family: 'Nunito';"><b>SERVICIOS</b></h1>
       <br>
       <div class="row">
         <div class="col-md-5 order-md-1">
@@ -222,14 +223,14 @@
     <br><br>
     <div class="contenedor">
       <img class="movil" src="../../../assets/Imagenes/appMovil.png"> 
-      <div class="centrado"><h3>Descarguen nuestra <a href="#">aplicación móvil</a></h3>
+      <div class="centrado" style="font-family: 'Nunito';"><h3>Descarguen nuestra <a href="#">aplicación móvil</a></h3>
       </div>
     </div>
     <!------------------------------------------------------------------->
     <!---------------------------TESTIMONIOS----------------------------->
     <!------------------------------------------------------------------->
 <br><br>
-<h1 class="eventos container">TESTIMONIOS</h1>
+<h1 class="eventos container" id="Testimonios" style="font-family: 'Nunito';"><b>TESTIMONIOS</b></h1>
 <br><br>
     <div class="container galeria-container">
 <div class="galeria--item">
@@ -294,7 +295,7 @@
     <!------------------------------------------------------------------->
     <br><br>
     <div class="container eventos">
-      <h1>Nuestros Planes</h1>
+      <h1 id="Planes" style="font-family: 'Nunito';"><b>Nuestros Planes</b></h1>
       <br><br>
       <div class="row row-cols-1 row-cols-md-3 mb-3 ">
         <div class="col">
@@ -358,7 +359,7 @@
     <!------------------------------------------------------------------->
     <br><br>
     <div class="container eventos">
-      <h1>Contactanos</h1>
+      <h1 id="Contactanos" style="font-family: 'Nunito';"><b>Contactanos</b></h1>
       <br><br>
       <div class="card detalles">
         <div class="card-body">
@@ -422,7 +423,7 @@
     <!------------------------------------------------------------------->
     <br><br>
     <div class=" eventos">
-      <img class="footer text-muted" src="../../../assets/Imagenes/x.png">
+      <img class="footer" src="../../../assets/Imagenes/x.png">
 </div>
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

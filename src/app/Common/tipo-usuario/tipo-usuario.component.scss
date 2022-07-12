@@ -1,0 +1,13 @@
+.fondo{
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    height: 726px;
+}
+
+.tipoUsu{
+    position: absolute;
+    top: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+}

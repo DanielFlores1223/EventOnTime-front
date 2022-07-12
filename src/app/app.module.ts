@@ -7,6 +7,7 @@ import { EncabezadoComponent } from './Common/encabezado/encabezado.component';
 import { HogarComponent } from './Common/hogar/hogar.component';
 import { LoginComponent } from './Common/login/login.component';
 import { RegistroComponent } from './Common/registro/registro.component';
+import { TipoUsuarioComponent } from './Common/tipo-usuario/tipo-usuario.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RegistroComponent } from './Common/registro/registro.component';
     EncabezadoComponent,
     HogarComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    TipoUsuarioComponent
   ],
   imports: [
     BrowserModule,
