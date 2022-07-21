@@ -21,10 +21,10 @@ export class AuthService {
   }
 
   loginUser(user : User){
-    return this.http.post<User>(this._loginURL,user)
+    return this.http.post<any>(this._loginURL,user)
   }
 
   registerUser(user : NewUser){
-    return this.http.post<NewUser>(this._registerURL,user);
+    return this.http.post<any>(this._registerURL,user);
   }
 }
