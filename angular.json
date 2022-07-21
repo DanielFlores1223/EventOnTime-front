@@ -21,7 +21,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/event-on-time-front",
-            "baseHref": "dist/event-on-time-front/index.html",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

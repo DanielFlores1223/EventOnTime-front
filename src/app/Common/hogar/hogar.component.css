@@ -1,1 +1,258 @@
-/*# sourceMappingURL=hogar.component.css.map */
+/*img{
+    width: 100%;
+    height: 600px;
+}*/
+.imgnormalizada img {
+  width: auto;
+  height: 500px;
+  max-height: 500px;
+}
+
+.nosotros {
+  background: #071F4E;
+  width: 100%;
+  color: #E4A193;
+  height: auto;
+}
+
+.nosotros1 {
+  height: 500px;
+  background: #071F4E;
+  color: #E4A193;
+}
+
+/*.card{
+    height: 400px;
+}*/
+/*.circulo{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 83.51px;
+    height: 80px;
+
+    background: #FFFFFF;
+    border: 1.5px solid #000000;
+}*/
+.marca {
+  width: 315px;
+  height: auto;
+  margin-left: 50px;
+  margin-top: 3px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+.eventos {
+  color: #E4A193;
+}
+
+.seccion-servicios {
+  border-radius: 500px;
+  width: 150px;
+  height: 150px;
+}
+
+.movil {
+  width: 100%;
+}
+
+.contenedor {
+  position: relative;
+  text-align: center;
+}
+
+.centrado {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #E4A193;
+}
+
+/*--------------------------------------------------*/
+/*-----------------------GALERIA--------------------*/
+/*--------------------------------------------------*/
+.galeria-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 150px;
+  /*Espaciado entre cada imagen*/
+  grid-gap: 15px;
+}
+
+/*Div para cada imgen*/
+.galeria--item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.galeria--img {
+  width: 100%;
+  height: 100%;
+  /*PARA QUE NO SE DISTORCIONE LA IMAGEN*/
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 500ms ease-out;
+}
+
+.galeria-testimonios {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 500ms ease-out;
+  text-align: center;
+}
+
+.galeria--item:hover > .galeria-testimonios {
+  opacity: 1;
+  visibility: visible;
+  transition: all 500ms ease-out;
+}
+
+.galeria--item :hover > .galeria-testimonios h3 {
+  margin-top: 70px;
+  margin-bottom: 95px;
+}
+
+.galeria--item .galeria-testimonios h3 {
+  font-weight: 100;
+  margin-bottom: 7px;
+  margin-top: 10px;
+}
+
+.galeria--item .galeria-testimonios p {
+  font-weight: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 250px;
+  margin: auto;
+}
+
+.galeria--item:nth-child(1) {
+  grid-column-start: span 2;
+}
+
+.galeria--item:nth-child(7) {
+  grid-column-start: span 2;
+}
+
+@media (min-width: 768px) {
+  .galeria-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .galeria--item:nth-child(2) {
+    grid-column-start: span 2;
+  }
+  .galeria--item:nth-child(3) {
+    grid-row-start: span 2;
+    grid-column-start: span 2;
+  }
+  .galeria--item:nth-child(7) {
+    grid-column-start: span 1;
+  }
+}
+@media (min-width: 1024px) {
+  .galeria-container {
+    grid-template-columns: repeat(5, 1fr);
+    width: 90%;
+  }
+  .galeria--item:nth-child(2) {
+    grid-column-start: span 2;
+  }
+  .galeria--item:nth-child(3) {
+    grid-row-start: span 1;
+    grid-column-start: span 1;
+  }
+  .galeria--item:nth-child(4) {
+    grid-row-start: span 2;
+    grid-column-start: span 2;
+  }
+  .galeria--item:nth-child(5) {
+    grid-row-start: span 1;
+    grid-column-start: span 2;
+  }
+  .galeria--item:nth-child(6) {
+    grid-row-start: span 2;
+    grid-column-start: span 1;
+  }
+  .galeria--item:nth-child(7) {
+    grid-column-start: span 2;
+  }
+}
+/*--------------------------------------------------*/
+/*-----------------------PLANES---------------------*/
+/*--------------------------------------------------*/
+.card {
+  width: 330px;
+}
+
+.precios {
+  width: 330px;
+  height: 495px;
+  display: grid;
+  grid-template-rows: 1fr, 1fr;
+  background: #071F4E;
+  border-radius: 10px;
+}
+
+.titulo {
+  color: #fff;
+}
+
+.card-header {
+  background: none;
+}
+
+/*--------------------------------------------------*/
+/*-----------------------CONTACTO---------------------*/
+/*--------------------------------------------------*/
+.detalles {
+  width: 100%;
+  height: 470px;
+  /*height: 470px;*/
+  background: #535E8A;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.formulario {
+  position: absolute;
+  width: 500px;
+  height: auto;
+  display: grid;
+  background: #F2F2F2;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 570px;
+}
+
+.texto {
+  width: 500px;
+  text-align: justify;
+  color: #fff;
+}
+
+.texto-de {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/*--------------------------------------------------*/
+/*-----------------------FOOTER---------------------*/
+/*--------------------------------------------------*/
+.footer {
+  width: 100%;
+  height: 390px;
+  background: rgba(83, 94, 138, 0.6);
+}/*# sourceMappingURL=hogar.component.css.map */

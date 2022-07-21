@@ -1,3 +1,39 @@
-a {
+.navbar-text-size {
   font-size: 20px;
-}/*# sourceMappingURL=encabezado.component.css.map */
+}
+
+a:hover, a:focus {
+  color: #E4A193;
+}
+
+/*
+.navbar-dark:hover{
+    color: #E4A193;
+}
+
+
+.color{
+    background-color: #535E8A;
+}
+
+.login{
+    margin-left: 250px;
+}
+
+.contenido{
+    margin-left: 150px;
+
+}
+
+.dropdown-menu{
+    background-color: #535E8A;
+}
+
+.dropdown-item{
+    color: #ffff;
+}
+
+.dropdown-item:hover{
+    color: #E4A193;
+}
+*//*# sourceMappingURL=encabezado.component.css.map */
