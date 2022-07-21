@@ -12,8 +12,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 import { AuthService } from './services/auth.service';
-import { NavbarComponent } from './planificador/navbar/navbar.component';
 import { DashboardPlanificadorComponent } from './planificador/dashboard-planificador/dashboard-planificador.component';
+import { SidebarPlanificadorComponent } from './planificador/sidebar-planificador/sidebar-planificador.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { DashboardPlanificadorComponent } from './planificador/dashboard-planifi
     LoginComponent,
     RegistroComponent,
     TipoUsuarioComponent,
-    NavbarComponent,
     DashboardPlanificadorComponent,
+    SidebarPlanificadorComponent,
   ],
   imports: [
     BrowserModule,
