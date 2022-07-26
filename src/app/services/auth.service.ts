@@ -27,4 +27,8 @@ export class AuthService {
   registerUser(user : NewUser){
     return this.http.post<any>(this._registerURL,user);
   }
+
+  loggedIn(){
+    return !! localStorage.getItem('token');
+  }
 }

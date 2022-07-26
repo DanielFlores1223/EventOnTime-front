@@ -14,6 +14,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { DashboardPlanificadorComponent } from './planificador/dashboard-planificador/dashboard-planificador.component';
 import { SidebarPlanificadorComponent } from './planificador/sidebar-planificador/sidebar-planificador.component';
+import { AuthGuard } from './guards/auth.guard';
+import { FavoritosComponent } from './planificador/favoritos/favoritos.component';
+import { EventosComponent } from './planificador/eventos/eventos.component';
+import { ServiciosComponent } from './planificador/servicios/servicios.component';
+import { PlanesComponent } from './planificador/planes/planes.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +31,10 @@ import { SidebarPlanificadorComponent } from './planificador/sidebar-planificado
     TipoUsuarioComponent,
     DashboardPlanificadorComponent,
     SidebarPlanificadorComponent,
+    FavoritosComponent,
+    EventosComponent,
+    ServiciosComponent,
+    PlanesComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,8 @@ import { SidebarPlanificadorComponent } from './planificador/sidebar-planificado
     ReactiveFormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
