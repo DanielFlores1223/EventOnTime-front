@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
-import { NewUser } from 'src/app/models/newUser'
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,16 +15,7 @@ export class LoginComponent implements OnInit {
     password: ""
   };
 
-  newUser : NewUser={
-    "name":"",
-    "email":"",
-    "password":"",
-    "account":"",
-    "role":""
-  };
-
   constructor(private _auth: AuthService, private router: Router, private activedRoute: ActivatedRoute) { }
-
 
   ngOnInit(): void {
     this._auth.message();
@@ -46,15 +36,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/planificador/dashboard']);
       },err=>{
         console.log(err)
-      })
-  }
-
-  registerUser(){
-    this._auth.registerUser(this.newUser)
-      .subscribe( res =>{
-        console.log(res);
-      }, err =>{
-        console.log(err);
       })
   }
 }
