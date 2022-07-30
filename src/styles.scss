@@ -238,7 +238,7 @@ a {
   font-family: 'Poppins';
   cursor: pointer;
 }
-a:hover {
+a:hover, a:focus {
   color: #E4A193;
 }
 
