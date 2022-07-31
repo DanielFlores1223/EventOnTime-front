@@ -19,6 +19,13 @@ import { FavoritosComponent } from './planificador/favoritos/favoritos.component
 import { EventosComponent } from './planificador/eventos/eventos.component';
 import { ServiciosComponent } from './planificador/servicios/servicios.component';
 import { PlanesComponent } from './planificador/planes/planes.component';
+import { PerfilComponent } from './planificador/perfil/perfil.component';
+import { MembresiaComponent } from './planificador/membresia/membresia.component';
+import { DashboardProvComponent } from './proveedor/dashboard-prov/dashboard-prov.component';
+import { ServiciosProvComponent } from './proveedor/servicios-prov/servicios-prov.component';
+import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-prov.component';
+import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
+import { SidebarProvComponent } from './proveedor/sidebar-prov/sidebar-prov.component';
 
 
 @NgModule({
@@ -35,6 +42,13 @@ import { PlanesComponent } from './planificador/planes/planes.component';
     EventosComponent,
     ServiciosComponent,
     PlanesComponent,
+    PerfilComponent,
+    MembresiaComponent,
+    DashboardProvComponent,
+    ServiciosProvComponent,
+    MembresiaProvComponent,
+    PerfilProvComponent,
+    SidebarProvComponent,
   ],
   imports: [
     BrowserModule,

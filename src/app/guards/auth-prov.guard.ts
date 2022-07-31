@@ -5,17 +5,17 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthProvGuard implements CanActivate {
 
   constructor(private _authService: AuthService, private router: Router){
 
   }
   canActivate(): boolean {
     if(this._authService.loggedIn()){
-      if(this._authService.getRole()=='Planificador'){
+      if(this._authService.getRole()=='Proveedor'){
         return true;
       }else{
-        this.router.navigate(['/proveedor/dashboard']);
+        this.router.navigate(['/planificador/dashboard']);
         return false;
       }
     }else{

@@ -5,11 +5,21 @@ import { LoginComponent } from './Common/login/login.component';
 import { RegistroComponent } from './Common/registro/registro.component';
 import { TipoUsuarioComponent } from './Common/tipo-usuario/tipo-usuario.component';
 import { DashboardPlanificadorComponent } from './planificador/dashboard-planificador/dashboard-planificador.component';
-import { AuthGuard } from './guards/auth.guard';
+
 import { FavoritosComponent } from './planificador/favoritos/favoritos.component';
 import { EventosComponent } from './planificador/eventos/eventos.component';
 import { ServiciosComponent } from './planificador/servicios/servicios.component';
 import { PlanesComponent } from './planificador/planes/planes.component';
+import { PerfilComponent } from './planificador/perfil/perfil.component';
+import { DashboardProvComponent } from './proveedor/dashboard-prov/dashboard-prov.component';
+import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-prov.component';
+import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
+import { ServiciosProvComponent } from './proveedor/servicios-prov/servicios-prov.component';
+
+// -- GUARDS
+import { AuthGuard } from './guards/auth.guard';
+import { AuthProvGuard } from './guards/auth-prov.guard'
+
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
@@ -21,6 +31,11 @@ const routes: Routes = [
   {path: 'planificador/eventos', component:EventosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/servicios', component:ServiciosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/planes', component:PlanesComponent, canActivate: [AuthGuard]},
+  {path: 'planificador/perfil', component:PerfilComponent, canActivate: [AuthGuard]},
+  {path: 'proveedor/dashboard', component: DashboardProvComponent, canActivate: [AuthProvGuard]},
+  {path: 'proveedor/membresia', component: MembresiaProvComponent, canActivate: [AuthProvGuard]},
+  {path: 'proveedor/perfil', component: PerfilProvComponent, canActivate: [AuthProvGuard]},
+  {path: 'proveedor/servicios', component: ServiciosProvComponent, canActivate: [AuthProvGuard]},
   {path:'**',redirectTo:'hogar',pathMatch:'full'}
 ];
 

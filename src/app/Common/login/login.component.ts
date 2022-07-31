@@ -33,7 +33,14 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token",data.token);
         localStorage.setItem("account",data.account);
         localStorage.setItem("picture",data.picture);
-        this.router.navigate(['/planificador/dashboard']);
+        if(data.role=='Planificador'){
+          this.router.navigate(['/planificador/dashboard']);
+        }else if(data.role=='Proveedor'){
+          this.router.navigate(['/proveedor/dashboard']);
+        }else{
+          this.router.navigate(['/hogar']);
+        }
+        
       },err=>{
         console.log(err)
       })
