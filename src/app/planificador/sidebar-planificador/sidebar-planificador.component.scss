@@ -5,6 +5,20 @@
 
 .page{
   
+  
+}
+
+.sidebar-toggle{
+  left: -300px;
+  
+  transition: all 0.8s ease;
+}
+
+.content-toggle{
+  margin-left: 0;
+  width: 100%;
+  
+  transition: all 0.8s ease;
 }
 .page .sidebar{
   height: 100vh;
@@ -14,6 +28,7 @@
   top: 0;
   left: 0;
   position: absolute;
+  transition: all 0.8s ease;
 }
 
 a:hover, a:focus{
@@ -43,6 +58,10 @@ a:hover, a:focus{
   height: 50px;
   display: flex;
   align-items: center;
+}
+
+.sidebarToggle{
+
 }
 /*
 

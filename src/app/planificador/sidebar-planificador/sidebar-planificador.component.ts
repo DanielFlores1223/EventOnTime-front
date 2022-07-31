@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class SidebarPlanificadorComponent implements OnInit {
 
+  toggle : boolean = false;
+  navClass = "content";
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -22,6 +25,16 @@ export class SidebarPlanificadorComponent implements OnInit {
     //this.ngOnInit();
     this.router.navigate(['/hogar']);
     
+  }
+
+  toggleSideBar(){
+    if(this.toggle==false){
+      this.toggle=true;
+      this.navClass="content-toggle";
+    }else{
+      this.toggle=false;
+      this.navClass="content";
+    }
   }
 
 }
