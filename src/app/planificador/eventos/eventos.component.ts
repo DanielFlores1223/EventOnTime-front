@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventosComponent implements OnInit {
 
+  sidebarToggle: boolean=false;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.sidebarToggle);
   }
+
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class SidebarPlanificadorComponent implements OnInit {
 
-  toggle : boolean = false;
+  @Input() toggle : boolean = false;
+  
   navClass = "content";
 
   constructor(private router: Router) { }

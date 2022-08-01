@@ -1,15 +1,66 @@
-<app-sidebar-planificador></app-sidebar-planificador>
-<div class="d-flex justify-content-center">
-  <div class="cotainer">
+<app-sidebar-planificador [toggle]="sidebarToggle"></app-sidebar-planificador>
+  <div class="container-size" *ngIf="sidebarToggle==false">
+    <div class="card mt-5">
+      <!--<div class="card-header">
+        <h5 class="card-title">Eventos</h5>
+      </div> -->
+      <div class="card-body">
+        <div class="container mb-3">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title">Eventos</h5>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Buscar...">
+            </div>
+          </div>
+          
+        </div>
+        <div class="container bcolor">
+          <table class="table table-striped">
+            <!--<thead>
+              <tr>
+                
+              </tr>
+            </thead> -->
+            <tbody>
+              <tr>
+                <div class="events-container">
+                  event 1
+                </div>
+              </tr>
+              <tr>
+                <div class="events-container">
+                  event 2
+                </div>
+              </tr>
+              <tr>
+                <div class="events-container">
+                  event 3
+                </div>
+              </tr>
+              <tr>
+                <div class="events-container">
+                  event 4
+                </div>
+              </tr>
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="sidebarToggle==true">
     <div class="card mt-5">
       <div class="card-header">
-        Eventos
+        <h5 class="card-title">TRUE</h5>
       </div>
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.lalalalalalalalalalalalalalal</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   </div>
-</div>
