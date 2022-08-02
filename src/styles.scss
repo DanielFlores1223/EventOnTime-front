@@ -101,7 +101,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  font-family:Poppins;
+  font-family:'Poppins';
   color: var(--bs-secondary);
 }
 
@@ -153,6 +153,7 @@ p {
   margin-top: 14;
   margin-bottom: 1rem;
   text-align: justify;
+  font-family: 'Poppins';
 }
 
 abbr[title],
@@ -243,7 +244,7 @@ a:hover, a:focus {
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
-  color: inherit;
+  color: #E4A193;
   text-decoration: none;
 }
 
@@ -276,7 +277,7 @@ code {
   word-wrap: break-word;
 }
 a > code {
-  color: inherit;
+  color: #E4A193;
 }
 
 kbd {

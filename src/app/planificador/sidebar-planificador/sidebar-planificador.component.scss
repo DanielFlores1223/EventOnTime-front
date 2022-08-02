@@ -1,4 +1,4 @@
-
+/*
 .sidebar{
   
 }
@@ -6,29 +6,26 @@
 .page{
   
   
-}
+}*/
 
 .sidebar-toggle{
   left: -300px;
-  
-  transition: all 0.8s ease;
+  transition: sidebar-toggle 2s;
 }
 
 .content-toggle{
   margin-left: 0;
   width: 100%;
   
-  transition: all 0.8s ease;
 }
 .page .sidebar{
-  height: 100vh;
-  width: 300px;
+  height: 150vh;
+  width: 250px;
   //width: 20%;
   background-color: #535E8A;
   top: 0;
   left: 0;
   position: absolute;
-  transition: all 0.8s ease;
 }
 
 a:hover, a:focus{
@@ -36,12 +33,14 @@ a:hover, a:focus{
 }
 
 .page .content{
-  margin-left: 290px;
+  margin-left: 250px;
 }
 
 .list-item:hover{
   border: #f3f0f080 solid;
+  border-radius: 5px;
 }
+
 
 .sidebar-header{
   padding: 10px 15px;
@@ -51,16 +50,18 @@ a:hover, a:focus{
   display: flex;
   justify-content: flex-start;
   margin-left: 1em;
+  transition: all 2s ease-in-out;
 }
 
 .navigationBar{
   background-color: #535E8A;
-  height: 50px;
+  height: 65px;
   display: flex;
   align-items: center;
+  transition: all 2s ease-out;
 }
 
-.sidebarToggle{
+/*.sidebarToggle{
 
 }
 /*
