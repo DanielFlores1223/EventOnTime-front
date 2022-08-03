@@ -1,5 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+
+interface SidebarToggle{
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-sidebar-planificador',
@@ -7,9 +13,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar-planificador.component.scss']
 })
 export class SidebarPlanificadorComponent implements OnInit {
-
-  @Input() toggle : boolean = false;
   
+  @Output() onToggleSideNav: EventEmitter<SidebarToggle> = new EventEmitter();
+  screenWidth = 0;
+  collapsed = true;
+  navData=[
+    {
+      routerLink : 'planificador/favoritos',
+      icon: 'fal fa-home',
+      label: 'Mi Dashboard'
+    }
+  ]
+
   navClass = "content";
 
   constructor(private router: Router) { }
@@ -28,7 +43,7 @@ export class SidebarPlanificadorComponent implements OnInit {
     
   }
 
-  toggleSideBar(){
+  /*toggleSideBar(){
     if(this.toggle==false){
       this.toggle=true;
       this.navClass="content-toggle";
@@ -36,6 +51,17 @@ export class SidebarPlanificadorComponent implements OnInit {
       this.toggle=false;
       this.navClass="content";
     }
+  }*/
+
+  toggleCollapse(){
+    //this.collapsed=true;
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({collapsed: this.collapsed,screenWidth: this.screenWidth});
+  }
+
+  closeSidenav(){
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({collapsed: this.collapsed,screenWidth: this.screenWidth});
   }
 
 }
