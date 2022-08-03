@@ -19,6 +19,7 @@ import { ServiciosProvComponent } from './proveedor/servicios-prov/servicios-pro
 // -- GUARDS
 import { AuthGuard } from './guards/auth.guard';
 import { AuthProvGuard } from './guards/auth-prov.guard'
+import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,8 @@ const routes: Routes = [
   {path: 'proveedor/membresia', component: MembresiaProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/perfil', component: PerfilProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/servicios', component: ServiciosProvComponent, canActivate: [AuthProvGuard]},
+  {path: 'proveedor/formservicios', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
+  
   {path:'**',redirectTo:'hogar',pathMatch:'full'}
 ];
 

@@ -1,15 +1,65 @@
 <app-sidebar-prov></app-sidebar-prov>
-<div class="d-flex justify-content-center">
-  <div class="cotainer">
-    <div class="card mt-5">
-      <div class="card-header">
-        Perfil
+<div class="container-size">
+  <div class=" mt-5">
+    <!--<div class="card-header">
+      <h5 class="card-title">Eventos</h5>
+    </div> -->
+    <div class="card-body">
+      <div class="container mb-3">
+        <div class="row">
+          <div class="col">
+
+            <h2 class="card-title">Mi perfil</h2>
+          </div>
+         </div>
+         <br>
+         <div class="container row">
+        <div class="col"> 
+            <img class="redondo float-start" width="173px" height="173px" src="../../../assets/Imagenes/usuario.png">
+            
+            <div class=" row justify-content-start">
+            <div class="form-check" style="margin-left: 100px;">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Eliminar foto
+              </label>
+            </div>
+            <!--<button type="file" class="w-25 btn btn-lg btn-primary " multiple>Subir imagen </button>-->
+            <input style="margin-left: 100px; margin-top: 30px; width: 400px; " class="form-control" type="file" id="formFileMultiple" multiple> 
+                    
+            </div>
+        </div>
+        </div>
+<br><br>
+        <div class="container row">
+          <div class="col">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Actualizar nombre</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Nuevo correo</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Nueva contraseña</label>
+              <input type="password" class="form-control" id="exampleFormControlInput1">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Repite la contraseña</label>
+              <input type="password" class="form-control" id="exampleFormControlInput1">
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="container justify-content-center">
+        <button type="button" class="w-25 btn btn-lg btn-warning ">Guardar </button>
       </div>
     </div>
   </div>
 </div>
+

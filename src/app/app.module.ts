@@ -26,6 +26,7 @@ import { ServiciosProvComponent } from './proveedor/servicios-prov/servicios-pro
 import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-prov.component';
 import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
 import { SidebarProvComponent } from './proveedor/sidebar-prov/sidebar-prov.component';
+import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { SidebarProvComponent } from './proveedor/sidebar-prov/sidebar-prov.comp
     MembresiaProvComponent,
     PerfilProvComponent,
     SidebarProvComponent,
+    ServiciosformComponent,
   ],
   imports: [
     BrowserModule,

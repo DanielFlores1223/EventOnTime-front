@@ -1,10 +1,11 @@
 .container-size{
-    background-image: url(../../../assets/Imagenes/fondo-perfil/fondo-grande.png);
+    background-image: url(../../../assets/Imagenes/fondo-perfil/chico.png);
     object-fit: cover;
     margin-left: 300px;
     margin-right: 5ch;
     height: 811px;
     background-color: white;
+    width: auto;
 }
 
 
@@ -54,6 +55,12 @@
     background: none;
   }
 
-  .x{
+  
+
+  .redondo{
+    border-radius: 100px;
+  }
+
+  label{
     color: #E4A193;
   }

@@ -1,15 +1,68 @@
 <app-sidebar-prov></app-sidebar-prov>
-<div class="d-flex justify-content-center">
-  <div class="cotainer">
-    <div class="card mt-5">
-      <div class="card-header">
-        Membresia
+<div class="container-size">
+  <div class="card mt-5 row justify-content-start">
+    <!--<div class="card-header">
+      <h5 class="card-title">Eventos</h5>
+    </div> -->
+    <div class="card-body">
+      <div class="container mb-3">
+        <div class="row">
+          <div class="col">
+            <h3 class="card-title">Mi membresia </h3>
+          </div>
+         
+        </div>
+        
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="container bcolor ">
+        <br>
+       <p>Detalles</p>
+       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+       <br><br>
       </div>
+      
+      <div class=" pago bcolor col order-first">
+        <br>
+        <h3 class="container">Pago</h3>
+        
+        <img class="rounded mx-auto d-block" src="../../../assets/Imagenes/tarjeta.jpg" width="40%">
+        <br>
+        <!--FORMULARIO DEL PAGO-->
+        <div class="container-md mb-3">
+          
+          <div class="row">
+            <div class="col">
+              <label for="formGroupExampleInput card-title" class="form-label">Número de Tarjeta</label>
+              <input type="number" class="form-control"  aria-label="First name">
+            </div>
+            <div class="col">
+              <label for="formGroupExampleInput card-title" class="form-label">Nombre</label>
+              <input type="text" class="form-control" aria-label="Last name">
+            </div>
+          </div>
+          <br>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Expiración</label>
+            <div class="col">
+              <input type="number" class="form-control" id="inputEmail3">
+              
+            </div>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">CCV</label>
+            <div class="col">
+              <input type="number" class="form-control" id="inputEmail3">
+            </div>
+            </div>
+            
+<!--BOTON-->
+<br>
+<div class="row justify-content-end">
+<!--<button type="button" class="w-25 btn btn-primary" id="liveToastBtn">Pagar</button>-->
+<button type="button" class=" btn btn-lg btn-warning ">Pagar </button>
+</div>
+<br>
+
+        <!--CIERRE DEL FORMULARIO-->
+       </div>
     </div>
   </div>
 </div>
