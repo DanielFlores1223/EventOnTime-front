@@ -95,9 +95,11 @@
       }
   }
   .sidenav-nav-item:hover{
+    border: #f3f0f080 solid;
+    border-radius: 5px;
       .sidenav-nav-link{
-          background-color: #fff;
-          color: #000;
+          background-color: transparent;
+          color: #E4A193;
       }
   }
 }
@@ -107,13 +109,12 @@
 .sidenav-coll-btn{
   margin-top: .8em;
   margin-left: 16.5em;
+  transition-property: margin;
 }
 
 .sidenav-coll-btn-sm{
   margin-top: .8em;
   margin-left: 5em;
-  
-  transition-duration: 20ml;
 }
 
 .container-link{
