@@ -43,8 +43,11 @@
       </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item login">
+        <li class="nav-item login" *ngIf="!isLogged">
           <a class="nav-link active" aria-current="page" href="" routerLink="/login"> Iniciar Sesión</a>
+        </li>
+        <li class="nav-item login" *ngIf="isLogged">
+          <a class="nav-link active" aria-current="page" href="" routerLink="/planificador/dashboard">Mi Dashboard</a>
         </li>
       </ul>
     </div>

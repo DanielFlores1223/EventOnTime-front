@@ -1,23 +1,40 @@
-<app-sidebar-planificador></app-sidebar-planificador>
-<div class="container-size">
-  <div class="card mt-5">
-    <!--<div class="card-header">
-      <h5 class="card-title">Eventos</h5>
-    </div> -->
-    <div class="card-body">
-      <div class="container mb-3">
-        <div class="row">
-          <div class="col">
-            <h3 class="card-title">Mi dashboard</h3>
+<app-sidebar-planificador (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar-planificador>
+<div class="body">
+  <div [ngClass]="getBodyClass()">
+    <div class="card mt-5">
+      <div class="card-body">
+        <div class="container mb-3">
+          <div class="row">
+            <div class="col">
+              <h3 class="card-title">Mi dashboard</h3>
+            </div>
+           
           </div>
-         
+          
         </div>
-        
-      </div>
-      <div class="container ">
-       <p>Hola</p>
+        <div class="container ">
+         <p>Hola</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container-size">
+    <div class="card mt-5">
+      <div class="card-body">
+        <div class="container mb-3">
+          <div class="row">
+            <div class="col">
+              <h3 class="card-title">Mi dashboard</h3>
+            </div>
+           
+          </div>
+          
+        </div>
+        <div class="container ">
+         <p>Hola</p>
+        </div>
+      </div>
+    </div>
+  </div>

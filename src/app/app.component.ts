@@ -15,10 +15,33 @@ export class AppComponent {
 
   isSideNavCollapsed = false;
   screenWidth = 0;
+  logged = false;
+
+  constructor() { 
+  }
+
+  ngOnInit(): void {
+    this.loadComponent();
+    
+  }
+
 
   onToggleSideNav(data: SidebarToggle ):void{
     this.isSideNavCollapsed=data.collapsed;
     this.screenWidth=data.screenWidth;
+  }
+
+  loadComponent(){
+    this.logged= this.islogged();
+  }
+
+  islogged(): boolean{
+    if(localStorage.getItem('token')){
+      return true;
+    }else{
+      return false;
+    }
+
   }
 
 }

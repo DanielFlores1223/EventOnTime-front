@@ -42,15 +42,8 @@ interface SidebarToggle{
 export class SidebarPlanificadorComponent implements OnInit {
   
   @Output() onToggleSideNav: EventEmitter<SidebarToggle> = new EventEmitter();
-  screenWidth = 0;
-  collapsed = true;
-  navData=[
-    {
-      routerLink : 'planificador/favoritos',
-      icon: 'fal fa-home',
-      label: 'Mi Dashboard'
-    }
-  ]
+  @Output() screenWidth = 0;
+  @Output() collapsed = true;
 
   @HostListener('window:resize',['$event'])onResize(event:any){
     this.screenWidth= window.innerWidth;
@@ -66,6 +59,8 @@ export class SidebarPlanificadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+    console.log(this.collapsed);
+    console.log(this.screenWidth);
   }
 
   cerrarSesion(){
@@ -77,17 +72,6 @@ export class SidebarPlanificadorComponent implements OnInit {
     this.router.navigate(['/hogar']);
     
   }
-
-  /*toggleSideBar(){
-    if(this.toggle==false){
-      this.toggle=true;
-      this.navClass="content-toggle";
-    }else{
-      this.toggle=false;
-      this.navClass="content";
-    }
-  }*/
-
   toggleCollapse(){
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({collapsed: this.collapsed,screenWidth: this.screenWidth});
