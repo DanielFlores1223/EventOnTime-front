@@ -107,12 +107,14 @@
 // IN NEW
 
 .sidenav-coll-btn{
+  position: fixed;
   margin-top: .8em;
   margin-left: 16.5em;
   transition-property: margin;
 }
 
 .sidenav-coll-btn-sm{
+  position: fixed;
   margin-top: .8em;
   margin-left: 5em;
 }
@@ -140,17 +142,20 @@
   }
 
 }
-// OLD STYLE 
 
 .active{
+  //border: #f3f0f080 solid;
+  
   background-color: #fff;
+  border-radius: 5px;
 
   .sidenav-link-icon,
   .sidenav-link-text{
-      color: #000;
+    color: #E4A193;
   }
 }
 
+// OLD STYLE 
 
 .sidebar-toggle{
   left: -300px;

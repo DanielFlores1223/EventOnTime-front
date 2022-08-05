@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, HostListener, OnInit, Output } from '@angular/core';
+import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 
@@ -10,7 +11,33 @@ interface SidebarToggle{
 @Component({
   selector: 'app-sidebar-planificador',
   templateUrl: './sidebar-planificador.component.html',
-  styleUrls: ['./sidebar-planificador.component.scss']
+  styleUrls: ['./sidebar-planificador.component.scss'],
+  animations: [
+    trigger('fadeInOut',[
+      transition(':enter',[
+        style({opacity: 0}),
+        animate('350ms',
+          style({opacity: 1})
+        )
+      ]),
+      transition(':leave',[
+        style({opacity: 0}),
+        animate('350ms',
+          style({opacity: 1})
+        )
+      ])
+    ]),
+    trigger('rotate',[
+      transition(':enter',[
+        animate('1000ms',
+          keyframes([
+            style({transform:'rotate(0deg)',offset: '0'}),
+            style({transform:'rotate(2turn)',offset: '1'})
+          ])
+        )
+      ])
+    ])
+  ]
 })
 export class SidebarPlanificadorComponent implements OnInit {
   
@@ -25,11 +52,20 @@ export class SidebarPlanificadorComponent implements OnInit {
     }
   ]
 
+  @HostListener('window:resize',['$event'])onResize(event:any){
+    this.screenWidth= window.innerWidth;
+    if(this.screenWidth <= 768){
+      this.collapsed=false;
+      this.onToggleSideNav.emit({collapsed: this.collapsed,screenWidth: this.screenWidth});
+    }
+  }
+
   navClass = "content";
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
   }
 
   cerrarSesion(){
@@ -38,7 +74,6 @@ export class SidebarPlanificadorComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('name');
     localStorage.removeItem('token');
-    //this.ngOnInit();
     this.router.navigate(['/hogar']);
     
   }
@@ -54,7 +89,6 @@ export class SidebarPlanificadorComponent implements OnInit {
   }*/
 
   toggleCollapse(){
-    //this.collapsed=true;
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({collapsed: this.collapsed,screenWidth: this.screenWidth});
   }

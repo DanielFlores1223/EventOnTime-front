@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-pro
 import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
 import { SidebarProvComponent } from './proveedor/sidebar-prov/sidebar-prov.component';
 import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
+import { BodyPlanComponent } from './planificador/body-plan/body-plan.component';
 
 
 @NgModule({
@@ -51,9 +53,11 @@ import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosfor
     PerfilProvComponent,
     SidebarProvComponent,
     ServiciosformComponent,
+    BodyPlanComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
