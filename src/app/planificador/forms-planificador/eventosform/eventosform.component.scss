@@ -1,0 +1,98 @@
+.container-size{
+
+    margin-left: 300px;
+    margin-right: 5ch;
+    
+    background-color: white;
+}
+
+
+.favoritos-container{
+    background-color: #fff;
+    display: flex;
+ 
+    height: 200px;
+    border-radius: .5ch;
+    margin-top: 1em;
+    color: #fff;
+}
+
+.bcolor{
+    background-color: white;
+    margin-bottom: 2em;
+    height: auto;
+}
+
+.color{
+    color: #071F4E;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+label{
+    color: #E4A193;
+}
+
+.invitado{
+    font-size: 13px;
+}
+
+.no-event{
+    color: #071F4E;
+    font-family: 'Poppins';
+    font-size: 13px;
+}
+
+h6 {
+    color: #071F4E;
+}
+
+.btn-primary, .col-form-label{
+    color: #fff;
+}
+
+input, select{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+input, select:focus{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-close{
+    background-color: var(--bs-warning);
+}
+
+.nav-link{
+    color: #fff;
+}
+
+.servicios-container{
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    width: 118vh;
+    height: auto;
+    border-radius: .5ch;
+    margin-top: 1em;
+}
+/*.invitados{
+    background-image: url(../../../../assets/Imagenes/form-eventos/invitados.png);
+    width: 100%;
+}*/
+
+/*.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #E4A193;
+    
+}*/
+
+p{
+    color: #E4A193;
+}
+
+li{
+    color: #071F4E;
+}

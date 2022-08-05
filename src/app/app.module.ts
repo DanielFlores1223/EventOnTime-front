@@ -28,6 +28,8 @@ import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-pro
 import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
 import { SidebarProvComponent } from './proveedor/sidebar-prov/sidebar-prov.component';
 import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
+
+import { EventosformComponent } from './planificador/forms-planificador/eventosform/eventosform.component';
 import { BodyPlanComponent } from './planificador/body-plan/body-plan.component';
 
 
@@ -53,7 +55,8 @@ import { BodyPlanComponent } from './planificador/body-plan/body-plan.component'
     PerfilProvComponent,
     SidebarProvComponent,
     ServiciosformComponent,
-    BodyPlanComponent,
+    EventosformComponent,
+  BodyPlanComponent
   ],
   imports: [
     BrowserModule,

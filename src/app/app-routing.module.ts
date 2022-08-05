@@ -5,6 +5,7 @@ import { LoginComponent } from './Common/login/login.component';
 import { RegistroComponent } from './Common/registro/registro.component';
 import { TipoUsuarioComponent } from './Common/tipo-usuario/tipo-usuario.component';
 import { DashboardPlanificadorComponent } from './planificador/dashboard-planificador/dashboard-planificador.component';
+import { EventosformComponent } from './planificador/forms-planificador/eventosform/eventosform.component';
 
 import { FavoritosComponent } from './planificador/favoritos/favoritos.component';
 import { EventosComponent } from './planificador/eventos/eventos.component';
@@ -15,11 +16,11 @@ import { DashboardProvComponent } from './proveedor/dashboard-prov/dashboard-pro
 import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-prov.component';
 import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
 import { ServiciosProvComponent } from './proveedor/servicios-prov/servicios-prov.component';
+import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
 
 // -- GUARDS
 import { AuthGuard } from './guards/auth.guard';
 import { AuthProvGuard } from './guards/auth-prov.guard'
-import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
   {path: 'planificador/dashboard', component: DashboardPlanificadorComponent, canActivate: [AuthGuard] },
   {path: 'planificador/favoritos', component:FavoritosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/eventos', component:EventosComponent, canActivate: [AuthGuard]},
+  {path: 'planificador/formeventos', component:EventosformComponent, canActivate: [AuthGuard]},
+  
   {path: 'planificador/servicios', component:ServiciosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/planes', component:PlanesComponent, canActivate: [AuthGuard]},
   {path: 'planificador/perfil', component:PerfilComponent, canActivate: [AuthGuard]},

@@ -1,0 +1,372 @@
+<app-sidebar-planificador></app-sidebar-planificador>
+<div class="container-size">
+  <div class="card mt-5">
+    <!--<div class="card-header">
+      <h5 class="card-title">Eventos</h5>
+    </div> -->
+    <div class="card-body">
+      <div class="container mb-3">
+        <div class="row">
+          <div class="col">
+            <h3 class="card-title">Eventos <svg routerLink="/planificador/eventos" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" style="cursor: pointer; color:#F6B33E">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+              </svg> </h3>
+              </div>
+              <div class="col">
+                <p class="d-flex flex-row-reverse no-event">Nota: Solo tienes 2 eventos al mes</p>
+              <p class="d-flex flex-row-reverse no-event">Tipo de evento: Personal</p>
+              </div>
+              <br><br>
+
+              <!--INICIO DE FORMULARIO-->
+              <div class="container-md mb-3">
+          
+                <div class="row">
+                  <div class="col">
+                    <label for="formGroupExampleInput card-title" class="form-label">Selecciona tu fecha y hora</label>
+                    <input type="datetime-local" class="form-control" aria-label="First name">
+                  </div>
+                  <div class="col">
+                    <label for="formGroupExampleInput card-title" class="form-label">Fecha y hora final</label>
+                    <input type="datetime-local" class="form-control"  aria-label="First name">
+                  </div>
+                  
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col">
+                        <label for="formGroupExampleInput card-title" class="form-label">Nombre del evento</label>
+                        <input type="text" class="form-control"  aria-label="First name">
+                      </div>
+                      <div class="col">
+                        <label for="formGroupExampleInput card-title" class="form-label">Domicilio</label>
+                        <input type="text" class="form-control"  aria-label="First name">
+                      </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col" style="font-family: 'Poppins';">
+                        <label for="formGroupExampleInput card-title" class="form-label">Código de vestimenta</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Formal</option>
+                            <option value="1">Semi formal</option>
+                            <option value="2">Playa</option>
+                            
+                          </select>
+                      </div>
+                </div>
+                <br><br>
+                <div class="row">
+                <div class="col">
+                    <!--<p class="invitado">Max. 20 invitados</p>-->
+                    <label for="formGroupExampleInput card-title" class="form-label">Lista de invitados</label>
+                    
+                    <div class="d-flex flex-row-reverse" routerLink="/planificador/formeventos">
+                        <svg data-bs-toggle="modal" data-bs-target="#staticBackdrop" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-20px; margin-right:40px;">
+                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                       </svg>
+                       </div>
+
+                       <div class="favoritos-container list-group list-group-flush">
+                        <h6 class="text-break " style="margin-left: 15px; margin-top: 15px;">Mariana</h6>
+                        <div class="d-flex flex-row-reverse">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-30px; margin-right:90px; margin-left:40px;">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-30px; margin-right:-110px; ">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                          </svg>
+                          </div>
+                       </div>
+                       
+                </div>    
+
+                <div class="col overflow-auto">
+                    
+                    <label for="formGroupExampleInput card-title" class="form-label">Servicios</label>
+                    
+                    <div class="d-flex flex-row-reverse" routerLink="/planificador/formeventos">
+                        <svg data-bs-toggle="modal" data-bs-target="#staticBackdropServicios" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-20px; margin-right:40px;">
+                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                       </svg>
+                       
+                       </div>
+                       
+                       <ul class="favoritos-container list-group list-group-flush">
+                        <h6 class="text-break " style="margin-left: 15px; margin-top: 15px;">Pasteleria Marisa</h6>
+                        <div class="list-group-item align-self-end">                    
+                          <!--Boton de Basura-->
+                          <div class="d-flex flex-row-reverse">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;  margin-top:-35px; margin-right:25px;">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                          </svg>
+                          </div>
+                          </div>
+                        </ul>
+                </div> 
+                 
+                </div>
+                
+                <br>
+                <div class="row justify-content-end">
+                    <button type="button" class=" btn btn-lg btn-warning ">Guardar </button>
+                    </div>
+              <!--FIN DE FORMULARIO-->
+
+          </div>
+         
+        </div>
+        
+      </div>
+      <!--MODAL INVITADOS-->
+        <!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>-->
+
+<!-- Modal -->
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class=" modal-content invitados">
+      <div class="modal-header">
+        <!--<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>-->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" modal-body">
+       
+        <form>
+          <div class="mb-3 row justify-content-center ">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Nombre del invitado</label>
+            <div class="col-sm-6">
+              <input type="text"  class="form-control" id="staticEmail">
+            </div>
+          </div>
+          <div class="mb-3 row justify-content-center">
+            <label for="inputPassword" class="col-sm-3 col-form-label">Correo del invitado</label>
+            <div class="col-sm-6">
+              <input type="email" class="form-control" id="inputPassword">
+            </div>
+          </div>
+          <div class="mb-3 row justify-content-center" style="font-family: 'Poppins';">
+           
+              <label for="formGroupExampleInput card-title" class="col-sm-3 col-form-label">Rol</label>
+              <div class="col-sm-6 w-25">
+              <select class="form-select" aria-label="Default select example">
+                  <option selected>Invitado</option>
+                  <option value="1">Cadenero</option>
+                  
+                </select>
+                </div>
+           
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+     
+    <!--MODAL SERVICIOS  PRIMER MODAL-->
+    <div class="modal fade" id="staticBackdropServicios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <!--<h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>-->
+            
+              
+          
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-end">
+              <input type="text" class="w-25 form-control" placeholder="Buscar...">
+                </div>
+                <div class="" style="margin-top: -30px;">
+            <ul class="nav nav-tabs" >
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-target="#staticBackdropServicios" data-bs-toggle="modal">Mis favoritos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Servicios</a>
+              </li>
+             
+            </ul>
+            </div>
+            <!--Contenido-->
+            <table class="table ">
+            <tbody class="container nav-fill">
+              <tr>
+                <div class="servicios-container nav-fill">
+                <img src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 60px; height: 60px; border-radius: 6px; object-fit: cover; ">
+                <h6 class="color">Pizza Little Cesar</h6>
+                <div class=" align-self-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;  margin-left:460px;">
+                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg>
+                </div>
+                </div>
+              </tr>
+              <tr>
+                <div class="servicios-container nav-fill">
+                  <img src="../../../assets/Imagenes/testimonios/test-pastel.jpg" style="width: 60px; height: 60px; border-radius: 6px; object-fit: cover;">
+                  <h6 class="color">Pasteleria Marisa</h6>
+                  <div class="align-self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;  margin-left:460px;">
+                      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                    </div>
+                  </div>
+              </tr>
+             
+  <br><br>
+              <div>
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </tbody>
+            </table>
+            <!--Fin de contenido-->
+          </div>
+          <!--<div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+          </div>-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!--MODAL SERVICIOS  SEGUNDO MODAL-->
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!--<h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>-->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-end">
+              <input type="text" class="w-25 form-control" placeholder="Buscar...">
+                </div>
+                <div class="" style="margin-top: -30px;">
+            <ul class="nav nav-tabs" >
+              <li class="nav-item">
+                <a class="nav-link " data-bs-target="#staticBackdropServicios" data-bs-toggle="modal">Mis favoritos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Servicios</a>
+              </li>
+             
+            </ul>
+            </div>
+            <!--Contenido-->
+            <table class="table ">
+              <tbody class="container ">
+                <tr>
+                  <div class="servicios-container ">
+                    <img  src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 134px; height: 123px; border-radius: 6px; object-fit: cover;">
+                    <div class="justify-content-center p-md-2">
+                      <h6 class="color justify-content-center">Pizza Little Cesar</h6>
+                      <p>La mejor pizza con el mejor proveedor
+                        -Nos quedamos todo el evento</p>
+                      </div>
+                      <div class="align-self-center">
+                        <button type="button" class="btn btn-secondary" >Agregar</button>
+           
+                      </div>
+                 
+                  </div>
+                </tr>
+                <tr>
+                  <div class="servicios-container nav-fill">
+                    <img src="../../../../assets/Imagenes/testimonios/test-tacos2.jpg" style="width: 134px; height: 123px; border-radius: 6px; object-fit: cover;">
+                      
+                    <div class="justify-content-center p-md-2">
+                      <h6 class="color justify-content-center">Tacos Don Poncho</h6>
+                      <p>Los mejores tacos con el mejor proveedor
+                        -Nos quedamos todo el evento</p>
+                      </div>
+                      <div class="align-self-center">
+                        <button type="button" class="btn btn-secondary" >Agregar</button>
+           
+                      </div>
+                    </div>
+                </tr>
+                <tr>
+                  <div class="servicios-container nav-fill">
+                    <img src="../../../../assets/Imagenes/testimonios/test-pastel2.jpg" style="width: 134px; height: 123px; border-radius: 6px; object-fit: cover;">
+                      
+                    <div class="justify-content-center p-md-2">
+                      <h6 class="color justify-content-center">Pasteleria Marisa</h6>
+                      <p>Los mejores pasteles con el mejor proveedor
+                        -Nos quedamos todo el evento</p>
+                      </div>
+                      <div class="align-self-center">
+                        <button type="button" class="btn btn-secondary" >Agregar</button>
+           
+                      </div>
+                    </div>
+                </tr>
+               
+    <br><br>
+                <div>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </tbody>
+              </table>
+            <!--Fin de contenido-->
+          </div>
+          <!--<div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+          </div>-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   <!--- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>-->
+<!--CIERRE DEL MODAL SE SERVICIOS-->
+    </div>
+    
+    
+  </div>
+</div>
+
+
