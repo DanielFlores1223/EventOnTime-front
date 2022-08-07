@@ -35,6 +35,7 @@ import { CompraPlanComponent } from './Common/compra-plan/compra-plan.component'
 import { CompraPlanEmpresarialComponent } from './Common/compra-plan-empresarial/compra-plan-empresarial.component';
 import { ContactanosEmpresarialComponent } from './Common/contactanos-empresarial/contactanos-empresarial.component';
 import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
+import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component';
 
 
 @NgModule({
@@ -64,7 +65,9 @@ import { SeleccionEventosComponent } from './planificador/seleccion-eventos/sele
   CompraPlanComponent,
   CompraPlanEmpresarialComponent,
   ContactanosEmpresarialComponent,
-  SeleccionEventosComponent
+  SeleccionEventosComponent,
+  PlanPagoComponent,
+  
   ],
   imports: [
     BrowserModule,

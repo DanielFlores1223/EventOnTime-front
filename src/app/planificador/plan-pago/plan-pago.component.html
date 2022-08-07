@@ -1,0 +1,7 @@
+<div *ngIf="user.account !== 'Gratuito'; else noGratuito">
+     <app-membresia></app-membresia>
+</div>
+
+<ng-template #noGratuito>
+     <app-planes></app-planes>
+</ng-template>
