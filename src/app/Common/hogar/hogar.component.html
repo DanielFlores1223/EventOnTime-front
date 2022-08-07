@@ -341,12 +341,12 @@
                 <li>Eventos ilimitados</li>
               </ul>
               <br><br>
-              <button type="button" class="w-100 h-75 btn btn-lg btn-warning" routerLink="/login">Empezar</button>
+              <button type="button" class="w-100 h-75 btn btn-lg btn-warning" routerLink="/compra-plan">Empezar</button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-warning">
+          <div class="card mb-4 rounded-3 shadow-sm">
             
             <div class="card-body precios">
               <h3 class="my-0 text-center">Empresarial</h3>
@@ -370,12 +370,14 @@
     <!-------------------------CONTACTANOS------------------------------->
     <!------------------------------------------------------------------->
     <br><br>
+    
     <div class="container eventos">
       <h1 id="Contactanos" style="font-family: 'Nunito';"><b>Contactanos</b></h1>
       <br><br>
       <div class="card detalles">
         <div class="card-body">
-          <h5 class="card-title">Detalles de contacto</h5>
+          <h3 class="card-title" style="color: white;">Detalles de contacto</h3>
+          <br>
         <div class="texto">
           <h6 class="card-subtitle mb-2">Siempre puede comunicarse con nosotros a través de los siguientes datos de contacto. Haremos todo lo posible para llegar a usted como sea posible.</h6>
           <br><br>
@@ -408,25 +410,28 @@
           
 
         </div>
-
+<form class="needs-validation " novalidate>
         <div class="card-body formulario">
           
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tu nombre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Juan Perez">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1"  required>
+            <div class="valid-feedback" style="font-family: 'Poppins';">
+             ¡Perfecto!
+            </div>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tu correo</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="juanperez@example.com">
+            <label for="exampleFormControlInput1" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" required>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Tu mensaje</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
           </div>
-          <button type="button" class="w-25  btn btn-lg btn-warning">Enviar </button>
+          <button type="submit" class="w-25  btn btn-lg btn-warning">Enviar </button>
           
         </div>
-
+</form>
       </div>
     </div>
 

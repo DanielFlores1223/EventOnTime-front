@@ -21,6 +21,10 @@ import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosfor
 // -- GUARDS
 import { AuthGuard } from './guards/auth.guard';
 import { AuthProvGuard } from './guards/auth-prov.guard'
+import { CompraPlanComponent } from './Common/compra-plan/compra-plan.component';
+import { CompraPlanEmpresarialComponent } from './Common/compra-plan-empresarial/compra-plan-empresarial.component';
+import { ContactanosEmpresarialComponent } from './Common/contactanos-empresarial/contactanos-empresarial.component';
+import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
 
 
 const routes: Routes = [
@@ -28,14 +32,19 @@ const routes: Routes = [
   {path: 'hogar', component:HogarComponent},
   {path: 'registrar', component:RegistroComponent},
   {path: 'tipo-usu', component:TipoUsuarioComponent},
+  {path: 'compra-plan', component:CompraPlanComponent},
+  {path: 'compra-plan-empresarial', component:CompraPlanEmpresarialComponent},
+  {path: 'contactanos-empresarial', component:ContactanosEmpresarialComponent},
+
   {path: 'planificador/dashboard', component: DashboardPlanificadorComponent, canActivate: [AuthGuard] },
   {path: 'planificador/favoritos', component:FavoritosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/eventos', component:EventosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/formeventos', component:EventosformComponent, canActivate: [AuthGuard]},
-  
   {path: 'planificador/servicios', component:ServiciosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/planes', component:PlanesComponent, canActivate: [AuthGuard]},
   {path: 'planificador/perfil', component:PerfilComponent, canActivate: [AuthGuard]},
+  {path: 'planificador/seleccion-evento', component:SeleccionEventosComponent, canActivate: [AuthGuard]},
+
   {path: 'proveedor/dashboard', component: DashboardProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/membresia', component: MembresiaProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/perfil', component: PerfilProvComponent, canActivate: [AuthProvGuard]},

@@ -31,6 +31,10 @@ import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosfor
 
 import { EventosformComponent } from './planificador/forms-planificador/eventosform/eventosform.component';
 import { BodyPlanComponent } from './planificador/body-plan/body-plan.component';
+import { CompraPlanComponent } from './Common/compra-plan/compra-plan.component';
+import { CompraPlanEmpresarialComponent } from './Common/compra-plan-empresarial/compra-plan-empresarial.component';
+import { ContactanosEmpresarialComponent } from './Common/contactanos-empresarial/contactanos-empresarial.component';
+import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
 
 
 @NgModule({
@@ -56,7 +60,11 @@ import { BodyPlanComponent } from './planificador/body-plan/body-plan.component'
     SidebarProvComponent,
     ServiciosformComponent,
     EventosformComponent,
-  BodyPlanComponent
+  BodyPlanComponent,
+  CompraPlanComponent,
+  CompraPlanEmpresarialComponent,
+  ContactanosEmpresarialComponent,
+  SeleccionEventosComponent
   ],
   imports: [
     BrowserModule,

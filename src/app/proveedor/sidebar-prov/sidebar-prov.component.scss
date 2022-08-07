@@ -60,7 +60,17 @@ a:hover, a:focus{
   align-items: center;
   transition: all 2s ease-out;
 }
+.active{
+  //border: #f3f0f080 solid;
+  
+  background-color: #fff;
+  border-radius: 5px;
 
+  .sidenav-link-icon,
+  .sidenav-link-text{
+    color: #E4A193;
+  }
+}
 /*.sidebarToggle{
 
 }
