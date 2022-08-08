@@ -37,6 +37,9 @@ import { ContactanosEmpresarialComponent } from './Common/contactanos-empresaria
 import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
 import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component';
 
+//Libs
+import { NgCreditCardModule } from 'angular-credit-card';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +78,8 @@ import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgCreditCardModule
   ],
   providers: [
     AuthService,
