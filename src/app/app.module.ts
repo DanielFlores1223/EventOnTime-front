@@ -39,6 +39,7 @@ import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component'
 
 //Libs
 import { NgCreditCardModule } from 'angular-credit-card';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { NgCreditCardModule } from 'angular-credit-card';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgCreditCardModule
+    NgCreditCardModule,
+    NgxSpinnerModule,
   ],
   providers: [
     AuthService,

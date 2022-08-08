@@ -22,6 +22,7 @@
     "angular-credit-card": "^0.1.4",
     "bootstrap": "^5.1.3",
     "jquery": "^3.6.0",
+    "ngx-spinner": "^14.0.0",
     "payment": "^2.4.6",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

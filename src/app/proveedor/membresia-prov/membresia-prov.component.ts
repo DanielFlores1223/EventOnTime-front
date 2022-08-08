@@ -3,6 +3,7 @@ import { Payment } from 'src/app/models/Payment';
 import { Response } from '../../models/Response';
 import { PaymentService } from '../../services/payment.service';
 import { getMonth } from '../../helpers/getMonth';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-membresia-prov',
@@ -49,7 +50,7 @@ export class MembresiaProvComponent implements OnInit {
   months: Array<any> = [];
   years: Array<any> = [];
 
-  constructor( private paymentService: PaymentService ) { }
+  constructor( private paymentService: PaymentService, private spinner: NgxSpinnerService ) { }
 
   ngOnInit(): void {
     this.getInfoPayment();
@@ -58,13 +59,17 @@ export class MembresiaProvComponent implements OnInit {
 
   getInfoPayment() {
 
+    this.spinner.show();
     this.paymentService.getInfoLastPayment( this.token ).subscribe(
       {
         next: ( res: Response ) => { 
                                       this.infoLastPayment = res.result;
                                       this.processDates(res.result)
+                                      this.spinner.hide();
                                    },
-        error: err => console.log(err)
+        error: err => { 
+                        this.spinner.hide();
+                      }
       }
     )
 
@@ -78,14 +83,17 @@ export class MembresiaProvComponent implements OnInit {
       return;
     }
       
-
+    this.spinner.show();
     this.paymentService.getLastCreditCard( this.token ).subscribe(
       {
         next: ( res: Response ) => {
           this.paymentCreate.numberCard = res.result.numberCard;
           this.paymentCreate.nameOwnerCard = res.result.nameOwnerCard;
+          this.spinner.hide();
         },
-        error: err => console.log(err)
+        error: err => { 
+                        this.spinner.hide();
+                      }
       }
     );
 
@@ -93,12 +101,16 @@ export class MembresiaProvComponent implements OnInit {
 
   createPayment() {
 
+    this.spinner.show();
     this.paymentService.createPayment( this.paymentCreate, this.token ).subscribe(
       {
         next: ( res: Response ) => {
           this.reload();
+          this.spinner.hide();
         },
-        error: err => console.log(err)
+        error: err => {
+                        this.spinner.hide();
+                      }
       }
     );
 
