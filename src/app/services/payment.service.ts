@@ -9,6 +9,7 @@ import { Payment } from '../models/Payment';
 export class PaymentService {
 
   private API_URI = 'https://eventontime.herokuapp.com/api/payment';
+  //private API_URI = 'http://localhost:3000/api/payment';
 
   constructor( private http: HttpClient ) { }
 

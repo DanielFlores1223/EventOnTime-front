@@ -1,0 +1,15 @@
+.body-trimmed{
+    max-width: 100%;
+ }
+
+.container-responsive {
+    margin-left: 310px;
+    max-width: calc(100% - 350px);
+}
+
+@media( max-width: 575px ) {
+    .container-responsive {
+        margin-left: 0px;
+        max-width: 95%;
+    }
+}

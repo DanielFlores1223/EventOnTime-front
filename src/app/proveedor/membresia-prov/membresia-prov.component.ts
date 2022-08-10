@@ -4,6 +4,7 @@ import { Response } from '../../models/Response';
 import { PaymentService } from '../../services/payment.service';
 import { getMonth } from '../../helpers/getMonth';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Variant, showAlert } from '../../helpers/show-alerts';
 
 @Component({
   selector: 'app-membresia-prov',
@@ -69,6 +70,7 @@ export class MembresiaProvComponent implements OnInit {
                                    },
         error: err => { 
                         this.spinner.hide();
+                        showAlert( err.error.msg, Variant.error );
                       }
       }
     )
@@ -93,6 +95,7 @@ export class MembresiaProvComponent implements OnInit {
         },
         error: err => { 
                         this.spinner.hide();
+                        showAlert( err.error.msg, Variant.error );
                       }
       }
     );
@@ -107,9 +110,11 @@ export class MembresiaProvComponent implements OnInit {
         next: ( res: Response ) => {
           this.reload();
           this.spinner.hide();
+          showAlert( res.msg, Variant.success );
         },
         error: err => {
                         this.spinner.hide();
+                        showAlert( err.error.msg, Variant.error );
                       }
       }
     );

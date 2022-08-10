@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Response } from '../../models/Response';
 import { MyProfile } from '../../models/user';
 import { UserService } from '../../services/user.service';
-import { alertError } from '../../helpers/show-alerts';
+import { showAlert, Variant } from '../../helpers/show-alerts';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-plan-pago',
@@ -22,17 +23,24 @@ export class PlanPagoComponent implements OnInit {
                       role: '',  };
 
 
-  constructor( private userService: UserService ) { }
+  constructor( private userService: UserService, private spinner: NgxSpinnerService ) { }
 
   ngOnInit(): void {
     this.getInfoUser();
   }
 
   getInfoUser() {
+      this.spinner.show();
       this.userService.getMyProfile( this.token ).subscribe( 
         {
-          next: ( res: Response ) => this.user = res.result,
-          error: err => alertError() 
+          next: ( res: Response ) => { 
+                                        this.user = res.result;
+                                        this.spinner.hide();
+                                     },
+          error: err => { 
+                          showAlert( err.error.msg, Variant.error ); 
+                          this.spinner.hide();
+                        }
         }
       )
   }

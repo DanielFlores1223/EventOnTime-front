@@ -1,5 +1,5 @@
 export interface Response {
      success: boolean,
-     message: string,
+     msg: string,
      result: any
 }

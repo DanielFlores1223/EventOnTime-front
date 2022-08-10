@@ -40,6 +40,8 @@ import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component'
 //Libs
 import { NgCreditCardModule } from 'angular-credit-card';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy-selector/planes-buy-selector.component';
+import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
   ContactanosEmpresarialComponent,
   SeleccionEventosComponent,
   PlanPagoComponent,
+  PlanesBuySelectorComponent,
+  PagarCreditCardComponent,
   
   ],
   imports: [
