@@ -1,114 +1,116 @@
 <app-sidebar-planificador></app-sidebar-planificador>
 <div class="container-size">
   <div class="card mt-5">
-    <!--<div class="card-header">
-      <h5 class="card-title">Eventos</h5>
-    </div> -->
     <div class="card-body">
+
+      <!-- HEADER SERVICIOS -->
       <div class="container mb-12">
         <div class="row">
-          <div class="col">
+          <div class="col-sm-12 col-md-6">
             <h3 class="card-title">Servicios</h3>
           </div>
-          <div class="col mb-3">
-            <input type="text" class="form-control" placeholder=" Buscar..." style="color:E4A193;">
-            <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg> buscar-->
+          <div class="col-sm-12 col-md-6 mb-3">
+            <input type="text" class="form-control" (keyup)="getSearch(); resetPagination();" [(ngModel)]="search" placeholder=" Buscar..." style="color:E4A193;">
           </div>
         </div>
-        
       </div>
+      <!-- /HEADER SERVICIOS -->
+
+      <!-- WHITE CONTAINER FOR THE CARDS -->
       <div class="container bcolor">
-        <table class="table bcolor">
-          <!--<thead>
-            <tr>
-              
-            </tr>
-          </thead> -->
-          <tbody class="container ">
-            <tr class="favoritos-container row">
-              <div class="col-sm-4">
-              <img  class="img-thumbnail d-flex align-items-center" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;">
-              </div>
-             <div class="col-sm-7 text-center">
-              <h3 class="color">Pizza Little Cesar</h3>
-              <h6>La mejor pizza con el mejor proveedor</h6>
-              <br><br><br>
-              <!--CORAZÓN-->
-              <div class="d-flex justify-content-start">
-                
-            
-                <!--ESTRELLA CALIFICACIÓN --RELLENO-->
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="color: #F6B33E;">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-                <!--ESTRELLA CALIFICACIÓN --RELLENO-->
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="color: #F6B33E; ">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-                <!--ESTRELLA CALIFICACIÓN --RELLENO-->
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16" style="color: #F6B33E;">
-                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                </svg>
-                <!--ESTRELLA CALIFICACIÓN --VACIO-->
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="color: #F6B33E;">
-                  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                </svg>
-                 <!--ESTRELLA CALIFICACIÓN --VACIO-->
-                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="color: #F6B33E;">
-                  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                </svg>
-                
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer; ">
-                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                  </svg>
+
+        <div *ngIf="services.length === 0; else siHay" class="p-5" >
+            <p class="text-center">No hay resultados</p>
+        </div>
+
+        <ng-template #siHay>
+        <!-- CARD SERVICE -->
+        <div *ngFor="let s of services" class="favoritos-container row px-3">
+            <div class="col-12">
+                <div class="row">
+                    <!-- IMG -->
+                    <div class="col-sm-12 col-md-4 my-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo">
+                        <img  class="img-thumbnail d-flex align-items-center" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;">
                     </div>
-              
-             </div>
-            </tr>
-            <tr>
-              <div class="favoritos-container  d-flex p-2 justify-content-start">
-                <img class="p-2" src="../../../assets/Imagenes/testimonios/test-star2.jpg" style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;">
-  
-               <div class=" ">
-                <h3 class="color">Starbucks</h3>
-                <h6>El mejor café del mundo</h6>
+                    <!-- /IMG -->
+
+                    <!-- INFO -->
+                    <div class="col-sm-12 col-md-8">
+                        <div class="d-flex align-items-center flex-column" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo">
+                          <h3 class="color">{{ s.name }}</h3>
+                          <h6>{{ s.description }}</h6>
+
+                          <!-- STARS -->
+                          <div class="stars mt-3" id="stars-div">
+                              <app-stars-generate [amount]="s.rating"></app-stars-generate>
+                          </div>
+                          <!-- /STARS -->            
+                        </div>
+
+                        <!-- HEART -->
+                        <div class="heart d-flex justify-content-end mt-4 mb-2"(click)="likeService($event)">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer; ">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                          </svg>
+                        </div>
+                        <!-- /HEART -->
+                    </div>
+                    <!-- /INFO -->
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                </svg>
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                  </svg>
-                </div>
-                </div>
-            </tr>
-           
-<br><br>
+            </div>
+        </div>
+        <!-- /CARD SERVICE -->
+        </ng-template>
+
+        <!-- CONTAINER PAGINATION -->
+        <div *ngIf="services.length > 0" class="row mt-3">
+          <div class="col-12">
+            <!-- PAGINATION -->
             <div>
               <ul class="pagination justify-content-center">
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
+                  <button class="page-link" aria-label="Previous" (click)="previousPage()">
                     <span aria-hidden="true">&laquo;</span>
-                  </a>
+                  </button>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                
+                <li *ngFor="let btnInfo of btns" class="page-item">
+                    <button id="paginationBtn{{btnInfo.textBtn}}" class="page-link {{ currentPage === btnInfo.textBtn ? 'paginationActive': '' }}" (click)="getSearch( btnInfo.from ); getCurrentPage(btnInfo.textBtn);" >{{ btnInfo.textBtn }}</button>
+                </li>
+                
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
+                  <button class="page-link" aria-label="Next" (click)="nextPage()">
                     <span aria-hidden="true">&raquo;</span>
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
-          </tbody>
-          
-        </table>
+            <!-- /PAGINATION -->
+          </div>
+        </div>
+        <!-- /CONTAINER PAGINATION -->
       </div>
+      <!-- /WHITE CONTAINER FOR THE CARDS -->
     </div>
   </div>
 </div>
 
+<!-- Modal Mas INFO -->
+<div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalInfoLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal Mas INFO -->
