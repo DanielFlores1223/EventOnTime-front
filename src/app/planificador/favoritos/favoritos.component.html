@@ -10,7 +10,7 @@
           <div class="col">
             <h3 class="card-title">Mis favoritos</h3>
           </div>
-          <div class="col mb-3">
+          <div class="col ">
             <input type="text" class="form-control" placeholder=" Buscar..." style="color:E4A193;">
             <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -26,28 +26,40 @@
               
             </tr>
           </thead> -->
-          <tbody class="container nav-fill">
+          <tbody class="container ">
             <tr>
-              <div class="favoritos-container ">
-              <img src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 50px; height: 50px; border-radius: 6px; object-fit: cover;">
-              <h6 class="color">Pizza Little Cesar</h6>
-              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer; margin-left:680px; height:auto;">
+              <div class="favoritos-container d-flex align-items-center">
+                <div class="flex-shrink-0">
+              <img class="servicio rounded float-start" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" >
+              </div>
+              <div class="flex-grow-1 ms-3">
+              <h5 class="color">Pizza Little Cesar</h5>
+              </div>
+              <div class="d-flex flex-row-reverse align-items-center ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;  margin-right:50px;">
                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
               </svg>
               </div>
+              </div>
             </tr>
             <tr>
-              <div class="favoritos-container nav-fill">
-                <img src="../../../assets/Imagenes/testimonios/test-pastel.jpg" style="width: 50px; height: 50px; border-radius: 6px; object-fit: cover;">
-                <h6 class="color">Pasteleria Marisa</h6>
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer; margin-left:680px; height:auto;">
+              <div class="favoritos-container d-flex align-items-center">
+                <div class="flex-shrink-0">
+                <img class="servicio rounded float-start" src="../../../assets/Imagenes/testimonios/test-pastel.jpg">
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                <h5 class="color">Pasteleria Marisa</h5>
+                </div>
+                <div class="d-flex flex-row-reverse align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;  margin-right:50px;">
                   <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                 </svg>
+                </div>
                 </div>
             </tr>
            
 <br><br>
-            <div>
+            <!--<div>
               <ul class="pagination justify-content-center">
                 <li class="page-item">
                   <a class="page-link" href="#" aria-label="Previous">
@@ -63,7 +75,7 @@
                   </a>
                 </li>
               </ul>
-            </div>
+            </div>-->
           </tbody>
           
         </table>
