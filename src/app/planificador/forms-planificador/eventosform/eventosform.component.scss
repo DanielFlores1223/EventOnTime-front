@@ -9,9 +9,7 @@
 
 .favoritos-container{
     background-color: #fff;
-    display: flex;
- 
-    height: 200px;
+    height: 228px;
     border-radius: .5ch;
     margin-top: 1em;
     color: #fff;
@@ -69,8 +67,7 @@ input, select:focus{
 
 .servicios-container{
     background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    width: 118vh;
+    
     height: auto;
     border-radius: .5ch;
     margin-top: 1em;
@@ -95,4 +92,11 @@ p{
 
 li{
     color: #071F4E;
+}
+
+.servicio{
+    object-fit: cover;
+    border-radius: 6px; 
+    width: 70px; 
+    height: 70px; 
 }
