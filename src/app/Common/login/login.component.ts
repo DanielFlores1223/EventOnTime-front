@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("account",data.account);
         localStorage.setItem("picture",data.picture);
         //ALERTA DE CORRECTO
-      showAlert('Sus datos son correctos ' , Variant.success );
+        //showAlert( res.msg , Variant.success );
       
         if(data.role=='Planificador'){
           this.router.navigate(['/planificador/dashboard']);

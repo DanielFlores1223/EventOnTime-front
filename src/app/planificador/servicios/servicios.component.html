@@ -33,7 +33,10 @@
                 <div class="row">
                     <!-- IMG -->
                     <div class="col-sm-12 col-md-4 my-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( s._id )">
-                        <img  class="img-thumbnail d-flex align-items-center" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;">
+                      <img  class="img-thumbnail d-flex align-items-center" 
+                            src="{{ serviceInfo?.pictures.length > 0 ? 'serviceInfo?.pictures[serviceInfo?.pictures.length]' : '../../../assets/Imagenes/servicio.png' }}" 
+                            style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;"
+                            >
                     </div>
                     <!-- /IMG -->
 
@@ -113,7 +116,10 @@
         <div class="row">
             <div class="col-6 d-flex align-items-center justify-content-center">
                 <!--<p>Imagen</p>-->
-                <img  class="img-thumbnail " src="../../../assets/Imagenes/servicio.png" style=" border-radius: 6px; object-fit: cover;">
+                <img  class="img-thumbnail " 
+                      src="{{ serviceInfo?.pictures.length > 0 ? 'serviceInfo?.pictures[serviceInfo?.pictures.length]' : '../../../assets/Imagenes/servicio.png' }}" 
+                      style=" border-radius: 6px; object-fit: cover;"
+                >
                    
                 <!--{{ serviceInfo?.pictures }}-->
             </div>
