@@ -35,6 +35,14 @@ import { CompraPlanComponent } from './Common/compra-plan/compra-plan.component'
 import { CompraPlanEmpresarialComponent } from './Common/compra-plan-empresarial/compra-plan-empresarial.component';
 import { ContactanosEmpresarialComponent } from './Common/contactanos-empresarial/contactanos-empresarial.component';
 import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
+import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component';
+
+//Libs
+import { NgCreditCardModule } from 'angular-credit-card';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy-selector/planes-buy-selector.component';
+import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
+import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
 
 
 @NgModule({
@@ -64,7 +72,12 @@ import { SeleccionEventosComponent } from './planificador/seleccion-eventos/sele
   CompraPlanComponent,
   CompraPlanEmpresarialComponent,
   ContactanosEmpresarialComponent,
-  SeleccionEventosComponent
+  SeleccionEventosComponent,
+  PlanPagoComponent,
+  PlanesBuySelectorComponent,
+  PagarCreditCardComponent,
+  StarsGenerateComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -72,7 +85,9 @@ import { SeleccionEventosComponent } from './planificador/seleccion-eventos/sele
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgCreditCardModule,
+    NgxSpinnerModule,
   ],
   providers: [
     AuthService,

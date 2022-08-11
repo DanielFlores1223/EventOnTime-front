@@ -17,6 +17,7 @@ import { MembresiaProvComponent } from './proveedor/membresia-prov/membresia-pro
 import { PerfilProvComponent } from './proveedor/perfil-prov/perfil-prov.component';
 import { ServiciosProvComponent } from './proveedor/servicios-prov/servicios-prov.component';
 import { ServiciosformComponent } from './proveedor/forms-proveedor/serviciosform/serviciosform.component';
+import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component'
 
 // -- GUARDS
 import { AuthGuard } from './guards/auth.guard';
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path: 'planificador/eventos', component:EventosComponent, canActivate: [AuthGuard]},
   {path: 'planificador/formeventos', component:EventosformComponent, canActivate: [AuthGuard]},
   {path: 'planificador/servicios', component:ServiciosComponent, canActivate: [AuthGuard]},
-  {path: 'planificador/planes', component:PlanesComponent, canActivate: [AuthGuard]},
+  {path: 'planificador/planes', component: PlanPagoComponent /*PlanesComponent*/, canActivate: [AuthGuard]},
   {path: 'planificador/perfil', component:PerfilComponent, canActivate: [AuthGuard]},
   {path: 'planificador/seleccion-evento', component:SeleccionEventosComponent, canActivate: [AuthGuard]},
 
@@ -55,7 +56,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
