@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
+import { UserService } from '../../services/user.service';
 import { Response } from '../../models/Response';
 import { NgxSpinnerService } from "ngx-spinner";
+import Swal from 'sweetalert2';
 import { Variant, showAlert } from '../../helpers/show-alerts';
 
 @Component({
@@ -12,6 +14,7 @@ import { Variant, showAlert } from '../../helpers/show-alerts';
 export class ServiciosComponent implements OnInit {
 
   services: Array<any> = [];
+  token: string = localStorage.getItem('token') ?? '';
   
   //PAGINATION
   search = '';
@@ -23,7 +26,9 @@ export class ServiciosComponent implements OnInit {
 
   serviceInfo: any;
 
-  constructor( private serviceService: ServiceService, private spinner: NgxSpinnerService ) { }
+  constructor( private serviceService: ServiceService, 
+               private spinner: NgxSpinnerService,
+               private userService: UserService ) { }
 
   ngOnInit(): void {
     this.getSearch();
@@ -73,9 +78,39 @@ export class ServiciosComponent implements OnInit {
     }
   }
 
-  likeService(event: any) {
-    event.stopPropagation();
-    console.log('click')
+  likeService(idService: string) {
+    
+    this.spinner.show();
+    this.userService.addFavorites( this.token, idService ).subscribe(
+      {
+        next: res => {
+          Swal.fire({
+            title: res.msg,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000,
+            toast: true,
+            position: 'top-right'
+          });
+
+          this.spinner.hide();
+        },
+        error: err => {
+          console.log(err)
+          Swal.fire({
+            title: err.error.msg,
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 2500,
+            toast: true,
+            position: 'top-right'
+          });
+          this.spinner.hide();
+        }
+      }
+    )
+
+
   }
 
   //PAGINATION

@@ -37,6 +37,8 @@ export class RegistroComponent implements OnInit {
       localStorage.setItem("temp_password",this.newUser.password);
       this.router.navigate(['/tipo-usu']);
       this.spinner.hide();
+      //ALERTA DE CORRECTO
+      showAlert( 'Información correcta', Variant.success );
     }else{
       this.spinner.show();
       console.log(this.util.repited_pass);

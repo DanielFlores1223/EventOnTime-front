@@ -36,5 +36,13 @@ export class UserService {
 
     return this.http.put<Response>( `${this.API_URI}/user/profile`, data, { headers } );
   }
+
+  addFavorites( token: string, idService: string ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    })
+
+    return this.http.post<Response>( `${this.API_URI}/user/add/favorites`, { idService }, { headers } );
+  }
    
 }
