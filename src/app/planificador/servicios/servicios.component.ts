@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { Response } from '../../models/Response';
+import { NgxSpinnerService } from "ngx-spinner";
+import { Variant, showAlert } from '../../helpers/show-alerts';
 
 @Component({
   selector: 'app-servicios',
@@ -19,7 +21,9 @@ export class ServiciosComponent implements OnInit {
   btns: Array<any> = [];
   //END PAGINATION
 
-  constructor( private serviceService: ServiceService ) { }
+  serviceInfo: any;
+
+  constructor( private serviceService: ServiceService, private spinner: NgxSpinnerService ) { }
 
   ngOnInit(): void {
     this.getSearch();
@@ -27,16 +31,40 @@ export class ServiciosComponent implements OnInit {
 
   getSearch( from: number = 0 ) {
 
+    //this.spinner.show();
     this.serviceService.getSearch( this.search, from ).subscribe(
       {
         next: (res: any) => {
             this.getPagination( res.result.total );
             this.services = res.result.services;
+            this.spinner.hide();
         },
-        error: err => {console.log(err)}
+        error: err => {
+          //this.spinner.hide();
+          console.log(err)
+          showAlert( err.error.msg, Variant.error );
+        }
       }
     );
 
+  }
+
+  getById( id: string ) {
+    
+    this.spinner.show();
+    this.serviceService.getById( id ).subscribe( 
+      {
+        next: (res: any) => {
+          this.serviceInfo = res.result;
+          this.spinner.hide();
+        },
+        error: err => { 
+          this.spinner.hide();
+          console.log(err) 
+          showAlert( err.error.msg, Variant.error );
+        }
+      }
+    )
   }
 
   resetPagination() {

@@ -43,6 +43,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy-selector/planes-buy-selector.component';
 import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
 import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
+import { NameTagComponent } from './Common/name-tag/name-tag.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.c
   PlanesBuySelectorComponent,
   PagarCreditCardComponent,
   StarsGenerateComponent,
+  NameTagComponent,
   
   ],
   imports: [

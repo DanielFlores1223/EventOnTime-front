@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NewUser } from 'src/app/models/newUser';
+import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from '@angular/router';
 
 
@@ -19,7 +20,7 @@ export class TipoUsuarioComponent implements OnInit {
     "role":""
   };
 
-  constructor(private _auth: AuthService, private router: Router) { }
+  constructor(private _auth: AuthService, private router: Router, private spinner: NgxSpinnerService) { }
   ngOnInit(): void {
     this.newUser.name= localStorage.getItem('temp_name') || "";
     this.newUser.email= localStorage.getItem('temp_email') || "";
@@ -27,6 +28,7 @@ export class TipoUsuarioComponent implements OnInit {
   }
 
   registerUser(type:string){
+    this.spinner.show();
     this.newUser.role = this.getType(type);
     this._auth.registerUser(this.newUser)
       .subscribe( res =>{
@@ -42,7 +44,9 @@ export class TipoUsuarioComponent implements OnInit {
         localStorage.setItem("picture",data.picture);
         
         this.router.navigate(['/planificador/dashboard']);
+        this.spinner.hide();
     }, err =>{
+      this.spinner.hide();
         console.log(err);
         this.router.navigate(['/hogar']);
       })

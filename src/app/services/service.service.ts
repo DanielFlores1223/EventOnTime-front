@@ -14,5 +14,9 @@ export class ServiceService {
   getSearch( search = '', from=0, limit=5,  pagination=true ) {
     return this.http.get( `${this.API_URI}/search/regex?search=${search}&limit=${limit}&from=${from}&pagination=${pagination}` )
   }
+
+  getById( id: string ) {
+    return this.http.get( `${this.API_URI}/${id}` );
+  }
   
 }
