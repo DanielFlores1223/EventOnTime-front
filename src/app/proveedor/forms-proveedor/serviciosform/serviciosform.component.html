@@ -8,9 +8,16 @@
       <div class="container mb-3">
         <div class="row">
           <div class="col">
-            <h3 class="card-title">Mis servicios <svg routerLink="/proveedor/servicios" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" style="cursor: pointer; color:#F6B33E">
+            <h3 class="card-title" *ngIf="!edit">Agregar Servicios
+              <svg routerLink="/proveedor/servicios" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" style="cursor: pointer; color:#F6B33E">
                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-              </svg> </h3>
+              </svg> 
+            </h3>
+            <h3 class="card-title" *ngIf="edit">Actualizar Servicios 
+              <svg routerLink="/proveedor/servicios" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" style="cursor: pointer; color:#F6B33E">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+              </svg> 
+            </h3>
               <br><br>
               <!--INICIO DE FORMULARIO-->
               <div class="container-md mb-3">
@@ -18,15 +25,16 @@
                 <div class="row">
                   <div class="col">
                     <label for="formGroupExampleInput card-title" class="form-label">Nombre del servicio</label>
-                    <input type="text" class="form-control" placeholder="Cafeteria para eventos" aria-label="First name">
+                    <input type="text" class="form-control" placeholder="Cafeteria para eventos" aria-label="First name" [(ngModel)]="new_service.name">
                   </div>
                   <div class="col" style="font-family: 'Poppins';">
                     <label for="formGroupExampleInput card-title" class="form-label">Tipo de servicio</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="new_service.type">
                         <option selected>Comida</option>
-                        <option value="1">Brincolines</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="1">Entretenimiento</option>
+                        <option value="2">Multimedia</option>
+                        <option value="3">Hospedaje</option>
+                        <option value="4">Salud</option>
                       </select>
                   </div>
                 </div>
@@ -34,17 +42,17 @@
                 <div class="row">
                         <div class="col">
                           <label for="formGroupExampleInput card-title" class="form-label">Precio</label>
-                          <input type="number" class="form-control" placeholder="$" aria-label="First name">
+                          <input type="number" class="form-control" placeholder="$" aria-label="First name" [(ngModel)]="new_service.price">
                         </div>
                         <div class="col">
                             <label for="formGroupExampleInput card-title" class="form-label">Teléfono</label>
-                            <input type="number" class="form-control"  aria-label="First name">
+                            <input type="number" class="form-control"  aria-label="First name" [(ngModel)]="new_service.phone">
                           </div>
                 </div>
                 <br><br>
                 <div class="row">
                     <label for="formGroupExampleInput card-title" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Fiesta de cumpleaños" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Fiesta de cumpleaños" rows="3" [(ngModel)]="new_service.description"></textarea>
                 </div>
                 <br><br>
                 <div class="row">
@@ -56,9 +64,10 @@
                     
                 </div>
                 <br>
-                <div class="row justify-content-end">
-                    <button type="button" class=" btn btn-lg btn-warning ">Guardar </button>
-                    </div>
+                <div class="row justify-content-end" >
+                    <button type="button" class=" btn btn-lg btn-warning " (click)="create_service()" *ngIf="!edit">Guardar </button>
+                    <button type="button" class=" btn btn-lg btn-warning " (click)="update_User()" *ngIf="edit">Actualizar </button>
+                </div>
               <!--FIN DE FORMULARIO-->
 
           </div>
