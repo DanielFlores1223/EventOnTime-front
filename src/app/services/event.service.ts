@@ -23,14 +23,12 @@ export class EventService {
     this.getToken();
   }
 
-  constructor( private http: HttpClient ) { }
-
   createEvent( token = '', data: Event ) {
     const headers = new HttpHeaders({
       'Authorization': token
     });
 
-    return this.http.post<Response>( `${this._registerURL}`, data, { headers } );
+    return this.http.post<Response>( `${this._create_event}`, data, { headers } );
   }
   
   getToken(): string{
