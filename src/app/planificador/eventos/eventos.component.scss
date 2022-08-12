@@ -7,7 +7,18 @@
 }
 
 
-.favoritos-container{
+.favoritos{
+    background-color: #071F4E;
+    height: 85px;
+    border-radius: .5ch;
+    margin-top: 1em;
+    color: #fff;
+}
+
+.favoritos-cont{
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
     background-color: #071F4E;
     height: 85px;
     border-radius: .5ch;

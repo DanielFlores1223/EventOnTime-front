@@ -50,8 +50,8 @@ const routes: Routes = [
   {path: 'proveedor/membresia', component: MembresiaProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/perfil', component: PerfilProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/servicios', component: ServiciosProvComponent, canActivate: [AuthProvGuard]},
-  {path: 'proveedor/formservicios', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
-  
+  {path: 'proveedor/add', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
+  {path: 'proveedor/edit/:id', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
   {path:'**',redirectTo:'hogar',pathMatch:'full'}
 ];
 
