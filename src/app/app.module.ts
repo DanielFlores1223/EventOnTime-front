@@ -40,9 +40,11 @@ import { PlanPagoComponent } from './planificador/plan-pago/plan-pago.component'
 //Libs
 import { NgCreditCardModule } from 'angular-credit-card';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy-selector/planes-buy-selector.component';
 import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
 import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
+import { NameTagComponent } from './Common/name-tag/name-tag.component';
 
 
 @NgModule({
@@ -77,6 +79,7 @@ import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.c
   PlanesBuySelectorComponent,
   PagarCreditCardComponent,
   StarsGenerateComponent,
+  NameTagComponent,
   
   ],
   imports: [
@@ -88,6 +91,7 @@ import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.c
     ReactiveFormsModule,
     NgCreditCardModule,
     NgxSpinnerModule,
+    NgxDropzoneModule
   ],
   providers: [
     AuthService,

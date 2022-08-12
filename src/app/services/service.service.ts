@@ -29,6 +29,10 @@ export class ServiceService {
     return this.http.get( `${this.API_URI}/search/regex?search=${search}&limit=${limit}&from=${from}&pagination=${pagination}` )
   }
 
+  getById( id: string ) {
+    return this.http.get( `${this.API_URI}/${id}` );
+  }
+
   createService(service: Service){
     return this.http.post<Service>(this.API_URI,service,{ 'headers': this.headers });
   }
@@ -44,4 +48,5 @@ export class ServiceService {
   deleteService(id:string){
     return this.http.delete(`${this.API_URI}/${id}`,{ 'headers': this.headers });
   }
+
 }

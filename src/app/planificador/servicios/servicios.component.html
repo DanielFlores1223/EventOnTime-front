@@ -1,4 +1,7 @@
 <app-sidebar-planificador></app-sidebar-planificador>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#535e8a" type = "timer" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+
 <div class="container-size">
   <div class="card mt-5">
     <div class="card-body">
@@ -29,14 +32,17 @@
             <div class="col-12">
                 <div class="row">
                     <!-- IMG -->
-                    <div class="col-sm-12 col-md-4 my-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo">
-                        <img  class="img-thumbnail d-flex align-items-center" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;">
+                    <div class="col-sm-12 col-md-4 my-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( s._id )">
+                      <img  class="img-thumbnail d-flex align-items-center" 
+                            src="{{ serviceInfo?.pictures.length > 0 ? 'serviceInfo?.pictures[serviceInfo?.pictures.length]' : '../../../assets/Imagenes/servicio.png' }}" 
+                            style="width: 300px; height: 200px; border-radius: 6px; object-fit: cover;"
+                            >
                     </div>
                     <!-- /IMG -->
 
                     <!-- INFO -->
                     <div class="col-sm-12 col-md-8">
-                        <div class="d-flex align-items-center flex-column" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo">
+                        <div class="d-flex align-items-center flex-column" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( s._id )">
                           <h3 class="color">{{ s.name }}</h3>
                           <h6>{{ s.description }}</h6>
 
@@ -48,7 +54,7 @@
                         </div>
 
                         <!-- HEART -->
-                        <div class="heart d-flex justify-content-end mt-4 mb-2"(click)="likeService($event)">
+                        <div class="heart d-flex justify-content-end mt-4 mb-2"(click)="likeService(s._id)">
                           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer; ">
                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                           </svg>
@@ -97,19 +103,92 @@
 
 <!-- Modal Mas INFO -->
 <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!---  <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalInfoLabel">Modal title</h5>
+        <h5 class="modal-title" id="modalInfoLabel">{{ serviceInfo?.name }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        
+        
+        <div class="row">
+            <div class="col-6 d-flex align-items-center justify-content-center">
+                <!--<p>Imagen</p>-->
+                <img  class="img-thumbnail " 
+                        src="{{ serviceInfo?.pictures.length > 0 ? serviceInfo?.pictures[(serviceInfo?.pictures.length - 1)].url : '../../../assets/Imagenes/servicio.png' }}" 
+                        style=" border-radius: 6px; object-fit: cover; width: 100%; height: auto;"
+                >
+                   
+                <!--{{ serviceInfo?.pictures }}-->
+            </div>
+            <div class="col-6">
+                <h5 class="text-center">Información</h5>
+                <h6>Nombre del servicio:</h6> <p>{{ serviceInfo?.name }}</p>
+                <h6>Descripción:</h6> <p>{{ serviceInfo?.description }}</p>
+                <h6>Telefono: </h6> <p>{{ serviceInfo?.phone }}</p>
+                <h6>Precio</h6> <p>${{ serviceInfo?.price }}</p>
+                <h6>Tipo de servicio:</h6> <p>{{ serviceInfo?.type }}</p>
+            </div>
+        </div>
+
+        <!-- INFO provider -->
+        <div class="row mt-4">
+            <div class="col-3 ">
+              <img  class="img-thumbnail " 
+                      src="{{serviceInfo?.provider.pictures.length > 0 ? serviceInfo?.provider.pictures[ (serviceInfo?.provider.pictures.length - 1) ].url : '../../../assets/Imagenes/proveedor.png'}}" 
+                      style=" border-radius: 6px; object-fit: cover;"
+              >
+                 
+            </div> 
+            <div class="col-9">
+              <h5 class="text-center">Información del proveedor</h5>
+              <p> {{ serviceInfo?.provider.name }} </p>
+              <p> {{ serviceInfo?.provider.email }} </p>
+          </div> 
+        </div>
+        <!-- /INFO provider -->
+
+        <!-- COMENTS -->
+          <h5 class="mt-4">Comentarios</h5>
+          <div class="coments {{ serviceInfo?.grades.length === 0 ? 'bcolor d-flex align-items-center justify-content-center': '' }} ">
+              <div *ngIf="serviceInfo?.grades.length === 0; else noComents" class="bcolor">
+                  <p class="text-center mb-0" style="color: black;">No hay comentarios</p>
+              </div>
+
+              <ng-template #noComents>
+              <!-- Comment -->
+              <div *ngFor="let g of serviceInfo?.grades" class="row bcolor mx-2 my-3 rounded">
+                  <div class="col-12">
+                      <div class="row">
+                          <div class="col-12 d-flex align-items-center mt-2">
+
+                            <div *ngIf="g.user.picture === null" >
+                              <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
+                            </div>
+                            <div *ngIf="g.user.picture !== null">
+                                <img src="{{ g.user.picture }}" alt="">
+                            </div>
+                            
+                            <p class="mx-3 mb-0" style="color: black;"> {{ g.user.name }} </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12 stars-small my-1">
+                      <app-stars-generate [amount]="g.stars"></app-stars-generate>
+                  </div>
+                  <div class="col-12">
+                    <p style="color: black;"> {{ g.comments }} </p>
+                </div>
+              </div>
+              <!-- /Comment -->
+              </ng-template>
+          </div>
+        <!-- /COMENTS -->
+
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      
     </div>
   </div>
 </div>

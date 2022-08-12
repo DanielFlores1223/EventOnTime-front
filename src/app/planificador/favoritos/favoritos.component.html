@@ -1,86 +1,184 @@
 <app-sidebar-planificador></app-sidebar-planificador>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#535e8a" type = "timer" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+
 <div class="container-size">
   <div class="card mt-5">
-    <!--<div class="card-header">
-      <h5 class="card-title">Eventos</h5>
-    </div> -->
+    <!-- CARD BODY -->
     <div class="card-body">
+
+      <!-- HEADER -->
       <div class="container mb-3">
         <div class="row">
           <div class="col">
             <h3 class="card-title">Mis favoritos</h3>
           </div>
           <div class="col ">
-            <input type="text" class="form-control" placeholder=" Buscar..." style="color:E4A193;">
-            <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg> buscar-->
+            <input type="text" class="form-control" placeholder=" Buscar..." (keyup)="getSearch(); resetPagination();" [(ngModel)]="search" style="color:E4A193;">
           </div>
         </div>
-        
       </div>
-      <div class="container bcolor">
-        <table class="table bcolor">
-          <!--<thead>
-            <tr>
-              
-            </tr>
-          </thead> -->
-          <tbody class="container ">
-            <tr>
-              <div class="favoritos-container d-flex align-items-center">
-                <div class="flex-shrink-0">
-              <img class="servicio rounded float-start" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" >
-              </div>
-              <div class="flex-grow-1 ms-3">
-              <h5 class="color">Pizza Little Cesar</h5>
-              </div>
-              <div class="d-flex flex-row-reverse align-items-center ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;  margin-right:50px;">
-                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-              </svg>
-              </div>
-              </div>
-            </tr>
-            <tr>
-              <div class="favoritos-container d-flex align-items-center">
-                <div class="flex-shrink-0">
-                <img class="servicio rounded float-start" src="../../../assets/Imagenes/testimonios/test-pastel.jpg">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                <h5 class="color">Pasteleria Marisa</h5>
-                </div>
-                <div class="d-flex flex-row-reverse align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;  margin-right:50px;">
-                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                </svg>
-                </div>
-                </div>
-            </tr>
-           
-<br><br>
-            <!--<div>
+      <!-- /HEADER -->
+
+      <!-- CONTAINER FAVORITES -->
+      <div class="bcolor px-3 py-2">
+
+        <div *ngIf="favorites.length === 0; else siHay" class="p-5" >
+          <p class="text-center" style="color: black;">No hay resultados</p>
+        </div>
+
+        <ng-template #siHay>
+        <!-- CARD FAVORITE -->
+        <div *ngFor="let f of favorites" class="row bgcolor favoritos-container">
+           <!-- IMG -->
+           <div class="col-sm-12 col-md-1 d-flex justify-content-center" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( f._id )">
+             <img class="servicio rounded" src="{{ f?.pictures.length > 0 ? f?.pictures[f?.pictures.length - 1].url : '../../../assets/Imagenes/servicio.png' }}" >
+           </div>
+           <!-- /IMG -->
+
+           <!-- INFO FAVORITE -->
+           <div class="col-sm-12 col-md-11 d-flex justify-content-between align-items-center">
+             <div style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( f._id )">
+               <h5 class="color m-0">{{ f.name }}</h5>
+             </div>
+
+             <!-- HEART -->
+             <div (click)="removeFav(f._id)" >
+               <svg  xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer;">
+                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+               </svg>
+             </div> 
+             <!-- /HEART -->
+
+           </div>
+           <!-- /INFO FAVORITE -->
+        </div>
+        <!-- /CARD FAVORITE -->
+        </ng-template>
+
+        <!-- CONTAINER PAGINATION -->
+        <div *ngIf="favorites.length > 0" class="row mt-3">
+          <div class="col-12">
+            <!-- PAGINATION -->
+            <div>
               <ul class="pagination justify-content-center">
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
+                  <button class="page-link" aria-label="Previous" (click)="previousPage()">
                     <span aria-hidden="true">&laquo;</span>
-                  </a>
+                  </button>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                
+                <li *ngFor="let btnInfo of btns" class="page-item">
+                    <button id="paginationBtn{{btnInfo.textBtn}}" class="page-link {{ currentPage === btnInfo.textBtn ? 'paginationActive': '' }}" (click)="getSearch( btnInfo.from ); getCurrentPage(btnInfo.textBtn);" >{{ btnInfo.textBtn }}</button>
+                </li>
+                
                 <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
+                  <button class="page-link" aria-label="Next" (click)="nextPage()">
                     <span aria-hidden="true">&raquo;</span>
-                  </a>
+                  </button>
                 </li>
               </ul>
-            </div>-->
-          </tbody>
-          
-        </table>
+            </div>
+            <!-- /PAGINATION -->
+          </div>
+        </div>
+        <!-- /CONTAINER PAGINATION -->
+
       </div>
+      <!-- CONTAINER FAVORITES -->
     </div>
+    <!-- CARD BODY -->
   </div>
 </div>
 
+<!-- Modal Mas INFO -->
+<div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+  <!---  <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalInfoLabel">{{ serviceInfo?.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          
+          <div class="row">
+              <div class="col-6 d-flex align-items-center justify-content-center">
+                  <!--<p>Imagen</p>-->
+                  <img  class="img-thumbnail " 
+                        src="{{ serviceInfo?.pictures.length > 0 ? serviceInfo?.pictures[(serviceInfo?.pictures.length - 1)].url : '../../../assets/Imagenes/servicio.png' }}" 
+                        style=" border-radius: 6px; object-fit: cover; width: 100%; height: auto;"
+                  >
+                     
+                  <!--{{ serviceInfo?.pictures }}-->
+              </div>
+              <div class="col-6">
+                  <h5 class="text-center">Información</h5>
+                  <h6>Nombre del servicio:</h6> <p>{{ serviceInfo?.name }}</p>
+                  <h6>Descripción:</h6> <p>{{ serviceInfo?.description }}</p>
+                  <h6>Telefono: </h6> <p>{{ serviceInfo?.phone }}</p>
+                  <h6>Precio</h6> <p>${{ serviceInfo?.price }}</p>
+                  <h6>Tipo de servicio:</h6> <p>{{ serviceInfo?.type }}</p>
+              </div>
+          </div>
+  
+          <!-- INFO provider -->
+          <div class="row mt-4">
+              <div class="col-3 ">
+                <img  class="img-thumbnail " 
+                      src="{{serviceInfo?.provider.pictures.length > 0 ? serviceInfo?.provider.pictures[ (serviceInfo?.provider.pictures.length - 1) ].url : '../../../assets/Imagenes/proveedor.png'}}" 
+                      style=" border-radius: 6px; object-fit: cover;"
+                >
+              </div> 
+              <div class="col-9">
+                <h5 class="text-center">Información del proveedor</h5>
+                <p> {{ serviceInfo?.provider.name }} </p>
+                <p> {{ serviceInfo?.provider.email }} </p>
+            </div> 
+          </div>
+          <!-- /INFO provider -->
+  
+          <!-- COMENTS -->
+            <h5 class="mt-4">Comentarios</h5>
+            <div class="coments {{ serviceInfo?.grades.length === 0 ? 'bcolor d-flex align-items-center justify-content-center': '' }} ">
+                <div *ngIf="serviceInfo?.grades.length === 0; else noComents" class="bcolor">
+                    <p class="text-center mb-0" style="color: black;">No hay comentarios</p>
+                </div>
+  
+                <ng-template #noComents>
+                <!-- Comment -->
+                <div *ngFor="let g of serviceInfo?.grades" class="row bcolor mx-2 my-3 rounded">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 d-flex align-items-center mt-2">
+  
+                              <div *ngIf="g.user.picture === null" >
+                                <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
+                              </div>
+                              <div *ngIf="g.user.picture !== null">
+                                  <img src="{{ g.user.picture }}" alt="">
+                              </div>
+                              
+                              <p class="mx-3 mb-0" style="color: black;"> {{ g.user.name }} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 stars-small my-1">
+                        <app-stars-generate [amount]="g.stars"></app-stars-generate>
+                    </div>
+                    <div class="col-12">
+                      <p style="color: black;"> {{ g.comments }} </p>
+                  </div>
+                </div>
+                <!-- /Comment -->
+                </ng-template>
+            </div>
+          <!-- /COMENTS -->
+  
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- /Modal Mas INFO -->

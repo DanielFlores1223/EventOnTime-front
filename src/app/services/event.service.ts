@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
-import { Event } from 'src/app/models/event';
-import { HttpHeaders } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Event } from '../models/Event';
+import { Response } from '../models/Response';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +23,16 @@ export class EventService {
     this.getToken();
   }
 
+  constructor( private http: HttpClient ) { }
+
+  createEvent( token = '', data: Event ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+
+    return this.http.post<Response>( `${this._registerURL}`, data, { headers } );
+  }
+  
   getToken(): string{
     if(localStorage.getItem('token')){
       return localStorage.getItem('token') || "";
@@ -35,4 +44,5 @@ export class EventService {
   get_user_events(){
     return this.http.get<any>(this._get_my_events,{ 'headers': this.headers })
   }
+
 }

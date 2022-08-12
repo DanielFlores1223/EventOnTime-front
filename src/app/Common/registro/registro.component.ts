@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NewUser } from 'src/app/models/newUser';
+import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from '@angular/router';
+import { Variant, showAlert } from '../../helpers/show-alerts';
 
 @Component({
   selector: 'app-registro',
@@ -23,19 +25,28 @@ export class RegistroComponent implements OnInit {
     "repited_pass" : ""
   }
   
-  constructor(private _auth: AuthService, private router: Router) { }
+  constructor(private _auth: AuthService, private router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
   registerUser(){
+    this.spinner.show();
     if(this.validateUser()==true){
       localStorage.setItem("temp_name",this.newUser.name);
       localStorage.setItem("temp_email",this.newUser.email);
       localStorage.setItem("temp_password",this.newUser.password);
       this.router.navigate(['/tipo-usu']);
+      this.spinner.hide();
+      //ALERTA DE CORRECTO
+      showAlert( 'Información correcta', Variant.success );
     }else{
+      this.spinner.show();
       console.log(this.util.repited_pass);
-      this.router.navigate(['/hogar']);
+
+      //ALERTA DE ERROR
+      showAlert( 'Información incorrecta', Variant.error );
+      //this.router.navigate(['/hogar']);
+      this.spinner.hide();
     }
   }
 
