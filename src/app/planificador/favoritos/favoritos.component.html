@@ -32,7 +32,7 @@
         <div *ngFor="let f of favorites" class="row bgcolor favoritos-container">
            <!-- IMG -->
            <div class="col-sm-12 col-md-1 d-flex justify-content-center" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( f._id )">
-             <img class="servicio rounded" src="../../../assets/Imagenes/testimonios/test-pizzas.jpg" >
+             <img class="servicio rounded" src="{{ f?.pictures.length > 0 ? f?.pictures[f?.pictures.length - 1].url : '../../../assets/Imagenes/servicio.png' }}" >
            </div>
            <!-- /IMG -->
 
@@ -107,8 +107,8 @@
               <div class="col-6 d-flex align-items-center justify-content-center">
                   <!--<p>Imagen</p>-->
                   <img  class="img-thumbnail " 
-                        src="{{ serviceInfo?.pictures.length > 0 ? 'serviceInfo?.pictures[serviceInfo?.pictures.length]' : '../../../assets/Imagenes/servicio.png' }}" 
-                        style=" border-radius: 6px; object-fit: cover;"
+                        src="{{ serviceInfo?.pictures.length > 0 ? serviceInfo?.pictures[(serviceInfo?.pictures.length - 1)].url : '../../../assets/Imagenes/servicio.png' }}" 
+                        style=" border-radius: 6px; object-fit: cover; width: 100%; height: auto;"
                   >
                      
                   <!--{{ serviceInfo?.pictures }}-->
@@ -126,8 +126,10 @@
           <!-- INFO provider -->
           <div class="row mt-4">
               <div class="col-3 ">
-                <img  class="img-thumbnail " src="../../../assets/Imagenes/proveedor.png" style=" border-radius: 6px; object-fit: cover;">
-                   
+                <img  class="img-thumbnail " 
+                      src="{{serviceInfo?.provider.pictures.length > 0 ? serviceInfo?.provider.pictures[ (serviceInfo?.provider.pictures.length - 1) ].url : '../../../assets/Imagenes/proveedor.png'}}" 
+                      style=" border-radius: 6px; object-fit: cover;"
+                >
               </div> 
               <div class="col-9">
                 <h5 class="text-center">Información del proveedor</h5>

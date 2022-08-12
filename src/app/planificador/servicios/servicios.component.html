@@ -117,8 +117,8 @@
             <div class="col-6 d-flex align-items-center justify-content-center">
                 <!--<p>Imagen</p>-->
                 <img  class="img-thumbnail " 
-                      src="{{ serviceInfo?.pictures.length > 0 ? 'serviceInfo?.pictures[serviceInfo?.pictures.length]' : '../../../assets/Imagenes/servicio.png' }}" 
-                      style=" border-radius: 6px; object-fit: cover;"
+                        src="{{ serviceInfo?.pictures.length > 0 ? serviceInfo?.pictures[(serviceInfo?.pictures.length - 1)].url : '../../../assets/Imagenes/servicio.png' }}" 
+                        style=" border-radius: 6px; object-fit: cover; width: 100%; height: auto;"
                 >
                    
                 <!--{{ serviceInfo?.pictures }}-->
@@ -136,7 +136,10 @@
         <!-- INFO provider -->
         <div class="row mt-4">
             <div class="col-3 ">
-              <img  class="img-thumbnail " src="../../../assets/Imagenes/proveedor.png" style=" border-radius: 6px; object-fit: cover;">
+              <img  class="img-thumbnail " 
+                      src="{{serviceInfo?.provider.pictures.length > 0 ? serviceInfo?.provider.pictures[ (serviceInfo?.provider.pictures.length - 1) ].url : '../../../assets/Imagenes/proveedor.png'}}" 
+                      style=" border-radius: 6px; object-fit: cover;"
+              >
                  
             </div> 
             <div class="col-9">

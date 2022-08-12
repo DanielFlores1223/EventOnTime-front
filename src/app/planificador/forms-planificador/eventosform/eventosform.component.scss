@@ -10,10 +10,30 @@
 .favoritos-container{
     background-color: #fff;
     height: 228px;
+    max-height: 228px;
+    overflow-y: auto;
+    overflow-x: hidden;
     border-radius: .5ch;
     margin-top: 1em;
     color: #fff;
+    max-width: 100%;
+
 }
+
+.content-tab-0 {
+    max-height: 75%;
+    overflow-y: auto;
+}
+
+.favoritos-container-modal{
+    background-color: #fff;
+    border-radius: .5ch;
+    color: black;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    height: auto;
+}
+
 
 .bcolor{
     background-color: white;
@@ -99,4 +119,9 @@ li{
     border-radius: 6px; 
     width: 70px; 
     height: 70px; 
+}
+
+.paginationActive {
+    background-color: #071F4E;
+    color: #fff;
 }

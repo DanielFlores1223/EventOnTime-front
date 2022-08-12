@@ -14,19 +14,22 @@
         
       </div>
       <div class="row text-center">
-        <div class="col-sm-6 " routerLink="/planificador/formeventos">
-        <img src="../../../assets/Imagenes/seleccion-eventos/familiar.png" style="cursor: pointer;">
-      
+        <div class="col-sm-6"  (click)="chooseType( 'Personal' )">
+          <img src="../../../assets/Imagenes/seleccion-eventos/personal.png" style="cursor: pointer;">
         </div>
-      
-      <div class="col-sm-6" routerLink="/planificador/formeventos">
-        <img src="../../../assets/Imagenes/seleccion-eventos/personal.png" style="cursor: pointer;">
-      </div>
+        <div *ngIf="typeAccount !== 'Gratuito'" class="col-sm-6 " (click)="chooseType( 'Familiar' )">
+          <img src="../../../assets/Imagenes/seleccion-eventos/familiar.png" style="cursor: pointer;">
+        </div>
       </div><br><br><br>
-      <div class="row text-center" routerLink="/planificador/formeventos">
-        <div class="col-sm-12">
+      <div *ngIf="typeAccount !== 'Gratuito' && typeAccount !== 'Premium'" class="row text-center" >
+        <div class="col-sm-6" (click)="chooseType( 'Escolar' )">
             <img src="../../../assets/Imagenes/seleccion-eventos/escolar.png" style="cursor: pointer;">
-          </div>
+        </div>
+        <!-- AGREGAR IMAGEN RELACIONADO AL TIPO LABORAL -->
+        <div class="col-sm-6" (click)="chooseType( 'Laboral' )">
+          <h5>Laboral</h5>
+          <img src="../../../assets/Imagenes/seleccion-eventos/escolar.png" style="cursor: pointer;">
+      </div>
       </div>
     </div>
   </div>
