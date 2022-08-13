@@ -1,0 +1,68 @@
+.container-size{
+    background-image: url(../../../assets/Imagenes/fondo-perfil/chico.png);
+    object-fit: cover;
+    margin-left: 300px;
+    margin-right: 5ch;
+    height: 811px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+.favoritos-container{
+    background-color: #071F4E;
+    display: flex;
+ 
+    height: auto;
+    border-radius: .5ch;
+    margin-top: 1em;
+    color: #fff;
+}
+
+.bcolor{
+    background-color: white;
+    margin-bottom: 2em;
+    height: auto;
+}
+
+.color{
+    color: #fff;
+    margin-top: 12px;
+    margin-left: 20px;
+}
+
+.precios{
+    background-color: #071F4E;
+}
+
+.card{
+    width: 330px;
+  }
+  
+  .precios{
+    width: 330px;
+    height: 495px;
+    display: grid;
+    grid-template-rows: 1fr,1fr;
+    background: #071F4E;
+    border-radius: 10px;
+  }
+  .titulo{
+   color: #fff;
+  }
+  
+  .card-header{
+    background: none;
+  }
+
+  .xd{
+    color: #E4A193;
+  }
+
+  .redondo{
+    border-radius: 100px;
+  }
+
+  label{
+    color: #E4A193;
+  }

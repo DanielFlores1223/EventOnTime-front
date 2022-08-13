@@ -1,0 +1,37 @@
+<div class="fondo-color">
+    <div class="container">
+    <br>
+    <div class=" row">
+    <div class="col-sm-6 text-center">
+        <div class="container">
+        <h6 class="text-center" style="color: white;">Cuéntanos un poco más sobre tu organización y nos pondremos en contacto contigo.</h6>
+        </div>
+        <img class="rounded" src="../../../assets/Imagenes/Logos/contactanos-sin-fondo.png" style=" height: 20rem;">
+    </div>
+
+    <div class="col-sm-6 d-flex flex-column justify-content-center">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label" >Puesto de trabajo</label>
+            <select name="workstation" [(ngModel)]="createCompany.workstation" (change)="setcreateCompanyEvent()" class="form-select" aria-label="Default select example">
+                <option value="" selected>Seleccione su puesto de trabajo</option>
+                <option value="Jefe">Jefe</option>
+                <option value="Director comercial">Director comercial</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label" >Compañia</label>
+            <input name="company" [(ngModel)]="createCompany.company" (change)="setcreateCompanyEvent()" type="text" class="form-control" id="exampleFormControlInput1" required>
+          </div>
+
+          <!-- Button next -->
+          <!-- <div class=" mt-2 d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary">
+             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+               <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+             </svg>
+           </button>
+         </div> -->
+    </div>
+    </div>
+</div>

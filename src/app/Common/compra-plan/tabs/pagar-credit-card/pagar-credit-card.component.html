@@ -1,0 +1,166 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#535e8a" type = "timer" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+
+<div class=" pago bcolor col order-first">
+     <br>
+     <h3 class="container">Pago</h3>
+
+     <!-- <div class="container mb-3">
+       <div class="form-check form-switch">
+         <input (change)="getLastCreditCard()" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [(ngModel)]="optionLastCreditCard">
+         <label class="form-check-label" for="flexSwitchCheckDefault">Usar última tarjeta de credito registrada</label>
+       </div>
+     </div> -->
+     
+     <ng-credit-card [name]="paymentCreate.nameOwnerCard" 
+                     [number]="paymentCreate.numberCard" 
+                     [cvc]="paymentCreate.cvc" 
+                     [expiry]="expirationCreditCard"
+                     [i18n]="configCreditCard"
+     >
+     </ng-credit-card>
+     <br>
+
+     <!--FORMULARIO DEL PAGO-->
+     <div (click)="addClassesValidate()" (mouseover)="addClassesValidate()" class="formPago container-md mb-3" novalidate>
+       
+       <div class="row">
+         <div class="col">
+           <label for="numberCardInput"  
+                  class="form-label"
+           >
+                  Número de Tarjeta
+           </label>
+           <input type="text" 
+                  class="form-control was-validated" 
+                  name="numberCardInput" 
+                  id="numberCardInput"
+                  [(ngModel)]="paymentCreate.numberCard" 
+                  pattern="(?:4\d([\- ])?\d{6}\1\d{5}|(?:4\d{3}|5[1-5]\d{2}|6011)([\- ])?\d{4}\2\d{4}\2\d{4})"
+                  (change)="validateNumberCard()"
+                  required
+           >
+           <div class="invalid-feedback">
+             {{ errorsForm.numberCard }}
+           </div>
+         </div>
+
+         <div class="col">
+           <label for="nameOwnerCardInput" class="form-label">Nombre</label>
+           <input type="text" 
+                  class="form-control" 
+                  id="nameOwnerCardInput"
+                  name="nameOwnerCardInput"
+                  [(ngModel)]="paymentCreate.nameOwnerCard"
+                  required
+           >
+           <div class="invalid-feedback">
+             {{ errorsForm.nameOwnerCard }}
+           </div>
+         </div>
+
+       </div>
+
+       <br>
+       
+       <div class="row mb-3">
+
+         <label for="expirationInput" class="col-sm-2 col-form-label">Expiración</label>
+         <div class="col-2">
+           <select class="form-control" 
+                   id="expirationInput" 
+                   name="expirationInput"
+                   [(ngModel)]="month"
+                   (change)="changeExpiration( 'month' )"
+                   required
+           >
+               <option value="">Mes</option>
+               <option *ngFor="let m of months" value="{{ m.value }}">{{ m.month }}</option>
+           </select>
+           <div class="invalid-feedback">
+             {{ errorsForm.expiration }}
+           </div>
+         </div>
+         <div class="col-2">
+           <select class="form-control" 
+                   id="expirationInput" 
+                   name="expirationInput"
+                   [(ngModel)]="year"
+                   (change)="changeExpiration( 'year' )"
+                   required
+           > 
+                 <option value="">Año</option>
+                 <option *ngFor="let y of years" value="{{ y.value }}">{{ y.year }}</option>
+           </select>
+
+           <div class="invalid-feedback">
+             {{ errorsForm.expiration }}
+           </div>
+         </div>
+
+         <label for="cvcInput" class="col-sm-2 col-form-label">CCV</label>
+         <div class="col">
+           <input type="password" 
+                  class="form-control" 
+                  id="cvcInput" 
+                  name="cvcInput"
+                  [(ngModel)]="paymentCreate.cvc"
+                  required
+           >
+
+           <div class="invalid-feedback">
+             {{ errorsForm.cvc }}
+           </div>
+         </div>
+
+       </div>
+         
+<!--BOTON-->
+<br>
+<div class="row justify-content-end">
+<!--<button type="button" class="w-25 btn btn-primary" id="liveToastBtn">Pagar</button>-->
+<button type="button" 
+     class=" btn btn-lg btn-warning {{ !validated ? 'disabled' : '' }}" 
+     data-bs-toggle="modal" 
+     data-bs-target="#modalConfirmacion"
+>
+Pagar 
+</button>
+</div>
+<br>
+
+     <!--CIERRE DEL FORMULARIO-->
+    </div>
+ </div>
+
+
+
+ <!-- Modal para confirmar pago -->
+<div class="modal fade" 
+id="modalConfirmacion" 
+tabindex="-1" 
+aria-labelledby="modalConfirmacionLabel" 
+aria-hidden="true"
+>
+<div class="modal-dialog">
+<div class="modal-content">
+ <div class="modal-header">
+   <h5 class="modal-title" id="modalConfirmacionLabel">Confirmación del pago</h5>
+   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+ </div>
+ <div class="modal-body" style="height: auto;">
+   <p class="text-light"><span>Precio mensualidad: </span> ${{ paymentCreate.typeAccount === 'Empresarial' ? '2000':'150' }} MXN </p>
+   <p class="text-light"><span>Número de tarjeta: </span> {{paymentCreate.numberCard}} </p>
+   <p class="text-light"><span>Nombre del propietario: </span> {{paymentCreate.nameOwnerCard}} </p>
+   <p class="text-light"><span>Expiración: </span> {{paymentCreate.expiration}} </p>
+   <p class="text-light"><span>Tipo de membresía: </span> {{paymentCreate.typeAccount}} </p>
+   <div *ngIf="paymentCreate.typeAccount === 'Empresarial'">
+    <p class="text-light"><span>Puesto en la empresa: </span> {{createCompany.workstation}} </p>
+    <p class="text-light"><span>Empresa: </span> {{createCompany.company}} </p>
+   </div>
+ </div>
+ <div class="modal-footer">
+   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="createPayment()">Confirmar</button>
+ </div>
+</div>
+</div>
+</div>

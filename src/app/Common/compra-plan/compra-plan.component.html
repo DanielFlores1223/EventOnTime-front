@@ -1,0 +1,89 @@
+
+<!-- Button for returning to planes of a planificador -->
+<div class="container row">
+    <div class="col-12 ml-3 mt-3 button-return">
+      <button type="button" class="btn btn-secondary" routerLink="/planificador/planes">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+        </svg>
+      </button>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Card with the information about the plan was selected -->
+    <div class="row">
+      <div class="col-12 tittle-component">
+        <h1>Compra tu plan</h1>
+        <p class="tittle-component">Plan premium</p>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="row mt-2">
+
+      <div class="col-sm-12 col-md-4">
+         <div class="tab {{ tabSelected === 0 ? 'tab-active' : '' }}" (click)="setTabSelected( 0 )">
+            <p>Elije plan</p>
+         </div>
+      </div>
+
+      <div *ngIf="infoPayment.typeAccount === 'Empresarial'" class="col-sm-12 col-md-4">
+        <div class="tab {{ tabSelected === 1 ? 'tab-active' : '' }}" (click)="setTabSelected( 1 )">
+           <p>Ingresa información de tu empresa</p>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <div class="tab {{ tabSelected === 2 ? 'tab-active' : '' }}" (click)="setTabSelected( 2 )">
+           <p>Realiza el pago</p>
+        </div>
+     </div>
+  
+    </div>
+    
+    <!-- Tabs content -->
+    <div class="row my-4">
+      <div class="col-12 tab-content">
+        <div
+          *ngIf="tabSelected === 0"
+          class="tab-pane fade show active"
+        >
+          <app-planes-buy-selector (planSelectedEvent)="recibePlanSelected($event)" 
+                                   [planSelectFromOther]="infoPayment.typeAccount">
+          </app-planes-buy-selector>
+        </div>
+
+        <div
+          *ngIf="tabSelected === 1"
+          class="tab-pane fade show active"
+        >
+          <app-contactanos-empresarial (createCompanyEvent)="receiveCompany($event)"
+                                       [companyInput]="createCompany"
+          >
+          </app-contactanos-empresarial>
+        </div>
+
+        <div
+          *ngIf="tabSelected === 2"
+          class="tab-pane fade show active"
+        >
+          <app-pagar-credit-card [typeAccountInput]="infoPayment.typeAccount"
+                                 (paymentCreateEvent)="receivePaymentInfo($event)"
+                                 [paymentCreateInput]="infoPayment"
+                                 [createCompanyInput]="createCompany"
+          ></app-pagar-credit-card>
+        </div>
+
+      </div>
+      <!-- Tabs content -->
+    </div>
+</div>
+
+
+
+
+
+
+
+

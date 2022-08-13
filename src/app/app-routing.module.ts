@@ -5,8 +5,6 @@ import { LoginComponent } from './Common/login/login.component';
 import { RegistroComponent } from './Common/registro/registro.component';
 import { TipoUsuarioComponent } from './Common/tipo-usuario/tipo-usuario.component';
 import { DashboardPlanificadorComponent } from './planificador/dashboard-planificador/dashboard-planificador.component';
-<<<<<<< Updated upstream
-=======
 import { EventosformComponent } from './planificador/forms-planificador/eventosform/eventosform.component';
 
 import { FavoritosComponent } from './planificador/favoritos/favoritos.component';
@@ -30,16 +28,12 @@ import { ContactanosEmpresarialComponent } from './Common/contactanos-empresaria
 import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
 import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrevista-servicio.component';
 
->>>>>>> Stashed changes
-
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'hogar', component:HogarComponent},
   {path: 'registrar', component:RegistroComponent},
   {path: 'tipo-usu', component:TipoUsuarioComponent},
-<<<<<<< Updated upstream
   {path: 'planificador/dashboard', component: DashboardPlanificadorComponent},
-=======
   {path: 'compra-plan', component:CompraPlanComponent},
   {path: 'compra-plan-empresarial', component:CompraPlanEmpresarialComponent},
   {path: 'contactanos-empresarial', component:ContactanosEmpresarialComponent},
@@ -58,14 +52,16 @@ const routes: Routes = [
   {path: 'proveedor/membresia', component: MembresiaProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/perfil', component: PerfilProvComponent, canActivate: [AuthProvGuard]},
   {path: 'proveedor/servicios', component: ServiciosProvComponent, canActivate: [AuthProvGuard]},
-  {path: 'proveedor/formservicios', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
-  
->>>>>>> Stashed changes
+  {path: 'proveedor/add', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
+  {path: 'proveedor/edit/:id', component: ServiciosformComponent, canActivate: [AuthProvGuard]},
   {path:'**',redirectTo:'hogar',pathMatch:'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

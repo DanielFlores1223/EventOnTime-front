@@ -1,0 +1,118 @@
+<!--<app-encabezado></app-encabezado>-->
+<div style="margin-left: 30px; margin-top: 20px;">
+    <button type="button" class="btn btn-secondary" routerLink="/planificador/planes">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
+  </svg>
+    </button>
+    </div>
+  <div class="container">
+   
+      <div >
+          <h1>Compra tu plan</h1>
+          <p>Plan empresarial</p>
+          <div class="d-flex justify-content-end pago">
+            <div class="card pago" style="width: 18rem; height: 20rem;">
+              <div class="card-body">
+                <h5 class="card-title text-center">Empresarial</h5>
+                <p class="text-start">Incluye</p>
+                <ul class="x mt-3 mb-4">
+                  <li>Invitados ilimitados</li>
+                  <li>Eventos ilimitados</li>
+                  <li>Descuentos semanales</li>
+                </ul>
+                <div class="row ">
+                  <div class="col">
+                    <p>Total</p>
+                  </div>
+                  <div class="col">
+                    <p>$2,000</p>
+                  </div>
+                </div>
+                <button type="submit" class=" btn btn-warning" routerLink="/contactanos-empresarial"> Contactanos</button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!--<div class="card d-flex align-content-start flex-wrap"  style="width: 18rem;">
+          <div class="card-body">
+  
+          </div>
+      </div>-->
+      
+      <div class=" card container-size" style="width: 45rem; height: 100%;">
+      <div class="  card-body">
+             <div class=" row">
+            <div class="col-sm-6"> 
+              <div class="card">
+                  <div class="card-body precios" style="cursor: pointer;" routerLink="/compra-plan">
+                    <h3 class=" text-center">Premium</h3>
+                    <p class="text-center titulo">Planifique y organice sus proximos eventos de manera eficiente</p>
+                    <!--<h1 class="card-title pricing-card-title text-center">$150<small class="text-muted fw-light">/mes</small></h1>-->
+                    
+                    <div>
+                      <p><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" style="color: F6B33E;">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                      </svg> Invitados ilimitados</p>
+                      <p><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" style="color: F6B33E;">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                      </svg>Eventos ilimitados</p>
+                    </div>
+                    <div>
+                      <h5 class="x">$150</h5><p style="font-size: 12px;">Por usuario mensualmente</p>
+                    </div>
+                    <!--<button type="button" class="w-100 h-75 btn btn-lg btn-warning" routerLink="/login">Empezar</button>-->
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card empresarial">
+                  
+                  <div class="card-body precios" style="cursor: pointer;" routerLink="/compra-plan-empresarial">
+                    <h3 class="text-center">Empresarial</h3>
+                    <p class="text-center titulo">Planifique y organice sus proximos eventos de manera eficiente </p>
+                   <!-- <h1 class="card-title pricing-card-title text-center">$2,000<small class="text-muted fw-light">/mes</small></h1>-->
+                    <div>
+                      <p><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" style="color: F6B33E;">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                      </svg> Invitados ilimitados</p>
+                      <p><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" style="color: F6B33E;">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                      </svg> Eventos ilimitados</p>
+                      <p class="text-sm-start"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16" style="color: F6B33E;">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                      </svg> Descuentos semanales</p>
+                    </div>
+                    <div>
+                      <h5 class="x">$2,000</h5><p style="font-size: 12px;">Por usuario mensualmente</p>
+                    </div>
+                   
+                    <!--<button type="button" class="w-100 h-75 btn btn-lg btn-warning" routerLink="/login">Contactanos</button>-->
+                  </div>
+                </div>
+          
+             
+                
+            </div>
+            <div class="col"> 
+                
+                
+          </div>
+            </div>
+           
+    
+         
+          <!--<div class="container justify-content-center">
+            <button type="button" class="w-25 btn btn-lg btn-warning ">Guardar </button>
+          </div>-->
+        </div>
+      <!--<div class="row">
+          <div class="col">
+              <img src="../../../assets/Imagenes/planes.png" style="border-radius: 5px; width: 130vh;">
+          </div>
+  
+      </div>-->
+  
+  </div>
+  </div>
+  

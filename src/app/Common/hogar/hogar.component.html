@@ -1,4 +1,5 @@
 <app-encabezado></app-encabezado>
+ <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light rounded-2" tabindex="0">
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -8,7 +9,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active text-end imgnormalizada">
-        <img src="../../../assets/Imagenes/Carrocel/car-personal.png" class="d-block w-100" alt="...">
+        <img src="../../../assets/Imagenes/Carrocel/car-personal.png" class="d-block w-100" alt="..." style="object-fit: cover;">
         <div class="carousel-caption d-none d-md-block text-end">
             <button type="button" class="btn btn-warning" routerLink="/login">Más información</button>
         </div>
@@ -177,43 +178,54 @@
       <h1 id="Servicios" style="font-family: 'Nunito';"><b>SERVICIOS</b></h1>
       <br>
       <div class="row">
-        <div class="col-md-5 order-md-1">
-          <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
-          
-          <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/starbucks.png">
-          <h2 class="fw-normal text-between">Starbucks</h2>
-          <p>Consume el mejor cafe.</p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-md-5 order-md-1">
-          <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/little.jpg">
-         
-          <h2 class="fw-normal">Little caesars</h2>
-          <p>La  mejor pizza de la historia</p>
-
-        </div><!-- /.col-lg-4 -->
-        
-        <div class="col-md-5 order-md-1">
-          <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/pastel.png">
-         
-          <h2 class="fw-normal">Pasteleria marisa</h2>
-          <p>Los mejores pasteles</p>
-        </div><!-- /.col-lg-4 -->
-
-        <div class="col-md-5 order-md-1">
-          <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/taquiza.jpg">
-         
-          <h2 class="fw-normal">Taquiza</h2>
-          <p>Te deleitara su sabor</p>
-        </div><!-- /.col-lg-4 -->
-
-        <!--<div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading fw-normal lh-1 text-center ">Contamos con los mejores servicios 
-            para hacer tu evento  <br><br></h2>
-              <br><br>
-              <h1>MÁS ESPECIAL</h1>
-        </div>-->
+        <div class="col-8">
+          <div class="row">
+            <div class="col-md-5 order-md-1">
+              <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
+              
+              <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/starbucks.png">
+              <h2 class="fw-normal text-between">Starbucks</h2>
+              <p>Consume el mejor cafe.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-md-5 order-md-1">
+              <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/little.jpg">
+             
+              <h2 class="fw-normal">Little caesars</h2>
+              <p>La  mejor pizza de la historia</p>
+    
+            </div><!-- /.col-lg-4 -->
+            
+            <div class="col-md-5 order-md-1">
+              <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/pastel.png">
+             
+              <h2 class="fw-normal">Pasteleria marisa</h2>
+              <p>Los mejores pasteles</p>
+            </div><!-- /.col-lg-4 -->
+    
+            <div class="col-md-5 order-md-1">
+              <img class="seccion-servicios" src="../../../assets/Imagenes/servicios/taquiza.jpg">
+             
+              <h2 class="fw-normal">Taquiza</h2>
+              <p>Te deleitara su sabor</p>
+            </div><!-- /.col-lg-4 -->
+    
+            <!--<div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading fw-normal lh-1 text-center ">Contamos con los mejores servicios 
+                para hacer tu evento  <br><br></h2>
+                  <br><br>
+                  <h1>MÁS ESPECIAL</h1>
+            </div>-->
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="container mt-5">
+            <h2 class="featurette-heading fw-normal lh-1 text-center ">
+              <span class="text-muted">Contamos con los mejores servicios 
+                para hacer tu evento</span><br><br>MÁS ESPECIAL</h2>
+            
+          </div>
+        </div>
       </div><!-- /.row -->
-  
 
     </div>
 
@@ -312,7 +324,7 @@
              
               </ul>
               <br>
-              <button type="button" class="w-100 h-75 btn btn-warning">Registrate Gratis</button>
+              <button type="button" class="w-100 h-75 btn btn-warning" routerLink="/login">Registrate Gratis</button>
             </div>
           </div>
         </div>
@@ -329,12 +341,12 @@
                 <li>Eventos ilimitados</li>
               </ul>
               <br><br>
-              <button type="button" class="w-100 h-75 btn btn-lg btn-warning">Empezar</button>
+              <button type="button" class="w-100 h-75 btn btn-lg btn-warning" routerLink="/compra-plan">Empezar</button>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-warning">
+          <div class="card mb-4 rounded-3 shadow-sm">
             
             <div class="card-body precios">
               <h3 class="my-0 text-center">Empresarial</h3>
@@ -346,7 +358,7 @@
                 <li>Descuentos semanales</li>
               </ul>
               <br>
-              <button type="button" class="w-100 h-75 btn btn-lg btn-warning">Contactanos</button>
+              <button type="button" class="w-100 h-75 btn btn-lg btn-warning" routerLink="/login">Contactanos</button>
             </div>
           </div>
         </div>
@@ -358,12 +370,14 @@
     <!-------------------------CONTACTANOS------------------------------->
     <!------------------------------------------------------------------->
     <br><br>
+    
     <div class="container eventos">
       <h1 id="Contactanos" style="font-family: 'Nunito';"><b>Contactanos</b></h1>
       <br><br>
       <div class="card detalles">
         <div class="card-body">
-          <h5 class="card-title">Detalles de contacto</h5>
+          <h3 class="card-title" style="color: white;">Detalles de contacto</h3>
+          <br>
         <div class="texto">
           <h6 class="card-subtitle mb-2">Siempre puede comunicarse con nosotros a través de los siguientes datos de contacto. Haremos todo lo posible para llegar a usted como sea posible.</h6>
           <br><br>
@@ -396,25 +410,28 @@
           
 
         </div>
-
+<form class="needs-validation " novalidate>
         <div class="card-body formulario">
           
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tu nombre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Juan Perez">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1"  required>
+            <div class="valid-feedback" style="font-family: 'Poppins';">
+             ¡Perfecto!
+            </div>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tu correo</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="juanperez@example.com">
+            <label for="exampleFormControlInput1" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" required>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Tu mensaje</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
           </div>
-          <button type="button" class="w-25  btn btn-lg btn-warning">Enviar </button>
+          <button type="submit" class="w-25  btn btn-lg btn-warning">Enviar </button>
           
         </div>
-
+</form>
       </div>
     </div>
 
@@ -429,7 +446,7 @@
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        <img class="mb-2" src="../../../assets/Imagenes/Logos/logo-floor.jpg" alt="" width="120" height="120" style="border-radius: 500px; margin-left: 130px;">
+        <img class="mb-2" src="../../../assets/Imagenes/Logos/logo-floor.png" alt="" width="120" height="120" style="border-radius: 500px; margin-left: 130px;">
       </a>
       <br><br>
       
@@ -457,5 +474,5 @@
     </ul>
   </footer>
 </div>
-      
+</div>
     

@@ -1,0 +1,34 @@
+@media( max-width: 576px) {
+  .button-return {
+    margin-bottom: 1rem;
+  }
+
+  .tittle-component {
+    text-align: center;
+  }
+}
+
+// TABS
+
+.tab {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  &:hover {
+    background-color: #f7f7f78a;
+    cursor: pointer;
+  }
+
+  p {
+    color: #B2BABB;
+    margin-bottom: 0;
+  }
+}
+
+.tab-active {
+  border-bottom: 3px solid #E4A193 ;
+  p {
+    color: #E4A193;
+  }
+}

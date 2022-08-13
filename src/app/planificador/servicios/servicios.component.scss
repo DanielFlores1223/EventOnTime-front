@@ -1,0 +1,61 @@
+.container-size{
+
+    margin-left: 300px;
+    margin-right: 5ch;
+    background-color: white;
+    height: auto;  
+}
+
+@media( max-width: 575px ) {
+    .container-size{
+        width: 90%;
+        margin-left: 90px;
+        margin-right: 0;
+    
+    }
+}
+
+.favoritos-container{
+    background-color: #071F4E;
+    height: auto;
+    width: auto;
+    border-radius: .5ch;
+    margin-top: 1em;
+    color: #fff;
+}
+
+.bcolor{
+    background-color: white;
+    margin-bottom: 2em;
+    height: auto;
+}
+
+.color{
+    color: #fff;
+    margin-top: 12px;
+    margin-left: 20px;
+}
+
+.paginationActive {
+    background-color: #071F4E;
+    color: #fff;
+}
+
+.btn-primary, .col-form-label{
+    color: #fff;
+}
+
+p{
+    color:#fff;
+}
+
+.btn-close{
+    background-color: var(--bs-warning);
+}
+
+.coments {
+    max-height: 95%;
+    overflow-y: auto;
+    border: 2px solid white;
+    border-radius: 5px;
+}

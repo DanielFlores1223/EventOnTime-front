@@ -1,4 +1,19 @@
-.registrate{
+.container-size{
+    background-image: url(../../../assets/Imagenes/login-fondo.png);
+    object-fit: cover;
+    background-repeat:no-repeat;
+  background-position-x:center;
+  background-position-y:center;
+  background-size: 70rem;
+    height: 570px;
+    
+}
+.card-body{
+    margin-top: -30px;
+    width: 461px;
+}
+
+/*.registrate{
     color: #071F4E;
 }
 
@@ -17,6 +32,6 @@
 .logo{
     margin-left: 0px;
     margin-top: -70px;
-}
+}*/
 
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +15,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { DashboardPlanificadorComponent } from './planificador/dashboard-planificador/dashboard-planificador.component';
 import { SidebarPlanificadorComponent } from './planificador/sidebar-planificador/sidebar-planificador.component';
-<<<<<<< Updated upstream
-=======
 import { AuthGuard } from './guards/auth.guard';
 import { FavoritosComponent } from './planificador/favoritos/favoritos.component';
 import { EventosComponent } from './planificador/eventos/eventos.component';
@@ -45,8 +44,11 @@ import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy
 import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
 import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
 import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrevista-servicio.component';
-
->>>>>>> Stashed changes
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy-selector/planes-buy-selector.component';
+import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
+import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
+import { NameTagComponent } from './Common/name-tag/name-tag.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +60,6 @@ import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrev
     TipoUsuarioComponent,
     DashboardPlanificadorComponent,
     SidebarPlanificadorComponent,
-<<<<<<< Updated upstream
-=======
     FavoritosComponent,
     EventosComponent,
     ServiciosComponent,
@@ -83,18 +83,22 @@ import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrev
   PagarCreditCardComponent,
   StarsGenerateComponent,
   EntrevistaServicioComponent,
-  
->>>>>>> Stashed changes
+  NameTagComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgCreditCardModule,
+    NgxSpinnerModule,
+    NgxDropzoneModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
