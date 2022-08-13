@@ -44,11 +44,9 @@ import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy
 import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
 import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
 import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrevista-servicio.component';
-import { NgxDropzoneModule } from 'ngx-dropzone';
-import { PlanesBuySelectorComponent } from './Common/compra-plan/tabs/planes-buy-selector/planes-buy-selector.component';
-import { PagarCreditCardComponent } from './Common/compra-plan/tabs/pagar-credit-card/pagar-credit-card.component';
-import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.component';
 import { NameTagComponent } from './Common/name-tag/name-tag.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
 
 @NgModule({
   declarations: [
