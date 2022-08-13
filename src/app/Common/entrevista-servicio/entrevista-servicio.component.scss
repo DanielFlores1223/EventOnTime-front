@@ -1,0 +1,25 @@
+.container-size{
+    background-image: url(../../../assets/Imagenes/encuesta3.png);
+    //background-repeat: no-repeat;
+    object-fit: cover;
+    margin-left: 300px;
+    margin-right: 5ch;
+    height: auto;
+    background-color: white;
+    width: auto;
+}
+
+
+.favoritos-container{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    width: 100%;
+   
+    height: auto;
+    border-radius: .5ch;
+    //margin-top: 1em;
+}
+
+  label{
+    color: #071F4E;
+  }

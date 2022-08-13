@@ -26,16 +26,18 @@ import { CompraPlanComponent } from './Common/compra-plan/compra-plan.component'
 import { CompraPlanEmpresarialComponent } from './Common/compra-plan-empresarial/compra-plan-empresarial.component';
 import { ContactanosEmpresarialComponent } from './Common/contactanos-empresarial/contactanos-empresarial.component';
 import { SeleccionEventosComponent } from './planificador/seleccion-eventos/seleccion-eventos.component';
-
+import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrevista-servicio.component';
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'hogar', component:HogarComponent},
   {path: 'registrar', component:RegistroComponent},
   {path: 'tipo-usu', component:TipoUsuarioComponent},
+  {path: 'planificador/dashboard', component: DashboardPlanificadorComponent},
   {path: 'compra-plan', component:CompraPlanComponent},
   {path: 'compra-plan-empresarial', component:CompraPlanEmpresarialComponent},
   {path: 'contactanos-empresarial', component:ContactanosEmpresarialComponent},
+  {path: 'encuesta-servicio', component:EntrevistaServicioComponent},
 
   {path: 'planificador/dashboard', component: DashboardPlanificadorComponent, canActivate: [AuthGuard] },
   {path: 'planificador/favoritos', component:FavoritosComponent, canActivate: [AuthGuard]},
