@@ -157,7 +157,6 @@
 }
 
 // OLD STYLE 
-
 .sidebar-toggle{
   left: -300px;
   transition: sidebar-toggle 2s;
@@ -169,6 +168,7 @@
   
 }
 .page .sidebar{
+  //position: fixed;
   height: 150vh;
   width: 250px;
   //width: 20%;

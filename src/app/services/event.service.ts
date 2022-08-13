@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Event } from '../models/Event';
+import { Evento } from '../models/Evento';
 import { Response } from '../models/Response';
 
 @Injectable({
@@ -8,22 +8,18 @@ import { Response } from '../models/Response';
 })
 export class EventService {
 
-  user_token = "";
+  API_URI = 'https://eventontime.herokuapp.com/api/event';
 
-  API_URI = 'https://eventontime.herokuapp.com/api';
-
-  private _create_event = `${this.API_URI}/event`;
-  private _get_my_events = `${this.API_URI}/event/my/events?limit=5&from=0&pagination=true`;
+  private _create_event = `${this.API_URI}`;
   
-  headers= new HttpHeaders()
-    .set('Authorization', this.getToken());
-
-
   constructor(private http: HttpClient) {
     this.getToken();
   }
 
-  createEvent( token = '', data: Event ) {
+  /*headers= new HttpHeaders()
+    .set('Authorization', this.getToken());*/
+
+  createEvent( token = '', data: Evento ) {
     const headers = new HttpHeaders({
       'Authorization': token
     });
@@ -39,8 +35,12 @@ export class EventService {
     }
   }
 
-  get_user_events(){
-    return this.http.get<any>(this._get_my_events,{ 'headers': this.headers })
+  getSearch(token = '', search = '', from=0, limit=5,  pagination=true ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    })
+    search='Simple'
+    return this.http.get( `${this.API_URI}/my/events?search=${search}&limit=${limit}&from=${from}&pagination=${pagination}`,{ 'headers': headers});
   }
 
 }
