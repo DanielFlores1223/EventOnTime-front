@@ -13,9 +13,6 @@ export class ServiceService {
     this.getToken();
   }
 
-  headers= new HttpHeaders()
-    .set('Authorization', this.getToken());
-
   getToken(): string{
     if(localStorage.getItem('token')){
       return localStorage.getItem('token') || "";
@@ -43,12 +40,18 @@ export class ServiceService {
     return this.http.get<any>(`${this.API_URI}/${id}`)
   }
 
-  updateService(id:string,service: Service){
-    return this.http.put(`${this.API_URI}/${id}`,service,{ 'headers': this.headers });
+  updateService(token='', id:string,service: Service){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    })
+    return this.http.put(`${this.API_URI}/${id}`,service,{ 'headers': headers });
   }
 
-  deleteService(id:string){
-    return this.http.delete(`${this.API_URI}/${id}`,{ 'headers': this.headers });
+  deleteService(token='', id:string){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    })
+    return this.http.delete(`${this.API_URI}/${id}`,{ 'headers': headers });
   }
 
 }

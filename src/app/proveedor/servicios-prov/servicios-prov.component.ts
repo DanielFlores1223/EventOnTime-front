@@ -12,7 +12,7 @@ import { Variant, showAlert } from '../../helpers/show-alerts';
 export class ServiciosProvComponent implements OnInit {
 
   services: Array<any> = [];
-  
+  token : string = localStorage.getItem('token') || '';
   //PAGINATION
   search = '';
   from = 0;
@@ -53,7 +53,7 @@ export class ServiciosProvComponent implements OnInit {
   }
 
   delete_service(id:any){
-    this.serviceService.deleteService(id)
+    this.serviceService.deleteService(this.token, id)
       .subscribe(res=>{
         console.log(res);
         //    showAlert(res, Variant.error);
@@ -64,10 +64,6 @@ export class ServiciosProvComponent implements OnInit {
       err=>{
         console.log(err);
       })
-  }
-
-  update_service(id:any){
-    console.log(id);
   }
 
   //PAGINATION

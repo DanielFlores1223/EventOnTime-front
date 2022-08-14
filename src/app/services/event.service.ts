@@ -16,9 +16,6 @@ export class EventService {
     this.getToken();
   }
 
-  /*headers= new HttpHeaders()
-    .set('Authorization', this.getToken());*/
-
   createEvent( token = '', data: Evento ) {
     const headers = new HttpHeaders({
       'Authorization': token
@@ -40,6 +37,13 @@ export class EventService {
       'Authorization': token
     })
     return this.http.get( `${this.API_URI}/my/events?search=${search}&limit=${limit}&from=${from}&pagination=${pagination}`,{ 'headers': headers});
+  }
+
+  getEventById(token='',id:string=''){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.get<any>(`${this.API_URI}/${id}`,{'headers': headers});
   }
 
 }

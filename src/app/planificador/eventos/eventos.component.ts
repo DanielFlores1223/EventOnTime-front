@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { Evento } from 'src/app/models/Evento';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-eventos',
@@ -24,7 +25,7 @@ export class EventosComponent implements OnInit {
 
   serviceInfo: any;
 
-  constructor(private eventService: EventService ) { }
+  constructor(private eventService: EventService, private spinner: NgxSpinnerService ) { }
 
 
   /*eventos =[{
@@ -76,14 +77,6 @@ export class EventosComponent implements OnInit {
 
   delete_event(){
     console.log("Deleting...")
-  }
-
-  edit_event(){
-    console.log("Editing...")
-  }
-
-  add_event(){
-    console.log("Adding...")
   }
 
   //PAGINATION

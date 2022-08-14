@@ -42,22 +42,12 @@
               <label for="exampleFormControlInput1" class="form-label">Nuevo Correo</label>
               <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)]="myProfile.email">
             </div>
-
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Nueva contraseña</label>
-              <input type="password" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Repite la contraseña</label>
-              <input type="password" class="form-control" id="exampleFormControlInput1">
-            </div>
           </div>
         </div>
 
       </div>
       <div class="container justify-content-center">
-        <button type="button" class="w-25 btn btn-lg btn-warning ">Guardar </button>
+        <button type="button" class="w-25 btn btn-lg btn-warning " (click)="updateProfileInfo()">Guardar </button>
       </div>
     </div>
   </div>

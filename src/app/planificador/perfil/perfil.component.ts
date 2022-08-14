@@ -20,7 +20,7 @@ export class PerfilComponent implements OnInit {
     "name":"",
     "email":"",
     "company":"",
-    "workstation": "",
+    "workstation": ""
   }
 
   constructor(private profile: ProfileService, private spinner: NgxSpinnerService) { }
@@ -48,12 +48,11 @@ export class PerfilComponent implements OnInit {
 
   updateProfileInfo(){
     this.spinner.show();
-    this.new_profile=this.myProfile;
+    //this.new_profile=this.myProfile;
     this.new_profile.name=this.myProfile.name;
     this.new_profile.email=this.myProfile.email;
     this.new_profile.company=this.myProfile.company.company;
-    this.new_profile.workstation=this.myProfile.company.workstation;
-    console.log(this.new_profile)
+    this.new_profile.workstation= this.myProfile.company.workstation;
     this.profile.updateMyInfo(this.token,this.new_profile).subscribe({
       next: (res:any)=>{
         console.log(res);

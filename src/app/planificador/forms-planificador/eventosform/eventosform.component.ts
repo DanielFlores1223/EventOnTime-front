@@ -26,6 +26,8 @@ export class EventosformComponent implements OnInit {
   serviceInfo: any;
   servicesData: Array< { name: string, id: string } > = [];
   files: File[] = [];
+  param_id="";
+  editing=false;
   eventCreate: Evento = { address: '', 
                          dateFinish: '', 
                          dateStart: '', 
@@ -62,10 +64,12 @@ export class EventosformComponent implements OnInit {
                private userService: UserService,
                private pictureService: PictureService,
                private eventService: EventService,
-               private router: Router ) { }
+               private router: Router,
+               private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.getSearch();
+    this.getParams();
   }
 
   
@@ -206,6 +210,41 @@ export class EventosformComponent implements OnInit {
 
       return true;
     }
+
+  getParams(){
+    const params = this.activatedRoute.snapshot.params;
+    if(params['id']){
+      this.param_id=params['id'];
+      this.editing=true;
+      this.eventService.getEventById(this.token,this.param_id).subscribe(
+        res =>{
+          this.eventCreate=res.result;
+          this.guests=res.result.guests;
+          this.eventCreate.dateStart= this.formatDate(res.result.dateStart)
+          this.eventCreate.dateFinish= this.formatDate(res.result.dateFinish)
+          this.servicesData=res.result.services;
+          //this.files=res.result.pictures;
+          console.log(this.eventCreate);
+        },
+        err =>{
+          showAlert( err.error.msg, Variant.error );
+          console.log(err);
+        }
+      )
+    }
+  }
+
+  formatDate(date: string){
+    var i=0;
+    var arr =[];
+    arr = date.split(":",2)
+    //console.log(`${arr[0]}:${arr[1]}`);
+    return arr[0]+":"+arr[1];
+  }
+
+  updateEvent(){
+    console.log(this.eventCreate)
+  }
 
   //CREATE A EVENT
 

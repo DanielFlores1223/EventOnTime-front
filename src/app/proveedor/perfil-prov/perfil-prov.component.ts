@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
+import { Variant, showAlert } from '../../helpers/show-alerts';
 
 @Component({
   selector: 'app-perfil-prov',
@@ -28,6 +29,19 @@ export class PerfilProvComponent implements OnInit {
         console.log(err)
       }
 
+    })
+  }
+
+  updateProfileInfo(){
+    this.profile.updateMyInfo(this.token,this.myProfile).subscribe({
+      next: (res:any)=>{
+        console.log(res);
+        this.getProfileInfo()
+      },
+      error: err=>{
+        showAlert( 'Información incorrecta', Variant.error );
+        console.log(err);
+      }
     })
   }
 

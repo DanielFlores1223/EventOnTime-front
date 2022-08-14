@@ -2,11 +2,8 @@
 
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#535e8a" type = "timer" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
 
-<div class="container-size">
+<div class="container-size container-responsive">
   <div class="card mt-5 row justify-content-start">
-    <!--<div class="card-header">
-      <h5 class="card-title">Eventos</h5>
-    </div> -->
     <div class="card-body">
       <div class="container mb-3">
         <div class="row">
@@ -146,16 +143,32 @@
             
 <!--BOTON-->
 <br>
-<div class="row justify-content-end">
-<!--<button type="button" class="w-25 btn btn-primary" id="liveToastBtn">Pagar</button>-->
-<button type="button" 
-        class=" btn btn-lg btn-warning {{ !validated ? 'disabled' : '' }}" 
-        data-bs-toggle="modal" 
-        data-bs-target="#modalConfirmacion"
->
-  Pagar 
+<div class="row ">
+  <div class="col-12 d-flex justify-content-end">
 
-</button>
+    <div style="margin-right: 1rem;">
+      <button type="button" 
+      class="btn btn-lg btn-warning" 
+      routerLink="/compra-plan"
+      >
+        Cambiar Membresía
+      </button>
+    </div>
+
+    <div>
+      <button type="button" 
+      class="btn btn-lg btn-warning {{ !validated ? 'disabled' : '' }}" 
+      data-bs-toggle="modal" 
+      data-bs-target="#modalConfirmacion"
+      >
+        Pagar 
+      </button>
+    </div>
+      
+  </div>
+  
+
+  
 </div>
 <br>
 

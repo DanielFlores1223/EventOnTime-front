@@ -21,7 +21,7 @@ export class SeleccionEventosComponent implements OnInit {
 
   chooseType( type: string = '' ) {
     localStorage.setItem( 'tempTypeEvent', type );
-    this.router.navigate(['/planificador/formeventos']);
+    this.router.navigate(['/planificador/eventos/add']);
   }
 
   getMyTypeAccount() {

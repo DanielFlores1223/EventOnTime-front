@@ -58,7 +58,7 @@ export class ServiciosformComponent implements OnInit {
   }
 
   update_User():void{
-    this.service.updateService(this.param_id,this.new_service)
+    this.service.updateService(this.token, this.param_id,this.new_service)
       .subscribe(res=>{
         console.log(res);
         this.router.navigate(['/proveedor/servicios']);
