@@ -53,14 +53,17 @@ export class SidebarPlanificadorComponent implements OnInit {
     }
   }
 
+  accountType='';
+
   navClass = "content";
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    console.log(this.collapsed);
-    console.log(this.screenWidth);
+    this.accountType = localStorage.getItem('account') || '';
+    //console.log(this.collapsed);
+    //console.log(this.screenWidth);
   }
 
   cerrarSesion(){
@@ -69,6 +72,7 @@ export class SidebarPlanificadorComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('name');
     localStorage.removeItem('token');
+    localStorage.removeItem('tempTypeEvent');
     this.router.navigate(['/hogar']);
     
   }

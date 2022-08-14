@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Response } from '../models/Response';
 import { Service } from '../models/Service';
 
 @Injectable({
@@ -33,8 +32,11 @@ export class ServiceService {
     return this.http.get( `${this.API_URI}/${id}` );
   }
 
-  createService(service: Service){
-    return this.http.post<Service>(this.API_URI,service,{ 'headers': this.headers });
+  createService(token='',service: Service){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.post<Service>(this.API_URI,service,{ 'headers': headers });
   }
 
   getServiceByID(id:string){

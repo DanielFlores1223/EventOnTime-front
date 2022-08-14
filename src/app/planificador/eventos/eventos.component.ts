@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
-import { Event } from 'src/app/models/Event';
+import { Evento } from 'src/app/models/Evento';
 
 @Component({
   selector: 'app-eventos',
@@ -11,9 +11,23 @@ export class EventosComponent implements OnInit {
 
   sidebarToggle: boolean=false;
 
+  eventos: Array<any> = [];
+  token: string = localStorage.getItem('token') ?? '';
+  accountType = localStorage.getItem('account') ?? '';
+  //PAGINATION
+  search = '';
+  from = 0;
+  total = 0;
+  currentPage = 1;
+  btns: Array<any> = [];
+  //END PAGINATION
+
+  serviceInfo: any;
+
   constructor(private eventService: EventService ) { }
 
-  eventos =[{
+
+  /*eventos =[{
     id: "62e08bd622c947376ebee1b8",
     name: "Prueba1",
     code: "6212",
@@ -35,23 +49,29 @@ export class EventosComponent implements OnInit {
         "pic1.png"
     ]
   }];
+  */
 
   total_events=0;
   ngOnInit(): void {
-    this.get_events();
+    //this.get_events();
+    this.get_my_events();
   }
 
-  get_events(){
-    this.eventService.get_user_events()
-      .subscribe(res=>{
-        const data = res.result;
-        console.log(res);
-        this.total_events= data.total;
-        this.eventos=data.events;
+  get_my_events(from: number = 0){
+    this.eventService.getSearch(this.token, this.search, from).subscribe({
+      next: (res: any) =>{
+        this.getPagination( res.result.total );
+        this.total_events=res.result.total;
+        console.log(res)
+        this.eventos = res.result.events;
+        //this.spinner.hide();
       },
-      err =>{
-        console.log(err);
-      })
+      error: err =>{
+        //this.spinner.hide();
+        console.log(err)
+        //showAlert( err.error.msg, Variant.error );
+      }
+    })
   }
 
   delete_event(){
@@ -65,5 +85,49 @@ export class EventosComponent implements OnInit {
   add_event(){
     console.log("Adding...")
   }
+
+  //PAGINATION
+  getPagination( total = 0, limit = 5 ) {
+
+    this.btns = [];
+    const numbBtn = Math.ceil( total / limit );
+
+    for (let i = 0; i < numbBtn; i++) {
+        this.btns = [ ...this.btns, { textBtn: (i + 1), from: ( i * limit ) } ];
+    }
+
+  }
+
+  getCurrentPage( c: number = 1 ) {
+    this.currentPage = c;
+  }
+
+  nextPage() {
+
+    this.currentPage++;
+
+    if (this.currentPage > this.btns.length) {
+        this.currentPage = this.btns.length;
+    }
+
+    const from = this.btns[ (this.currentPage - 1)].from;
+    this.get_my_events( from );
+
+  }
+
+  previousPage() {
+
+    this.currentPage--;
+
+    if ( this.currentPage < 1 ) {
+      this.currentPage = 1;
+    }
+
+    const from = this.btns[(this.currentPage - 1 )].from;
+    this.get_my_events( from );
+
+  }
+
+  //END PAGINATION
 
 }

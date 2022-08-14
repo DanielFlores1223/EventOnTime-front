@@ -3,7 +3,7 @@ import { ServiceService } from '../../../services/service.service';
 import { UserService } from '../../../services/user.service';
 import { PictureService } from '../../../services/picture.service';
 import { EventService } from '../../../services/event.service';
-import { Event } from '../../../models/Event';
+import { Evento } from '../../../models/Evento';
 import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
 import { Variant, showAlert, showAlertToast } from '../../../helpers/show-alerts';
@@ -26,7 +26,7 @@ export class EventosformComponent implements OnInit {
   serviceInfo: any;
   servicesData: Array< { name: string, id: string } > = [];
   files: File[] = [];
-  eventCreate: Event = { address: '', 
+  eventCreate: Evento = { address: '', 
                          dateFinish: '', 
                          dateStart: '', 
                          description: '', 
