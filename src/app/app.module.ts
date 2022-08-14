@@ -46,6 +46,7 @@ import { StarsGenerateComponent } from './Common/stars-generate/stars-generate.c
 import { EntrevistaServicioComponent } from './Common/entrevista-servicio/entrevista-servicio.component';
 import { NameTagComponent } from './Common/name-tag/name-tag.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     ReactiveFormsModule,
     NgCreditCardModule,
     NgxSpinnerModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    NgxChartsModule
   ],
   providers: [
     AuthService,

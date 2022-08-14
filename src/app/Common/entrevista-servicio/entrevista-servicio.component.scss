@@ -2,11 +2,11 @@
     background-image: url(../../../assets/Imagenes/encuesta3.png);
     //background-repeat: no-repeat;
     object-fit: cover;
-    margin-left: 300px;
-    margin-right: 5ch;
     height: auto;
     background-color: white;
-    width: auto;
+    width: 800px;
+    max-width: 90%;
+    border-radius: 5px;
 }
 
 
@@ -14,12 +14,31 @@
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     width: 100%;
-   
     height: auto;
     border-radius: .5ch;
     //margin-top: 1em;
+    margin-bottom: 1rem;
 }
 
   label{
     color: #071F4E;
+  }
+
+  .bGray {
+    background-color: #faf7fa;
+  }
+
+  .container-info-event {
+
+    padding: 1rem 0;
+
+    p {
+      margin: 0;
+    }
+
+    h6 {
+      text-align: center;
+      color: #071F4E;
+      font-size: 1.1rem;
+    }
   }
