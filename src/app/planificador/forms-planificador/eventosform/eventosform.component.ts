@@ -92,23 +92,35 @@ export class EventosformComponent implements OnInit {
     if ( !this.validateFields() || !this.validateDates() ) {
       return showAlert( 'El formulario está incompleto...', Variant.error );
     }
-
-    const idServices = this.servicesData.map( s => s.id );
-    const data = { ...this.eventCreate, guests: this.guests, services: idServices } 
-    this.spinner.show();
-    this.eventService.createEvent( this.token, data ).subscribe(
-      {
-        next: res => {
-          this.saveImgs( res.result._id, res.msg );
-        },
-        error: err => {
-          console.log(err)
-          this.spinner.hide();
-          showAlert( err.error.msg, Variant.error );
-        }
+    Swal.fire({
+      title: '¿Desea Crear el Evento?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const idServices = this.servicesData.map( s => s.id );
+        const data = { ...this.eventCreate, guests: this.guests, services: idServices } 
+        this.spinner.show();
+        this.eventService.createEvent( this.token, data ).subscribe(
+          {
+            next: res => {
+              this.saveImgs( res.result._id, res.msg );
+            },
+            error: err => {
+              console.log(err)
+              this.spinner.hide();
+              showAlert( err.error.msg, Variant.error );
+            }
+          }
+        )
+        Swal.fire('Evento Creado!', '', 'success')
+      } else if (result.isDenied) {
+        
+        Swal.fire('Cancelando...', '', 'info');
+        this.router.navigate(['/planificador/eventos']);
       }
-    )
-
+    })
   }
 
   saveImgs( id: string = '', msg = '' ) {
@@ -243,6 +255,21 @@ export class EventosformComponent implements OnInit {
   }
 
   updateEvent(){
+    Swal.fire({
+      title: '¿Desea Actualizar el Evento?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Evento Actualizado!', '', 'success')
+        this.router.navigate(['/planificador/eventos']);
+      } else if (result.isDenied) {
+        
+        Swal.fire('Cancelando...', '', 'info');
+        this.router.navigate(['/planificador/eventos']);
+      }
+    })
     console.log(this.eventCreate)
   }
 

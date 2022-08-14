@@ -56,8 +56,11 @@
         </div>
 
       </div>
-      <div class="container justify-content-center">
+      <div class="container justify-content-center" *ngIf="accountType=='Empresarial'">
         <button type="button" class="w-25 btn btn-lg btn-warning" (click)="updateProfileInfo()">Guardar </button>
+      </div>
+      <div class="container justify-content-center" *ngIf="accountType=='Gratuito'">
+        <button type="button" class="w-25 btn btn-lg btn-warning" (click)="updateProfileInfo_free()">Guardar </button>
       </div>
     </div>
   </div>

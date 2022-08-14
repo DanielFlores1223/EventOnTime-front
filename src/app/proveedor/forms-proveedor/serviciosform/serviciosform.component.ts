@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/services/service.service';
 import { Service } from 'src/app/models/Service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2';
+import { Variant, showAlert } from '../../../helpers/show-alerts';
 
 @Component({
   selector: 'app-serviciosform',
@@ -46,26 +47,57 @@ export class ServiciosformComponent implements OnInit {
   }
 
   create_service(){
-    this.service.createService(this.token,this.new_service)
-      .subscribe(res=>{
-        console.log(res);
-        this.router.navigate(['/proveedor/servicios']);
-      },
-      err=>{
-        console.log(err);
-      })
-
+    Swal.fire({
+      title: '¿Desea Crear el Servicio?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.createService(this.token,this.new_service)
+          .subscribe(res=>{
+            console.log(res);
+            this.router.navigate(['/proveedor/servicios']);
+          },
+          err=>{
+            showAlert( 'Información incorrecta', Variant.error );
+            console.log(err);
+            this.router.navigate(['/proveedor/servicios'])
+          })
+        Swal.fire('Servicio Creado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Cancelando...', '', 'info');
+        this.router.navigate(['/proveedor/servicios'])
+      }
+    })
   }
 
   update_User():void{
-    this.service.updateService(this.token, this.param_id,this.new_service)
-      .subscribe(res=>{
-        console.log(res);
+    Swal.fire({
+      title: '¿Desea Actualizar el Servicio?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.updateService(this.token, this.param_id,this.new_service)
+          .subscribe(res=>{
+            console.log(res);
+            this.router.navigate(['/proveedor/servicios']);
+          },
+          err=>{
+            showAlert( 'Información incorrecta', Variant.error );
+            console.log(err);
+            this.router.navigate(['/proveedor/servicios'])
+          })
+        Swal.fire('Servicio Actualizado!', '', 'success')
+      } else if (result.isDenied) {
+        
+        Swal.fire('Cancelando...', '', 'info');
         this.router.navigate(['/proveedor/servicios']);
-      },
-      err=>{
-        console.log(err);
-      })
+      }
+    })
+    
   }
   
 }

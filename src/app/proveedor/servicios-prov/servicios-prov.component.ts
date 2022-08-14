@@ -3,6 +3,8 @@ import { ServiceService } from '../../services/service.service';
 import { Response } from '../../models/Response';
 import { Router } from '@angular/router';
 import { Variant, showAlert } from '../../helpers/show-alerts';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-servicios-prov',
@@ -53,17 +55,27 @@ export class ServiciosProvComponent implements OnInit {
   }
 
   delete_service(id:any){
-    this.serviceService.deleteService(this.token, id)
-      .subscribe(res=>{
-        console.log(res);
-        //    showAlert(res, Variant.error);
-        this.getSearch();
-        //this.router.navigate(['/proveedor/servicios']);
-
-      },
-      err=>{
-        console.log(err);
-      })
+    Swal.fire({
+      title: '¿Desea Eliminar el Servicio?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serviceService.deleteService(this.token, id).subscribe(
+          res=>{
+            console.log(res);
+            this.getSearch();
+          },
+          err=>{
+            showAlert( 'Información incorrecta', Variant.error );
+            console.log(err);
+          })
+        Swal.fire('Servicio Cancelado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Cancelando', '', 'info');
+      }
+    })
   }
 
   //PAGINATION

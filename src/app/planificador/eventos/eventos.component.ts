@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { Evento } from 'src/app/models/Evento';
 import { NgxSpinnerService } from "ngx-spinner";
+import Swal from 'sweetalert2';
+import { Variant, showAlert } from '../../helpers/show-alerts';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-eventos',
@@ -25,7 +28,7 @@ export class EventosComponent implements OnInit {
 
   serviceInfo: any;
 
-  constructor(private eventService: EventService, private spinner: NgxSpinnerService ) { }
+  constructor(private eventService: EventService, private spinner: NgxSpinnerService, private router: Router ) { }
 
 
   /*eventos =[{
@@ -76,6 +79,20 @@ export class EventosComponent implements OnInit {
   }
 
   delete_event(){
+    Swal.fire({
+      title: '¿Desea Eliminar el Evento?',
+      showDenyButton: true,
+      confirmButtonText: 'Confirmar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Evento Eliminado!', '', 'success')
+      } else if (result.isDenied) {
+        
+        Swal.fire('Cancelando...', '', 'info');
+        this.router.navigate(['/planificador/eventos']);
+      }
+    })
     console.log("Deleting...")
   }
 
