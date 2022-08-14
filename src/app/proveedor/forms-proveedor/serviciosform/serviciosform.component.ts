@@ -11,6 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ServiciosformComponent implements OnInit {
 
+  token : string = localStorage.getItem('token') || '';
+
   new_service : Service={
     "name": "",
     "type": "",
@@ -44,7 +46,7 @@ export class ServiciosformComponent implements OnInit {
   }
 
   create_service(){
-    this.service.createService(this.new_service)
+    this.service.createService(this.token,this.new_service)
       .subscribe(res=>{
         console.log(res);
         this.router.navigate(['/proveedor/servicios']);

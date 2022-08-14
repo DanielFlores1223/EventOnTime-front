@@ -39,7 +39,6 @@ export class EventService {
     const headers = new HttpHeaders({
       'Authorization': token
     })
-    search='Simple'
     return this.http.get( `${this.API_URI}/my/events?search=${search}&limit=${limit}&from=${from}&pagination=${pagination}`,{ 'headers': headers});
   }
 

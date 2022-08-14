@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { Response } from '../../models/Response';
 import { Router } from '@angular/router';
+import { Variant, showAlert } from '../../helpers/show-alerts';
 
 @Component({
   selector: 'app-servicios-prov',
@@ -55,6 +56,7 @@ export class ServiciosProvComponent implements OnInit {
     this.serviceService.deleteService(id)
       .subscribe(res=>{
         console.log(res);
+        //    showAlert(res, Variant.error);
         this.getSearch();
         //this.router.navigate(['/proveedor/servicios']);
 

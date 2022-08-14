@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Profile } from '../models/Profile';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,10 @@ export class ProfileService {
     return this.http.get(`${this.API_URI}/my/profile`,{ 'headers': headers})
   }
 
-  updateMyInfo(token=''){
-
+  updateMyInfo(token='', data: Profile){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    })
+    return this.http.put(`${this.API_URI}/profile`,data,{ 'headers': headers});
   }
 }
