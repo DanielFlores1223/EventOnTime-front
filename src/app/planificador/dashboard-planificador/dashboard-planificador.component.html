@@ -68,8 +68,8 @@
               <div *ngFor="let surv of surveys" class="survey-div rounded" (click)="getDataSelected(surv)">
 
                 <div class="text-survey">
-                  <p> <span>Servicio:</span>  {{surv.service.name}}</p>
-                  <p> <span>Evento:</span> {{surv.event.name}}</p>
+                  <p> <span>Servicio:</span>  {{surv.service?.name}}</p>
+                  <p> <span>Evento:</span> {{surv.event?.name}}</p>
                 </div>
 
                 <div class="icon">
