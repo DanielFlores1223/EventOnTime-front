@@ -1,0 +1,93 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''">
+  <div class="sidenav-coll-btn" *ngIf="collapsed">
+    <div class="sidenav-coll-btn-div">
+      <button class="btn btn-primary " id="sidebarToggle" aria-expanded="false" (click)="closeSidenav()"> 
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+  <div class="sidenav-coll-btn-sm" *ngIf="!collapsed">
+    <button class="btn btn-primary " id="sidebarToggle" aria-expanded="false" (click)="closeSidenav()"> 
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="logo-container">
+    <div class="container mt-4 mb-4">
+      <a class="container-link" (click)="toggleCollapse()" *ngIf="collapsed">
+        <img  src="../../../assets/Imagenes/Logos/logo-floor.png"  class="image-link" @fadeInOut>
+      </a>
+      <div class="container-link-sm" *ngIf="!collapsed">
+        <img  src="../../../assets/Imagenes/Logos/logo-floor.png" class="image-link" @fadeInOut> 
+      </div>
+    </div>
+  </div>
+  <ul class="sidenav-nav">
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" routerLink="/proveedor/dashboard"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">
+          <i class="sidenav-link-icon" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+              <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>
+          </i>
+        <span class="sidenav-link-text" *ngIf="collapsed">Dashboard</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" routerLink="/proveedor/servicios"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+          <i class="sidenav-link-icon" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
+              <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
+              <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
+            </svg>
+          </i>
+          <span class="sidenav-link-text" *ngIf="collapsed">Servicios</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" routerLink="/proveedor/membresia"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">
+        <i class="sidenav-link-icon" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-gem" viewBox="0 0 16 16">
+            <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/>
+          </svg> 
+        </i>
+        <span class="sidenav-link-text" *ngIf="collapsed">Membresia</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" (click)="cerrarSesion()">
+        <i class="sidenav-link-icon" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+          </svg>  
+        </i>
+        <span class="sidenav-link-text" *ngIf="collapsed"><div style="display: flex; justify-content:center;">Cerrar Sesión</div></span>
+      </a>
+    </li>
+  </ul>
+</div> 
+<div class="page">
+  <div class="content-toggle">
+    <div class="navigationBar">
+      <div class="container-fluid">
+        <button class="btn btn-primary " id="sidebarToggle" aria-expanded="false"> 
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="container">
+        <a class="d-block " id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 500px;" routerLink="/proveedor/perfil">
+          <img src="{{picture != '' ? picture : '../../../assets/Imagenes/usuario.png'}}" alt="mdo" width="32" height="32" class="rounded-circle">
+          
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

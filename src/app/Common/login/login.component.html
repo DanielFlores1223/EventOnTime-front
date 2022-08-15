@@ -1,36 +1,41 @@
 <!--<img class="decoration" src="../../../assets/Imagenes/Logos/decoracion2.png">-->
 
-<div class="container login">
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#535e8a" type = "timer" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+
+<div class=" container-size">
+  <div style="margin-left: 80px; margin-top: 40px;">
   <button type="button" class="btn btn-secondary" routerLink="/home">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
 <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
 </svg>
   </button>
-
-      <div class="row mb-3">
-        <div class="col-sm-6 themed-grid-col">
+  </div>
+<div class="d-flex justify-content-center">
+      <div class="row ">
+        <div class="col ">
           <div class="card-body ">
             <div class="text-center">
             <h1>INICIO DE SESIÓN</h1>
             <h6>¡Bienvenido de nuevo! Por favor, introduzca sus datos.</h6>  
             </div>
+            <div class="needs-validation was-validated" novalidate="">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"  >Correo</label>
-              <input type="email" [(ngModel)]="user.email" class="form-control" id="exampleFormControlInput1" placeholder="Ingresa tu correo" >
+              <label for="inputEmail3" class="form-label"  >Correo</label>
+              <input aria-describedby="emailHelp" type="email" [(ngModel)]="user.email" class="form-control" id="inputEmail3" placeholder="Ingresa tu correo" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label" >Contraseña</label>
-                <input type="password" [(ngModel)]="user.password" class="form-control" id="exampleFormControlInput1">
+                <input type="password" [(ngModel)]="user.password" class="form-control" id="exampleFormControlInput1" required>
               </div>
     
               <div class="checkbox mb-3">
                 <label>
-                  <input type="checkbox" value="remember-me"> Recuerdame
+                  <input  type="checkbox" value="remember-me"> Recuerdame
                 </label>
               </div>
     
            
-            <button type="button" class="w-100 h-50  btn btn-lg btn-warning" (click)="login()">Acceder </button>
+            <button type="submit" class="w-100 h-50  btn btn-lg btn-warning" (click)="login()">Acceder </button>
             <br><br>
             <button type="button" class="w-100 h-50  btn btn-lg btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
@@ -39,14 +44,16 @@
                 Inicia sesión con Google </button>
                 <br><br>
             <h6 class="text-center">¿No tienes una cuenta? <b><a class="registrate" routerLink="/registrar">¡Registrate ahora!</a></b></h6>
+                </div>
           </div>
 
         </div>
-        <div class="col-6   logo">
+        <!--<div class="col-6   logo">
           <img src="../../../assets/Imagenes/Logos/login-sin-fondo.png" style="height: 550px;">
-        </div>
+        </div>-->
       </div>
-    </div>
+   
   
     
-
+</div>
+</div>

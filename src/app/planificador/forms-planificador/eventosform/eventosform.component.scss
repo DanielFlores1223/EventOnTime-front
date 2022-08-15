@@ -1,0 +1,139 @@
+.container-size{
+
+    margin-left: 300px;
+    margin-right: 5ch;
+    
+    background-color: white;
+}
+
+
+.favoritos-container{
+    background-color: #fff;
+    height: 228px;
+    max-height: 228px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: .5ch;
+    margin-top: 1em;
+    color: #fff;
+    max-width: 100%;
+
+}
+
+.content-tab-0 {
+    max-height: 75%;
+    overflow-y: auto;
+}
+
+.favoritos-container-modal{
+    background-color: #fff;
+    border-radius: .5ch;
+    color: black;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    height: auto;
+}
+
+
+.bcolor{
+    background-color: white;
+    margin-bottom: 2em;
+    height: auto;
+}
+
+.color{
+    color: #071F4E;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+label{
+    color: #E4A193;
+}
+
+.invitado{
+    font-size: 13px;
+}
+
+.no-event{
+    color: #071F4E;
+    font-family: 'Poppins';
+    font-size: 13px;
+}
+
+
+
+.btn-primary, .col-form-label, p{
+    color: #fff;
+}
+
+input, select{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+input, select:focus{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-close{
+    background-color: var(--bs-warning);
+}
+
+.nav-link{
+    color: #fff;
+}
+
+.servicios-container{
+    background-color: rgba(255, 255, 255, 0.8);
+    
+    height: auto;
+    border-radius: .5ch;
+    margin-top: 1em;
+}
+/*.invitados{
+    background-image: url(../../../../assets/Imagenes/form-eventos/invitados.png);
+    width: 100%;
+}*/
+
+/*.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #E4A193;
+    
+}*/
+
+
+li{
+    color: #071F4E;
+}
+
+.servicio{
+    object-fit: cover;
+    border-radius: 6px; 
+    width: 70px; 
+    height: 70px; 
+}
+
+.paginationActive {
+    background-color: #071F4E;
+    color: #fff;
+}
+
+.button-container-img{
+    display:inline-block;
+    position:relative;
+
+    button {
+        position: absolute;
+        top: 0;
+        right:0em;
+        background-color: #E74C3C;
+        color:white;
+
+        &:hover {
+            background-color: #CB4335;
+        }
+    }
+}

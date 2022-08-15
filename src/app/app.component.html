@@ -1,12 +1,8 @@
-<!--<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>-->
-
-<!--<app-encabezado></app-encabezado>-->
-<!--<app-hogar></app-hogar>-->
+<!--<div *ngIf="!logged">
+    <router-outlet></router-outlet>
+</div>
+<div *ngIf="logged">
+    <app-sidebar-planificador (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar-planificador>
+    <app-body-plan [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body-plan>
+</div> -->
 <router-outlet></router-outlet>

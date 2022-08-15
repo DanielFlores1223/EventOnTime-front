@@ -1,0 +1,62 @@
+<app-sidebar-planificador></app-sidebar-planificador>
+<div class="container-size">
+  <div class=" mt-5">
+    <!--<div class="card-header">
+      <h5 class="card-title">Eventos</h5>
+    </div> -->
+    <div class="card-body">
+      <div class="container mb-3">
+        <div class="row">
+          <div class="col">
+
+            <h2 class="card-title">Mi perfil</h2>
+          </div>
+         </div>
+         <br>
+         <div class="container row">
+        <div class="col"> 
+            <img class="rounded-circle float-start" width="173px" height="173px" src="{{picture !='' ? picture : '../../../assets/Imagenes/usuario.png'}}">
+            
+            <div class=" row justify-content-start">
+              <input style="margin-left: 100px; margin-top: 30px; width: 400px; " class="form-control" type="file" id="formFileMultiple" (change)="parseImage($event)"> 
+                    
+            </div>
+        </div>
+        </div>
+<br><br>
+        <div class="container row">
+          <div class="col">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Actualizar nombre</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="myProfile.name">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Nuevo correo</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)]="myProfile.email">
+            </div>
+
+            <div class="mb-3" *ngIf="accountType=='Empresarial'">
+              <label for="exampleFormControlInput1" class="form-label">Compañia</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="myProfile.company.company">
+            </div>
+
+            <div class="mb-3" *ngIf="accountType=='Empresarial'">
+              <label for="exampleFormControlInput1" class="form-label">Ocupaccion</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="myProfile.company.workstation">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="container justify-content-center" *ngIf="accountType=='Empresarial'">
+        <button type="button" class="w-25 btn btn-lg btn-warning" (click)="updateProfileInfo()">Guardar </button>
+      </div>
+      <div class="container justify-content-center" *ngIf="accountType=='Gratuito'">
+        <button type="button" class="w-25 btn btn-lg btn-warning" (click)="updateProfileInfo_free()">Guardar </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

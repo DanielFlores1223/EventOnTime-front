@@ -1,0 +1,628 @@
+<app-sidebar-planificador></app-sidebar-planificador>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#535e8a" type = "timer" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+
+<div class="container-size">
+  <div class="card mt-5">
+    <div class="card-body">
+      <div class="container mb-3">
+        
+        <div class="row">
+          <!-- HEADER -->
+          <div class="col">
+
+            <h3 class="card-title">
+                Eventos 
+                <svg routerLink="/planificador/eventos" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" style="cursor: pointer; color:#F6B33E">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg> 
+            </h3>
+          </div>
+
+          <div class="col  mb-3">
+            <p *ngIf="accountType === 'Gratuito'" class="d-flex flex-row-reverse no-event">Nota: Solo tienes 2 eventos al mes</p>
+            <p class="d-flex flex-row-reverse no-event">Tipo de evento: {{eventCreate.type}}</p>
+          </div>
+          <!-- HEADER -->
+
+          <!--INICIO DE FORMULARIO-->
+          <div class="container-md mb-3" id="formEvent" (mouseover)="addClassesValidate()">
+          
+            <!-- SECTION1 FORM -->
+            <div class="row mb-4">
+              <div class="col">
+                <label for="formGroupExampleInput card-title" class="form-label">Selecciona tu fecha y hora</label>
+                <input name="dateStart" 
+                       [(ngModel)]="eventCreate.dateStart" 
+                       type="datetime-local" 
+                       id="dateStartInput"
+                       class="form-control"
+                       required
+                >
+                <div class="invalid-feedback">
+                  {{ errorsForm.dateStart }}
+                </div>
+              </div>
+              <div class="col">
+                <label for="formGroupExampleInput card-title" class="form-label">Fecha y hora final</label>
+                <input name="dateFinish" 
+                       [(ngModel)]="eventCreate.dateFinish"  
+                       type="datetime-local" 
+                       class="form-control" 
+                       (change)="validateDates()"
+                       id="dateFinishInput"
+                       required
+                >
+                <div class="invalid-feedback">
+                  {{ errorsForm.dateFinish}}
+                </div>
+              </div> 
+            </div>
+            <!-- /SECTION1 FORM -->
+
+            <!-- SECTION2 FORM -->
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="formGroupExampleInput card-title" class="form-label">Nombre del evento</label>
+                    <input name="name" 
+                           [(ngModel)]="eventCreate.name" 
+                           type="text" 
+                           class="form-control was-validated" 
+                           required
+                    >
+                    <div class="invalid-feedback">
+                      {{ errorsForm.name }}
+                    </div>
+                  </div>
+                  <div class="col" style="font-family: 'Poppins';">
+                    <label for="formGroupExampleInput card-title" class="form-label">Código de vestimenta</label>
+                    <select name="dressCode" 
+                            [(ngModel)]="eventCreate.dressCode" 
+                            class="form-select" 
+                            required
+                    >
+                        <option selected>Formal</option>
+                        <option value="1">Semi formal</option>
+                        <option value="2">Playa</option>
+                        
+                      </select>
+                      <div class="invalid-feedback">
+                        {{ errorsForm.dressCode }}
+                      </div>
+                  </div>
+            </div>
+            <!-- SECTION2 FORM -->
+
+            <!-- SECTION3 FORM -->
+            <div class="row mb-4">
+              <div class="col-6">
+                <label for="formGroupExampleInput card-title" class="form-label">Domicilio</label>
+                <input name="address" 
+                       [(ngModel)]="eventCreate.address"  
+                       type="text" 
+                       class="form-control" 
+                       required
+                >
+                <div class="invalid-feedback">
+                  {{ errorsForm.address }}
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="formGroupExampleInput card-title" class="form-label">Ubicación Google Maps (Link)</label>
+                <input name="googleMaps" 
+                       [(ngModel)]="eventCreate.googleMaps"  
+                       type="text" 
+                       class="form-control" 
+                       required
+                >
+                <div class="invalid-feedback">
+                  {{ errorsForm.googleMaps }}
+                </div>
+              </div>
+            </div>
+            <!-- /SECTION3 FORM -->
+
+            <!-- SECTION4 FORM DROPZONE  -->
+            <div class="row mt-3 mb-4">
+              <div class="col" style="font-family: 'Poppins';">
+                <label for="formGroupExampleInput card-title" class="form-label">Imagenes</label>
+                
+                <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png">
+                  <ngx-dropzone-label>Sube images relacionadas a tu evento!</ngx-dropzone-label>
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" 
+                                              *ngFor="let f of files" 
+                                              [removable]="true" 
+                                              (removed)="onRemove(f)" 
+                                              
+                                              [file]="f" >
+                    <ngx-dropzone-label></ngx-dropzone-label>
+                  </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+    
+              </div>
+              <div class="col-6">
+                <label for="formGroupExampleInput card-title" class="form-label">Descripción del evento</label>
+                <textarea name="description" 
+                          [(ngModel)]="eventCreate.description"  
+                          class="form-control" 
+                          style="height: 180px;" 
+                          id="exampleFormControlTextarea1"
+                          required>
+                </textarea>
+                <div class="invalid-feedback">
+                  {{ errorsForm.description }}
+                </div>
+              </div>
+            </div>
+            <!-- /SECTION4 FORM DROPZONE  -->
+            
+            <!-- SECTION IMGS - THIS SECTION ONLY EDIT -->
+            <div *ngIf="editing" class="row mb-3">
+              <label for="formGroupExampleInput card-title" class="form-label">
+                Imagenes del evento
+              </label>
+              <div *ngFor="let image of editImages" class="col-sm-12 col-md-4">
+
+               <!--  IMG CONTAINER - EDIT -->
+                <div class="button-container-img">
+                    <!-- BUTTON DELETE IMG -->
+                    <button class="btn delete-btn-img">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                      </svg>
+                    </button>
+                    <!-- /BUTTON DELETE IMG -->
+
+                    <img src="{{image.url}}" class="w-100" alt="">
+
+                </div>
+                 <!--  /IMG CONTAINER - EDIT -->
+              </div>
+
+            </div>
+            <!-- /SECTION IMGS - THIS SECTION ONLY EDIT -->
+
+            <!-- SECTION INV AND SERV -->
+            <div class="row mb-2">
+
+              <!-- INVITADOS SECTION -->
+              <div class="col-sm-12 col-md-6">
+                    <!-- HEADER INVITADOS SECTION -->
+                    <div class="d-flex justify-content-between align-items-center">
+                      <label for="formGroupExampleInput card-title" class="form-label">
+                        Lista de invitados
+                      </label>
+                      
+                      <div >
+                          <svg data-bs-toggle="modal" data-bs-target="#staticBackdrop" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-20px; margin-right:40px;">
+                           <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                         </svg>
+                      </div>  
+                    </div>
+                    <!-- /HEADER INVITADOS SECTION -->
+
+                    <!-- WHITE CONTAINER WHEN THE INFO GUEST IS -->
+                    <div class="favoritos-container">
+                      <!-- INFO NAME AND DELETE GUEST -->
+                      <div *ngFor="let g of guests" class="row">
+                          <div class="col-12 d-flex justify-content-between px-4 my-2">
+                            <h6>
+                              {{ g.name }}
+                            </h6>
+                            <!-- BTN DELETE -->
+                            <div *ngIf="!editing || !g._id" class="" (click)="removeGuest(g.email)">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>     
+                            </div>
+                            <div *ngIf="editing && g._id" (click)="deletAGuest(g._id)" >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>     
+                            </div>
+                            <!-- BTN DELETE -->
+                          </div>
+                        </div>
+                        <!-- /INFO NAME AND DELETE GUEST -->
+                    </div>
+                     <!-- /WHITE CONTAINER WHEN THE INFO GUEST IS -->
+                       
+                  </div>
+                <!-- /INVITADOS SECTION -->    
+
+          <!-- SERVICIOS SECTION -->
+          <div class="col-sm-12 col-md-6">
+            <!-- HEADER SERVICIOS SECTION -->
+            <div class="d-flex justify-content-between align-items-center">
+              <label for="formGroupExampleInput card-title" class="form-label">
+                Lista de Servicios
+              </label>
+              
+              <div>
+                <svg  data-bs-target="#modalSerivices" data-bs-toggle="modal" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-20px; margin-right:40px;">
+                  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                </svg>
+              </div>  
+            </div>
+            <!-- /HEADER SERVICIOS SECTION -->
+
+            <!-- WHITE CONTAINER WHEN THE INFO GUEST IS -->
+            <div class="favoritos-container">
+              <!-- INFO NAME AND DELETE GUEST -->
+              <div *ngFor="let serv of servicesData" class="row">
+                  <div class="col-12 d-flex justify-content-between px-4 my-2">
+                    <h6>
+                      {{ serv.name }}
+                    </h6>
+
+                    <!-- BTN DELETE -->
+                    
+                    <div *ngIf="!editing" class="" (click)="removeService( serv.id )">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>     
+                    </div>
+                    
+                    <div *ngIf="editing" (click)="deleteSeviceOfEvent( serv )">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>     
+                    </div>
+
+
+                    <!-- BTN DELETE -->
+                  </div>
+                </div>
+                <!-- /INFO NAME AND DELETE GUEST -->
+            </div>
+             <!-- /WHITE CONTAINER WHEN THE INFO GUEST IS -->
+               
+          </div>
+        <!-- /SERVICIOS SECTION -->  
+                  
+        <div class="row justify-content-end mt-3" *ngIf="!editing">
+            <button type="button" class=" btn btn-lg btn-warning " (click)="saveEvent()">Guardar</button>
+        </div>
+        <div class="row justify-content-end mt-3" *ngIf="editing">
+          <button type="button" class=" btn btn-lg btn-warning " (click)="updateEvent()">Actualizar</button>
+      </div>
+        <!--FIN DE FORMULARIO-->
+
+          </div>
+         
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- MODALES -->
+
+<!-- MODAL INVITADO -->
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+
+      <div class=" modal-content invitados">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- CONTENT MODAL -->
+      <div class=" modal-body d-flex align-items-center justify-content-center">
+        
+        <form #formGuest>
+          <!-- INPUT NOMBRE -->
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-12 col-form-label">
+              Nombre del invitado
+            </label>
+            <div class="col-sm-12">
+              <input name="nameGuest" #inputName type="text"  class="form-control" id="staticEmail">
+            </div>
+          </div>
+          <!-- /INPUT NOMBRE -->
+
+          <!-- INPUT EMAIL -->
+          <div class="mb-3 row ">
+            <label for="inputPassword" class="col-sm-12 col-form-label">
+                Correo del invitado
+            </label>
+            <div class="col-sm-12">
+              <input name="emailGuest" #inputEmail type="email" class="form-control" id="inputPassword">
+            </div>
+          </div>
+          <!-- /INPUT EMAIL -->
+
+          <div class="row">
+            <div class="col-6">
+              <!-- SELECT FORM -->
+                <div class="mb-3 row " style="font-family: 'Poppins';">
+                  <label for="formGroupExampleInput card-title" class="col-sm-12 col-form-label">
+                      Rol
+                  </label>
+                  <div class="col-sm-12">
+                    <select name="roleGuest" #selectRole class="form-select" aria-label="Default select example">
+                      <option selected>Invitado</option>
+                      <option value="1">Cadenero</option>  
+                    </select>
+                  </div>
+              </div>
+              <!-- /SELECT FORM -->
+            </div>
+            <div class="col-6">
+              <!-- INPUT EMAIL -->
+              <div class="mb-3 row ">
+                <label for="inputAcomp" class="col-sm-12 col-form-label">
+                    Número de acompañantes
+                </label>
+                <div class="col-sm-12">
+                  <input name="numerPartnerGuest" #inputnNumberPartner type="number" min="0" max="10" value="0" class="form-control" id="inputAcomp">
+                </div>
+              </div>
+              <!-- /INPUT EMAIL -->
+            </div>
+          </div>
+          
+        </form>
+
+      </div>
+      <!-- /CONTENT MODAL -->
+      <div class="modal-footer">
+        <button *ngIf="!editing" type="button" 
+                class="btn btn-primary" 
+                (click)="addGuest( { email: inputEmail.value, 
+                                     name: inputName.value, 
+                                     role: selectRole.value,
+                                     numberPartner: inputnNumberPartner.value
+                                    },
+                                    formGuest
+                                 )"
+        >
+            Guardar
+        </button>
+
+        <button *ngIf="editing" type="button" 
+                class="btn btn-primary" 
+                (click)="addedAGuest(); addGuest( { email: inputEmail.value, 
+                                     name: inputName.value, 
+                                     role: selectRole.value,
+                                     numberPartner: inputnNumberPartner.value
+                                    },
+                                    formGuest
+                                 );"
+        >
+            Guardar
+        </button>
+
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--/MODAL INVITADO -->
+
+
+
+ <!--MODAL SERVICIOS-->
+ <div class="modal fade" id="modalSerivices" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+
+     <!--  CONTENT BODY -->
+      <div class="modal-body">
+        
+        <!-- BUSCADOR -->
+        <div class="d-flex justify-content-end">
+          <input type="text" (keyup)="getSearch(); resetPagination();" [(ngModel)]="search" class="w-25 form-control" placeholder="Buscar...">
+        </div>
+        <!-- BUSCADOR -->
+        <!-- TABS -->
+        <div class="" style="margin-top: -30px;">
+            <ul class="nav nav-tabs" >
+              <li class="nav-item" (click)="changeTabModal(0)">
+                <a class="nav-link {{ tabsModal === 0 ? 'active' : '' }} ">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" style="color: #EE4A46; cursor:pointer; margin-right: 0.5rem;">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg>
+                  Mis favoritos
+                </a>
+              </li>
+              <li class="nav-item" (click)="changeTabModal(1)">
+                <a class="nav-link {{ tabsModal === 1 ? 'active' : '' }}">
+                  Servicios
+                </a>
+              </li>
+            </ul>
+        </div>
+        <!-- TABS -->
+
+        <!--Contenido-->
+          <!-- TAB FAVORITOS CONTENT -->
+          <div class="content-tab-0">
+                 <!-- CONTAINER FAVORITES -->
+                 <div class="px-3 py-2">
+                   <div *ngIf="favorites.length === 0; else siHay" class="p-5" >
+                     <p class="text-center" style="color: white;">No hay resultados</p>
+                   </div>
+                 
+                   <ng-template #siHay>
+                   <!-- CARD FAVORITE -->
+                   <div *ngFor="let f of favorites" class="row bgcolor favoritos-container-modal">
+                      <!-- IMG -->
+                      <div class="col-sm-12 col-md-1 d-flex justify-content-center" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( f._id )">
+                        <img class="servicio rounded" src="{{ f?.pictures.length > 0 ? f?.pictures[f?.pictures.length - 1].url : '../../../assets/Imagenes/servicio.png' }}" >
+                      </div>
+                      <!-- /IMG -->
+                     
+                      <!-- INFO FAVORITE -->
+                      <div class="col-sm-12 col-md-11 d-flex justify-content-between align-items-center">
+                        <div style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalInfo" (click)="getById( f._id )" >
+                          <h5 class="color m-0">{{ f.name }}</h5>
+                        </div>
+                       
+                        <!-- ADD BTN -->
+                        <div (click)="addService( f.name, f._id )">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                          </svg>
+                        </div> 
+                        <!-- /ADD BTN -->
+                       
+                      </div>
+                      <!-- /INFO FAVORITE -->
+                   </div>
+                   <!-- /CARD FAVORITE -->
+                   </ng-template> 
+                 </div>
+                 <!-- CONTAINER FAVORITES -->
+          </div>
+          <!-- TAB FAVORITOS CONTENT -->
+
+           <!-- CONTAINER PAGINATION -->
+           <div *ngIf="favorites.length > 0" class="row mt-3">
+            <div class="col-12">
+              <!-- PAGINATION -->
+              <div>
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <button class="page-link" aria-label="Previous" (click)="previousPage()">
+                      <span aria-hidden="true">&laquo;</span>
+                    </button>
+                  </li>
+                  
+                  <li *ngFor="let btnInfo of btns" class="page-item">
+                      <button id="paginationBtn{{btnInfo.textBtn}}" class="page-link {{ currentPage === btnInfo.textBtn ? 'paginationActive': '' }}" (click)="getSearch( btnInfo.from ); getCurrentPage(btnInfo.textBtn);" >{{ btnInfo.textBtn }}</button>
+                  </li>
+                  
+                  <li class="page-item">
+                    <button class="page-link" aria-label="Next" (click)="nextPage()">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <!-- /PAGINATION -->
+            </div>
+          </div>
+          <!-- /CONTAINER PAGINATION -->
+
+        <!--Fin de contenido-->
+
+      </div>
+      <!--  CONTENT BODY -->
+    </div>
+  </div>
+</div>
+<!--/MODAL SERVICIOS-->
+
+
+
+<!-- Modal Mas INFO -->
+<div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalInfoLabel">{{ serviceInfo?.name }}</h5>
+          <button type="button" class="btn-close" data-bs-target="#modalSerivices" data-bs-toggle="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          
+          <div class="row">
+              <div class="col-6 d-flex align-items-center justify-content-center">
+                  <!--<p>Imagen</p>-->
+                  <img  class="img-thumbnail " 
+                        src="{{ serviceInfo?.pictures.length > 0 ? serviceInfo?.pictures[(serviceInfo?.pictures.length - 1)].url : '../../../assets/Imagenes/servicio.png' }}" 
+                        style=" border-radius: 6px; object-fit: cover;"
+                        style=" border-radius: 6px; object-fit: cover; width: 100%; height: auto;"
+                  >
+                     
+                  <!--{{ serviceInfo?.pictures }}-->
+              </div>
+              <div class="col-6">
+                  <h5 class="text-center">Información</h5>
+                  <h6>Nombre del servicio:</h6> <p>{{ serviceInfo?.name }}</p>
+                  <h6>Descripción:</h6> <p>{{ serviceInfo?.description }}</p>
+                  <h6>Telefono: </h6> <p>{{ serviceInfo?.phone }}</p>
+                  <h6>Precio</h6> <p>${{ serviceInfo?.price }}</p>
+                  <h6>Tipo de servicio:</h6> <p>{{ serviceInfo?.type }}</p>
+              </div>
+          </div>
+  
+          <!-- INFO provider -->
+          <div class="row mt-4">
+              <div class="col-3 ">
+                <img  class="img-thumbnail " 
+                      src="{{serviceInfo?.provider.pictures.length > 0 ? serviceInfo?.provider.pictures[ (serviceInfo?.provider.pictures.length - 1) ].url : '../../../assets/Imagenes/proveedor.png'}}" 
+                      style=" border-radius: 6px; object-fit: cover;"
+                >
+                   
+              </div> 
+              <div class="col-9">
+                <h5 class="text-center">Información del proveedor</h5>
+                <p> {{ serviceInfo?.provider.name }} </p>
+                <p> {{ serviceInfo?.provider.email }} </p>
+            </div> 
+          </div>
+          <!-- /INFO provider -->
+  
+          <!-- COMENTS -->
+            <h5 class="mt-4">Comentarios</h5>
+            <div class="coments {{ serviceInfo?.grades.length === 0 ? 'bcolor d-flex align-items-center justify-content-center': '' }} ">
+                <div *ngIf="serviceInfo?.grades.length === 0; else noComents" class="bcolor">
+                    <p class="text-center mb-0" style="color: black;">No hay comentarios</p>
+                </div>
+  
+                <ng-template #noComents>
+                <!-- Comment -->
+                <div *ngFor="let g of serviceInfo?.grades" class="row bcolor mx-2 my-3 rounded">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 d-flex align-items-center mt-2">
+  
+                              <div *ngIf="g.user.picture === null" >
+                                <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
+                              </div>
+                              <div *ngIf="g.user.picture !== null">
+                                  <img src="{{ g.user.picture }}" alt="">
+                              </div>
+                              
+                              <p class="mx-3 mb-0" style="color: black;"> {{ g.user.name }} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 stars-small my-1">
+                        <app-stars-generate [amount]="g.stars"></app-stars-generate>
+                    </div>
+                    <div class="col-12">
+                      <p style="color: black;"> {{ g.comments }} </p>
+                  </div>
+                </div>
+                <!-- /Comment -->
+                </ng-template>
+            </div>
+          <!-- /COMENTS -->
+  
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- /Modal Mas INFO -->
+
+

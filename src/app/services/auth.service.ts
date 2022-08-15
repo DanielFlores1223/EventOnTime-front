@@ -27,4 +27,24 @@ export class AuthService {
   registerUser(user : NewUser){
     return this.http.post<any>(this._registerURL,user);
   }
+
+  loggedIn(){
+    return !! localStorage.getItem('token');
+  }
+
+  getRole(){
+    if(localStorage.getItem('role')){
+      return localStorage.getItem('role')
+    }else{
+      return '';
+    }
+  }
+
+  getType(){
+    if(localStorage.getItem('account')){
+      return localStorage.getItem('account')
+    }else{
+      return '';
+    }
+  }
 }

@@ -1,0 +1,148 @@
+.container-size{
+
+    margin-left: 300px;
+    margin-right: 5ch;
+    
+    background-color: white;
+}
+
+
+.favoritos-container{
+    background-color: #071F4E;
+    display: flex;
+ 
+    height: auto;
+    border-radius: .5ch;
+    margin-top: 1em;
+    color: #fff;
+}
+
+.bcolor{
+    background-color: white;
+    margin-bottom: 2em;
+    height: auto;
+}
+
+.color{
+    color: #fff;
+    margin-top: 12px;
+    margin-left: 20px;
+}
+
+.body{
+    width: calc(100% - 5rem);
+    height: 100vh;
+    margin-left: 5rem;
+    z-index: 0;
+    position: relative;
+    top: 0;
+    transition: all .5s ease;
+    background: #faf7fa;
+    padding: 3rem;
+}
+
+.body-trimmed{
+    width: calc(100% - 16.5625rem);
+    margin-left: 10.5625rem;
+
+    .card-responsive-screen {
+        width: 100%;
+    }
+}
+
+/*.body-md-screen{
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+}*/
+
+.days-payment {
+    background-color: #071F4E;
+    color: #fff;
+    padding: 0.5rem;
+    max-width: 100%;
+    border-bottom-left-radius: 10px;
+
+
+    .number-days {
+        font-size: 4rem;
+        margin-bottom: 0;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .text-days {
+        font-size: 0.7rem;
+    }
+}
+
+.events-month {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    background-color: #E4A193;
+}
+
+.container-surveys {
+    height: 90%;
+    height: 470px;
+    max-height: 470px;
+    overflow-y: auto;
+}
+
+.title-surveys {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
+    
+    .h5 {
+        margin: 0;
+        margin-bottom: 0;
+    }
+
+    .circle-total {
+        color: #E4A193;
+        padding: 0.3rem 0.7rem;
+        border-radius: 50%;
+        border: 3px solid #E4A193;
+        margin-right: 1rem;
+    }
+}
+
+.survey-div {
+    background-color: #071F4E;
+    color: #fff;
+    padding: 0.5rem 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        background-color: #0b2357;
+    }
+
+    p {
+        margin: 0;
+        margin-bottom: 0.5rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .text-survey {
+        span {
+            color: #E4A193;
+        }
+    }
+
+}
+
+.text-card-stadistic {
+    text-align: center;
+}

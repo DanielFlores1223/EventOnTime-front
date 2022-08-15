@@ -1,0 +1,277 @@
+.sidenav{
+  background: #535E8A;
+  transition:all .5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 5rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+}
+
+.logo-container{
+
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0.938rem 0 0.938rem;
+  width: 100%;
+  .logo{
+      background-color: #fff;
+      text-align: center;
+      width: 3rem;
+      min-width: 3rem;
+      border-radius: 0.313rem;
+      padding: 0.313rem;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
+      border: none;
+  }
+
+  .logo-text{
+      margin-left: 1.5rem;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+  }
+
+  .btn-close{
+
+      margin-left: auto;
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: transparent;
+      border: none;
+
+      .icon{
+          color: #fff;
+          font-size: 24px;
+          font-weight: bolder;
+      }
+
+  }
+}
+
+.sidenav-collapsed{
+  width: 16.5625rem;
+}
+
+.sidenav-nav{
+  list-style: none;
+  padding: 0.938em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 3.65rem);
+  cursor: pointer;
+
+  .sidenav-nav-item{
+      width: 100%;
+      margin-bottom: 0.625rem;
+
+      .sidenav-nav-link{
+          display: flex;
+          align-items: center;
+          height: 3rem;
+          color: #f3f3f3;
+          text-decoration: none;
+          border-radius: 0.625rem;
+          transition: all .3s ease;
+
+          .sidenav-link-icon{
+              font-size: 22px;
+              width: 2rem;
+              min-width: 2rem;
+              margin: 0 0.5rem;
+              text-align: center;
+          }
+
+          .sidenav-link-text{
+              margin-left: 1.5rem;
+          }
+      }
+  }
+  .sidenav-nav-item:hover{
+    border: #f3f0f080 solid;
+    border-radius: 5px;
+      .sidenav-nav-link{
+          background-color: transparent;
+          color: #E4A193;
+      }
+  }
+}
+
+// IN NEW
+
+.sidenav-coll-btn{
+  position: fixed;
+  margin-top: .8em;
+  margin-left: 16.5em;
+  transition-property: margin;
+}
+
+.sidenav-coll-btn-sm{
+  position: fixed;
+  margin-top: .8em;
+  margin-left: 5em;
+}
+
+.container-link{
+  margin-left: 15px;
+  transition:all .5s ease;
+  .image-link{
+    border-radius: 300px; 
+    height: 160px;
+    transition:all .5s ease;
+  }
+
+}
+
+.container-link-sm{
+  margin-left: 15px;
+  transition:all .5s ease;
+
+  .image-link{
+    border-radius: 300px; 
+    height: 160px;
+    visibility: hidden;
+    transition:all .5s ease;
+  }
+
+}
+
+.active{
+  //border: #f3f0f080 solid;
+  
+  background-color:rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+
+  .sidenav-link-icon,
+  .sidenav-link-text{
+    color: #E4A193;
+  }
+}
+
+// OLD STYLE 
+
+.sidebar-toggle{
+  left: -300px;
+  transition: sidebar-toggle 2s;
+}
+
+.content-toggle{
+  margin-left: 0;
+  width: 100%;
+  
+}
+.page .sidebar{
+  height: 150vh;
+  width: 250px;
+  //width: 20%;
+  background-color: #535E8A;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+a:hover, a:focus{
+  color: #E4A193;
+}
+
+.page .content{
+  margin-left: 250px;
+}
+
+.list-item:hover{
+  border: #f3f0f080 solid;
+  border-radius: 5px;
+}
+
+
+.sidebar-header{
+  padding: 10px 15px;
+}
+
+.sidebar-body{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 1em;
+  transition: all 2s ease-in-out;
+}
+
+.navigationBar{
+  background-color: #535E8A;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  transition: all 2s ease-out;
+}
+
+
+/*.sidebarToggle{
+
+}
+/*
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+}
+#wrapper #sidebar-wrapper {
+  margin-left: 0;
+}
+
+
+
+.largo{
+  height: 100vh;
+  width: 300px;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+*/
