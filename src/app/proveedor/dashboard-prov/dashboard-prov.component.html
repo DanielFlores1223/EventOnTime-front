@@ -35,9 +35,14 @@
             <!-- /STADISTICS ABOUT Cantidad de sevicios, dias, estrellas -->
 
             <!-- SERVICIO MAS POPULAR -->
-            <div class="col-6 servicio-popular">
+            <div class="col-6 servicio-popular" >
                <h5 class="text-center"> Tu servicio más popular </h5>
 
+               <div *ngIf="keysPopularNumber == 0">
+                  <p class="text-center">Aún no tienes un servicio como favorito.</p>
+               </div>
+
+               <div *ngIf="keysPopularNumber > 0">
                <div class="row">
                   <div class="col-4">
                     <img src="{{ data.popularService.pictures.length > 0 ? data.popularService.pictures[data.popularService.pictures.length - 1].url : '../../../assets/Imagenes/servicio.png'  }}" class="w-100" style="height: 90px; width: 90px; max-width: 100%;" alt="">
@@ -75,6 +80,7 @@
               </div>
               <!-- /Comment -->
                </div>
+              </div>
             </div>
             <!-- /SERVICIO MAS POPULAR -->
 
