@@ -28,3 +28,96 @@
     margin-top: 12px;
     margin-left: 20px;
 }
+
+
+.card-cantidad {
+    background-color: #071F4E;
+    color: #fff;
+    border-top-left-radius: 10px;
+
+    .number {
+        text-align: center;
+        font-size: 4rem;
+        margin-bottom: 0;
+    }
+
+    .text-number {
+        text-align: center;
+    }
+}
+
+.card-membresia {
+    background-color: #535E8A;
+    color: #fff;
+    padding: 0.5rem;
+    max-width: 100%;
+    border-bottom-left-radius: 10px;
+
+    .number-days {
+        font-size: 4rem;
+        margin-bottom: 0;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .text-days {
+        font-size: 0.7rem;
+    }
+}
+
+.stars-amount {
+    border-bottom-left-radius: 0;
+    background-color: #E4A193;
+    color: #fff;
+    .number-days {
+        font-size: 4rem;
+        margin-bottom: 0;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .text-days {
+        font-size: 0.7rem;
+    }
+}
+
+.text-card-stadistic {
+    text-align: center;
+}
+
+.servicio-popular {
+    background-color: #fff;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.comentarios-section {
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #F2F2F2 ;
+    height: 165px;
+    max-height: 165px;
+    overflow-y: auto;
+}
+
+.card-cantidad-type {
+    background-color: #071F4E;
+    color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 180px;
+
+    .number {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .text-number {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+}
