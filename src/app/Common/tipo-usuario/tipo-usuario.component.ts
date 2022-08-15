@@ -41,7 +41,7 @@ export class TipoUsuarioComponent implements OnInit {
         localStorage.setItem("role",data.role);
         localStorage.setItem("token",data.token);
         localStorage.setItem("account",data.account);
-        localStorage.setItem("picture",data.picture);
+        localStorage.setItem("picture",data.picture?.url ?? '');
         
         this.router.navigate(['/planificador/dashboard']);
         this.spinner.hide();

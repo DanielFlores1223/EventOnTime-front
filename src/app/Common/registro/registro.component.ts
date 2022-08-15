@@ -35,6 +35,7 @@ export class RegistroComponent implements OnInit {
       localStorage.setItem("temp_name",this.newUser.name);
       localStorage.setItem("temp_email",this.newUser.email);
       localStorage.setItem("temp_password",this.newUser.password);
+      //localStorage.setItem("picture",'');
       this.router.navigate(['/tipo-usu']);
       this.spinner.hide();
       //ALERTA DE CORRECTO
