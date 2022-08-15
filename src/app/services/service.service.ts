@@ -25,6 +25,13 @@ export class ServiceService {
     return this.http.get( `${this.API_URI}/search/regex?search=${search}&limit=${limit}&from=${from}&pagination=${pagination}` )
   }
 
+  myServices(token='', from=0, limit=5,  pagination=true ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.get( `${this.API_URI}/my/services?limit=${limit}&from=${from}&pagination=${pagination}`,{ 'headers': headers });
+  }
+
   getById( id: string ) {
     return this.http.get( `${this.API_URI}/${id}` );
   }

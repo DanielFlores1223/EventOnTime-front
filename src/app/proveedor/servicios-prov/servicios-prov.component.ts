@@ -30,7 +30,8 @@ export class ServiciosProvComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getSearch();
+    //this.getSearch();
+    this.getMyServices();
   }
 
   getSearch( from: number = 0 ) {
@@ -40,6 +41,22 @@ export class ServiciosProvComponent implements OnInit {
         next: (res: any) => {
             this.getPagination( res.result.total );
             this.services = res.result.services;
+            console.log(this.services)
+        },
+        error: err => {console.log(err)}
+      }
+    );
+
+  }
+
+  getMyServices( from: number = 0 ) {
+
+    this.serviceService.myServices(this.token,from).subscribe(
+      {
+        next: (res: any) => {
+            this.getPagination( res.result.total );
+            this.services = res.result.services;
+            console.log(res )
         },
         error: err => {console.log(err)}
       }
@@ -69,7 +86,8 @@ export class ServiciosProvComponent implements OnInit {
         this.serviceService.deleteService(this.token, id).subscribe(
           res=>{
             console.log(res);
-            this.getSearch();
+            //this.getSearch();
+            this.getMyServices();
           },
           err=>{
             showAlert( 'Información incorrecta', Variant.error );
@@ -107,7 +125,7 @@ export class ServiciosProvComponent implements OnInit {
     }
 
     const from = this.btns[ (this.currentPage - 1)].from;
-    this.getSearch( from );
+    this.getMyServices( from );
 
   }
 
@@ -120,7 +138,7 @@ export class ServiciosProvComponent implements OnInit {
     }
 
     const from = this.btns[(this.currentPage - 1 )].from;
-    this.getSearch( from );
+    this.getMyServices( from );
 
   }
 
