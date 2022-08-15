@@ -4,7 +4,8 @@ import { Profile } from 'src/app/models/Profile';
 import { Variant, showAlert, ShowAlertConfirm } from '../../helpers/show-alerts';
 import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
-
+import { PictureService } from '../../services/picture.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -17,7 +18,9 @@ export class PerfilComponent implements OnInit {
   token: string = localStorage.getItem('token') ?? '';
 
   accountType: string = localStorage.getItem('account') || '';
-
+  files: File[] = [];
+  picureSave: any;
+  picture='';
   new_profile: Profile ={
     "name":"",
     "email":"",
@@ -25,24 +28,30 @@ export class PerfilComponent implements OnInit {
     "workstation": ""
   }
 
-  constructor(private profile: ProfileService, private spinner: NgxSpinnerService) { }
+  profile_body: Profile ={
+    "name":"",
+    "email":""
+  }
+
+  constructor(private profile: ProfileService, private spinner: NgxSpinnerService, private pictureService: PictureService,private router: Router) { }
 
   ngOnInit(): void {
     this.getProfileInfo();
   }
-
-
+  
   getProfileInfo(){
     this.spinner.show();
     this.profile.getProfileInfo(this.token).subscribe({
       next:(res:any)=>{
         this.myProfile=res.result;
+        this.picture=res.result.pictures[res.result.pictures.length-1].url;
         this.spinner.hide();
-        //console.log(res.result);
+        console.log(this.myProfile);
       },
       error: err=>{
         showAlert( 'Información incorrecta', Variant.error );
         console.log(err)
+        this.spinner.hide();
       }
 
     })
@@ -64,7 +73,7 @@ export class PerfilComponent implements OnInit {
         console.log(this.new_profile);
         this.profile.updateMyInfo(this.token,this.new_profile).subscribe({
           next: (res:any)=>{
-            console.log(res);
+            this.saveImgs(res.result.uid,res.msg);
             this.getProfileInfo()
           },
           error: err=>{
@@ -89,9 +98,12 @@ export class PerfilComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.profile.updateMyInfo(this.token,this.myProfile).subscribe({
+        console.log(this.myProfile)
+        this.profile_body.name= this.myProfile.name;
+        this.profile_body.email=this.myProfile.email;
+        this.profile.updateMyInfo(this.token,this.profile_body).subscribe({
           next: (res:any)=>{
-            console.log(res);
+            this.saveImgs(res.result.uid,res.msg);
             this.getProfileInfo()
           },
           error: err=>{
@@ -107,4 +119,43 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  saveImgs( id: string = '', msg = '' ) {
+    
+    this.pictureService.addImg( 'User', id, this.picureSave ).subscribe(
+      {
+        next: async (res) => {
+          this.spinner.hide();
+
+          await Swal.fire({
+            icon: 'success',
+            title: msg,
+            showConfirmButton: false,
+            timer: 3000,
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("../../../assets/Imagenes/confe2.gif")
+              left top
+              repeat
+            `
+          });
+          //console.log()
+          //localStorage.setItem("picture",this.picture);
+          this.router.navigate(['/planificador/eventos']);
+        },
+        error: err => {
+            console.log(err)
+            this.spinner.hide();
+            showAlert( err.error.msg, Variant.error );
+        },
+      }
+    )
+
+  }
+
+  parseImage(event: any){
+    if(event.target.files && event.target.files[0]){
+      this.picureSave = <File>event.target.files;
+      console.log(this.picureSave);
+    }
+  }
 }
