@@ -138,7 +138,6 @@ export class PerfilComponent implements OnInit {
               repeat
             `
           });
-          //console.log()
           //localStorage.setItem("picture",this.picture);
           this.router.navigate(['/planificador/eventos']);
         },

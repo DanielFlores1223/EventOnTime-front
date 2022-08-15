@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
-import { Response } from '../../models/Response';
-import { Router } from '@angular/router';
-import { Variant, showAlert } from '../../helpers/show-alerts';
+import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
+import { Variant, showAlert } from '../../helpers/show-alerts';
+
 
 
 @Component({
@@ -23,7 +24,10 @@ export class ServiciosProvComponent implements OnInit {
   btns: Array<any> = [];
   //END PAGINATION
 
-  constructor( private serviceService: ServiceService, private router: Router) { }
+  serviceInfo: any;
+  
+  constructor( private serviceService: ServiceService, private spinner: NgxSpinnerService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.getSearch();
@@ -122,4 +126,21 @@ export class ServiciosProvComponent implements OnInit {
 
   //END PAGINATION
 
+  getById( id: string ) {
+    
+    this.spinner.show();
+    this.serviceService.getById( id ).subscribe( 
+      {
+        next: (res: any) => {
+          this.serviceInfo = res.result;
+          this.spinner.hide();
+        },
+        error: err => { 
+          this.spinner.hide();
+          console.log(err) 
+          showAlert( err.error.msg, Variant.error );
+        }
+      }
+    )
+  }
 }

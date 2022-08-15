@@ -33,7 +33,7 @@ export class ServiceService {
     const headers = new HttpHeaders({
       'Authorization': token
     });
-    return this.http.post<Service>(this.API_URI,service,{ 'headers': headers });
+    return this.http.post<any>(this.API_URI,service,{ 'headers': headers });
   }
 
   getServiceByID(id:string){

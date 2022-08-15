@@ -4,6 +4,7 @@ import { Service } from 'src/app/models/Service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Variant, showAlert } from '../../../helpers/show-alerts';
+import { PictureService } from '../../../services/picture.service';
 
 @Component({
   selector: 'app-serviciosform',
@@ -26,7 +27,9 @@ export class ServiciosformComponent implements OnInit {
 
   param_id="";
 
-  constructor(private service: ServiceService,private router: Router, private activatedRoute: ActivatedRoute) { }
+  picureSave: any;
+
+  constructor(private service: ServiceService,private router: Router, private activatedRoute: ActivatedRoute, private pictureService: PictureService) { }
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
@@ -57,6 +60,7 @@ export class ServiciosformComponent implements OnInit {
         this.service.createService(this.token,this.new_service)
           .subscribe(res=>{
             console.log(res);
+            this.saveImgs(res.result._id,res.msg);
             this.router.navigate(['/proveedor/servicios']);
           },
           err=>{
@@ -98,6 +102,45 @@ export class ServiciosformComponent implements OnInit {
       }
     })
     
+  }
+
+  saveImgs( id: string = '', msg = '' ) {
+    
+    this.pictureService.addImg( 'Service', id, this.picureSave ).subscribe(
+      {
+        next: async (res) => {
+          //this.spinner.hide();
+
+          await Swal.fire({
+            icon: 'success',
+            title: msg,
+            showConfirmButton: false,
+            timer: 3000,
+            backdrop: `
+              rgba(0,0,123,0.4)
+              url("../../../assets/Imagenes/confe2.gif")
+              left top
+              repeat
+            `
+          });
+          //localStorage.setItem("picture",this.picture);
+          this.router.navigate(['/planificador/eventos']);
+        },
+        error: err => {
+            console.log(err)
+            //this.spinner.hide();
+            showAlert( err.error.msg, Variant.error );
+        },
+      }
+    )
+
+  }
+
+  parseImage(event: any){
+    if(event.target.files && event.target.files[0]){
+      this.picureSave = <File>event.target.files;
+      console.log(this.picureSave);
+    }
   }
   
 }

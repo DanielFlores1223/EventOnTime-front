@@ -60,4 +60,11 @@ export class EventService {
     return this.http.put<Response>(`${this.API_URI}/${id}`, data , { headers });
   }
 
+  deleteEvent(token: string, id: string){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.delete<any>(`${this.API_URI}/${id}`,{'headers': headers});
+  }
+
 }
