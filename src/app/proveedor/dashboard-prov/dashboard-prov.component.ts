@@ -19,6 +19,7 @@ export class DashboardProvComponent implements OnInit {
   ];
 
   data: any;
+  keysPopularNumber = 0;
 
   constructor( private stadisticService: StadisticService ) { }
 
@@ -31,6 +32,7 @@ export class DashboardProvComponent implements OnInit {
       {
         next: res => {
           this.data = res.result;
+          this.keysPopularNumber = Object.keys(res.result.popularService).length;
         },
         error: err => {
 

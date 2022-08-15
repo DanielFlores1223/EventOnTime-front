@@ -371,7 +371,7 @@ export class EventosformComponent implements OnInit {
     this.guests = [ ...this.guests, values ];
     showAlertToast( 'Invitado agregado a la lista', Variant.success );
     form.reset()
-
+    console.log(this.guests)
   }
 
   removeGuest( email: string ) {
