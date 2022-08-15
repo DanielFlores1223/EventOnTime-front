@@ -64,7 +64,7 @@ export class SidebarPlanificadorComponent implements OnInit {
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     this.accountType = localStorage.getItem('account') || '';
-    this.picture= localStorage.getItem('picture') || '';
+    this.picture= localStorage.getItem('picture') ?? '';
     //console.log(this.collapsed);
     //console.log(this.screenWidth);
   }
