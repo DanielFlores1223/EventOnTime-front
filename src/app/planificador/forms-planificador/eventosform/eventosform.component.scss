@@ -120,3 +120,20 @@ li{
     background-color: #071F4E;
     color: #fff;
 }
+
+.button-container-img{
+    display:inline-block;
+    position:relative;
+
+    button {
+        position: absolute;
+        top: 0;
+        right:0em;
+        background-color: #E74C3C;
+        color:white;
+
+        &:hover {
+            background-color: #CB4335;
+        }
+    }
+}

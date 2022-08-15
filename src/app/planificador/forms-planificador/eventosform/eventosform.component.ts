@@ -3,6 +3,7 @@ import { ServiceService } from '../../../services/service.service';
 import { UserService } from '../../../services/user.service';
 import { PictureService } from '../../../services/picture.service';
 import { EventService } from '../../../services/event.service';
+import { GuestService } from '../../../services/guest.service';
 import { Evento } from '../../../models/Evento';
 import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
@@ -24,11 +25,12 @@ export class EventosformComponent implements OnInit {
   guests: Array<Guest> = [];
   tabsModal = 0;
   serviceInfo: any;
-  servicesData: Array< { name: string, id: string } > = [];
+  servicesData: Array< { name: string, id: string, _id?: string } > = [];
   files: File[] = [];
   param_id="";
   editing=false;
-  eventCreate: Evento = { address: '', 
+  addGuestPlus=false;
+  eventCreate: any = { address: '', 
                          dateFinish: '', 
                          dateStart: '', 
                          description: '', 
@@ -50,6 +52,7 @@ export class EventosformComponent implements OnInit {
                          invitados: '',
                          servicios: ''
                       }
+   editImages : any = [];
 
   //PAGINATION
   search = '';
@@ -65,7 +68,8 @@ export class EventosformComponent implements OnInit {
                private pictureService: PictureService,
                private eventService: EventService,
                private router: Router,
-               private activatedRoute: ActivatedRoute ) { }
+               private activatedRoute: ActivatedRoute,
+               private guestService: GuestService ) { }
 
   ngOnInit(): void {
     this.getSearch();
@@ -73,6 +77,10 @@ export class EventosformComponent implements OnInit {
   }
 
   
+  addedAGuest( ) {
+    this.addGuestPlus = true;
+  }
+
   //DROP ZONE
   onSelect(event: any) {
     console.log(event);
@@ -232,9 +240,12 @@ export class EventosformComponent implements OnInit {
         res =>{
           this.eventCreate=res.result;
           this.guests=res.result.guests;
+          console.log(this.guests)
           this.eventCreate.dateStart= this.formatDate(res.result.dateStart)
           this.eventCreate.dateFinish= this.formatDate(res.result.dateFinish)
           this.servicesData=res.result.services;
+          console.log(this.servicesData)
+          this.editImages = res.result.pictures;
           //this.files=res.result.pictures;
           console.log(this.eventCreate);
         },
@@ -244,6 +255,45 @@ export class EventosformComponent implements OnInit {
         }
       )
     }
+  }
+
+  //Event edit functions
+  deletAGuest( id: any ) {
+    console.log(id)
+
+    this.guestService.deleteGuest( this.token, id ).subscribe(
+      {
+        next: res => {
+          showAlert( res.msg, Variant.success );
+          this.getParams();
+        },
+        error: err => {
+          showAlert( err.error.msg, Variant.error );
+          console.log(err);
+        }
+      }
+    );
+
+  }
+
+  deleteSeviceOfEvent( serv: any ) {
+    console.log(Object.keys( serv ).length);
+
+    if( Object.keys( serv ).length == 2 ) 
+      return this.removeService( serv.id ); 
+
+    this.eventService.deleteServiceBelongsToEvent( this.token, this.eventCreate._id ?? '', serv._id ).subscribe(
+      {
+        next: res => {
+          showAlert( res.msg, Variant.success );
+          this.getParams();
+        },
+        error: err => {
+          showAlert( err.error.msg, Variant.error );
+          console.log(err);
+        }
+      }
+    )
   }
 
   formatDate(date: string){
@@ -262,15 +312,52 @@ export class EventosformComponent implements OnInit {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Evento Actualizado!', '', 'success')
-        this.router.navigate(['/planificador/eventos']);
+      
+        this.updateEventConsult();        
+      
       } else if (result.isDenied) {
         
         Swal.fire('Cancelando...', '', 'info');
-        this.router.navigate(['/planificador/eventos']);
+        //this.router.navigate(['/planificador/eventos']);
       }
     })
     console.log(this.eventCreate)
+  }
+
+  updateEventConsult() {
+    
+    const idServices = this.servicesData.map( s => s.id );
+
+    const { guests, ...rest } = this.eventCreate;
+    let data = {}
+    console.log(this.addGuestPlus)
+    if( this.addGuestPlus )
+      console.log('poner los nuevos guest')
+    else
+       data = { ...rest, services: idServices } 
+
+    this.spinner.show();
+
+    console.log(data)
+    
+    this.eventService.updateEvent( this.token, this.eventCreate._id ?? '', data ).subscribe({
+      next: res => {
+
+        if( this.files.length > 0 )
+          this.saveImgs(this.eventCreate._id, res.msg );
+        else {
+          showAlert( res.msg, Variant.success );
+          this.spinner.hide();
+          this.router.navigate(['/planificador/eventos']);
+        }
+
+      },
+      error: err => {
+        showAlert( err.error.msg, Variant.error );
+        this.spinner.hide();
+      }
+    });
+
   }
 
   //CREATE A EVENT
