@@ -78,7 +78,13 @@ export class EventosComponent implements OnInit {
     })
   }
 
-  delete_event(){
+  resetPagination() {
+    if ( this.search === '' ) {
+      this.currentPage = 1;
+    }
+  }
+
+  delete_event(id:any){
     Swal.fire({
       title: '¿Desea Eliminar el Evento?',
       showDenyButton: true,
@@ -86,14 +92,23 @@ export class EventosComponent implements OnInit {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Evento Eliminado!', '', 'success')
+        this.eventService.deleteEvent(this.token,id).subscribe(
+          res =>{
+            console.log(res);
+          },
+          err =>{
+            showAlert( 'Información incorrecta', Variant.error );
+            console.log(err);
+          }
+        )
+        Swal.fire('Se le notificara a los invitados que fue Cancelado el Evento', '', 'success')
+        this.get_my_events();
       } else if (result.isDenied) {
         
         Swal.fire('Cancelando...', '', 'info');
         this.router.navigate(['/planificador/eventos']);
       }
     })
-    console.log("Deleting...")
   }
 
   //PAGINATION

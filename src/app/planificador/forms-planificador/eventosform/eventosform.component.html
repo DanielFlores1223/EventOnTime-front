@@ -155,7 +155,33 @@
               </div>
             </div>
             <!-- /SECTION4 FORM DROPZONE  -->
-                
+            
+            <!-- SECTION IMGS - THIS SECTION ONLY EDIT -->
+            <div *ngIf="editing" class="row mb-3">
+              <label for="formGroupExampleInput card-title" class="form-label">
+                Imagenes del evento
+              </label>
+              <div *ngFor="let image of editImages" class="col-sm-12 col-md-4">
+
+               <!--  IMG CONTAINER - EDIT -->
+                <div class="button-container-img">
+                    <!-- BUTTON DELETE IMG -->
+                    <button class="btn delete-btn-img">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                      </svg>
+                    </button>
+                    <!-- /BUTTON DELETE IMG -->
+
+                    <img src="{{image.url}}" class="w-100" alt="">
+
+                </div>
+                 <!--  /IMG CONTAINER - EDIT -->
+              </div>
+
+            </div>
+            <!-- /SECTION IMGS - THIS SECTION ONLY EDIT -->
+
             <!-- SECTION INV AND SERV -->
             <div class="row mb-2">
 
@@ -167,7 +193,7 @@
                         Lista de invitados
                       </label>
                       
-                      <div>
+                      <div >
                           <svg data-bs-toggle="modal" data-bs-target="#staticBackdrop" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer; margin-top:-20px; margin-right:40px;">
                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                          </svg>
@@ -184,7 +210,13 @@
                               {{ g.name }}
                             </h6>
                             <!-- BTN DELETE -->
-                            <div class="" (click)="removeGuest(g.email)">
+                            <div *ngIf="!editing || !g._id" class="" (click)="removeGuest(g.email)">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>     
+                            </div>
+                            <div *ngIf="editing && g._id" (click)="deletAGuest(g._id)" >
                               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -224,13 +256,24 @@
                     <h6>
                       {{ serv.name }}
                     </h6>
+
                     <!-- BTN DELETE -->
-                    <div class="" (click)="removeService( serv.id )">
+                    
+                    <div *ngIf="!editing" class="" (click)="removeService( serv.id )">
                       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                       </svg>     
                     </div>
+                    
+                    <div *ngIf="editing" (click)="deleteSeviceOfEvent( serv )">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="color: #F6B33E; cursor:pointer;">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>     
+                    </div>
+
+
                     <!-- BTN DELETE -->
                   </div>
                 </div>
@@ -307,8 +350,8 @@
                   </label>
                   <div class="col-sm-12">
                     <select name="roleGuest" #selectRole class="form-select" aria-label="Default select example">
-                      <option selected>Invitado</option>
-                      <option value="1">Cadenero</option>  
+                      <option value="Invitado" selected>Invitado</option>
+                      <option value="Cadenero">Cadenero</option>  
                     </select>
                   </div>
               </div>
@@ -333,7 +376,7 @@
       </div>
       <!-- /CONTENT MODAL -->
       <div class="modal-footer">
-        <button type="button" 
+        <button *ngIf="!editing" type="button" 
                 class="btn btn-primary" 
                 (click)="addGuest( { email: inputEmail.value, 
                                      name: inputName.value, 
@@ -345,6 +388,21 @@
         >
             Guardar
         </button>
+
+        <button *ngIf="editing" type="button" 
+                class="btn btn-primary" 
+                (click)="addedAGuest(); addGuest( { email: inputEmail.value, 
+                                     name: inputName.value, 
+                                     role: selectRole.value,
+                                     numberPartner: inputnNumberPartner.value
+                                    },
+                                    formGuest
+                                 );"
+        >
+            Guardar
+        </button>
+
+        
       </div>
 
     </div>
@@ -541,7 +599,7 @@
                                 <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
                               </div>
                               <div *ngIf="g.user.picture !== null">
-                                  <img src="{{ g.user.picture }}" alt="">
+                                <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
                               </div>
                               
                               <p class="mx-3 mb-0" style="color: black;"> {{ g.user.name }} </p>

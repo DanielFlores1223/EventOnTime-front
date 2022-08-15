@@ -55,6 +55,7 @@ export class SidebarProvComponent implements OnInit {
 
   navClass = "content";
 
+  picture = localStorage.getItem('picture') ?? '';
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -69,6 +70,8 @@ export class SidebarProvComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('name');
     localStorage.removeItem('token');
+    localStorage.removeItem('tempTypeEvent');
+    localStorage.removeItem('temp_dataSurvey');
     this.router.navigate(['/hogar']);
     
   }

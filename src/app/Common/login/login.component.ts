@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(private _auth: AuthService, private router: Router, private activedRoute: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this._auth.message();
     const params = this.activedRoute.snapshot.params;
   }
 
@@ -30,12 +29,12 @@ export class LoginComponent implements OnInit {
       .subscribe(res =>{
         const data = res.result;
         
-        //console.log(data);
+        console.log(data);
         localStorage.setItem("name",data.name);
         localStorage.setItem("role",data.role);
         localStorage.setItem("token",data.token);
         localStorage.setItem("account",data.account);
-        localStorage.setItem("picture",data.picture);
+        localStorage.setItem("picture",data.picture.url);
         //ALERTA DE CORRECTO
         //showAlert( res.msg , Variant.success );
       

@@ -46,4 +46,25 @@ export class EventService {
     return this.http.get<any>(`${this.API_URI}/${id}`,{'headers': headers});
   }
 
+  deleteServiceBelongsToEvent( token: string, idEvent: string, idService: string ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.put<Response>(`${this.API_URI}/${idEvent}/remove/service`, { idService } ,{headers});
+  }
+
+  updateEvent( token: string, id: string, data:any ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.put<Response>(`${this.API_URI}/${id}`, data , { headers });
+  }
+
+  deleteEvent(token: string, id: string){
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+    return this.http.delete<any>(`${this.API_URI}/${id}`,{'headers': headers});
+  }
+
 }

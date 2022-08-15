@@ -15,17 +15,10 @@
          <br>
          <div class="container row">
         <div class="col"> 
-            <img class="redondo float-start" width="173px" height="173px" src="../../../assets/Imagenes/usuario.png">
+            <img class="redondo float-start" width="173px" height="173px" src="{{picture !=='' ? picture : '../../../assets/Imagenes/usuario.png'}}">
             
             <div class=" row justify-content-start">
-            <div class="form-check" style="margin-left: 100px;">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Eliminar foto
-              </label>
-            </div>
-            <!--<button type="file" class="w-25 btn btn-lg btn-primary " multiple>Subir imagen </button>-->
-            <input style="margin-left: 100px; margin-top: 30px; width: 400px; " class="form-control" type="file" id="formFileMultiple" multiple> 
+            <input style="margin-left: 100px; margin-top: 30px; width: 400px; " class="form-control" type="file" id="formFileMultiple" (change)="parseImage($event)"> 
                     
             </div>
         </div>

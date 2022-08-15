@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, Output } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output } from '@angular/core';
 import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
@@ -57,11 +57,14 @@ export class SidebarPlanificadorComponent implements OnInit {
 
   navClass = "content";
 
+  picture = '';
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     this.accountType = localStorage.getItem('account') || '';
+    this.picture= localStorage.getItem('picture') || '';
     //console.log(this.collapsed);
     //console.log(this.screenWidth);
   }
@@ -73,6 +76,7 @@ export class SidebarPlanificadorComponent implements OnInit {
     localStorage.removeItem('name');
     localStorage.removeItem('token');
     localStorage.removeItem('tempTypeEvent');
+    localStorage.removeItem('temp_dataSurvey');
     this.router.navigate(['/hogar']);
     
   }

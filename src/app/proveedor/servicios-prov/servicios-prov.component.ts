@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
-import { Response } from '../../models/Response';
-import { Router } from '@angular/router';
-import { Variant, showAlert } from '../../helpers/show-alerts';
+import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2';
+import { Variant, showAlert } from '../../helpers/show-alerts';
+
 
 
 @Component({
@@ -23,10 +24,14 @@ export class ServiciosProvComponent implements OnInit {
   btns: Array<any> = [];
   //END PAGINATION
 
-  constructor( private serviceService: ServiceService, private router: Router) { }
+  serviceInfo: any;
+  
+  constructor( private serviceService: ServiceService, private spinner: NgxSpinnerService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getSearch();
+    //this.getSearch();
+    this.getMyServices();
   }
 
   getSearch( from: number = 0 ) {
@@ -36,6 +41,22 @@ export class ServiciosProvComponent implements OnInit {
         next: (res: any) => {
             this.getPagination( res.result.total );
             this.services = res.result.services;
+            console.log(this.services)
+        },
+        error: err => {console.log(err)}
+      }
+    );
+
+  }
+
+  getMyServices( from: number = 0 ) {
+
+    this.serviceService.myServices(this.token,from).subscribe(
+      {
+        next: (res: any) => {
+            this.getPagination( res.result.total );
+            this.services = res.result.services;
+            console.log(res )
         },
         error: err => {console.log(err)}
       }
@@ -65,7 +86,8 @@ export class ServiciosProvComponent implements OnInit {
         this.serviceService.deleteService(this.token, id).subscribe(
           res=>{
             console.log(res);
-            this.getSearch();
+            //this.getSearch();
+            this.getMyServices();
           },
           err=>{
             showAlert( 'Información incorrecta', Variant.error );
@@ -103,7 +125,7 @@ export class ServiciosProvComponent implements OnInit {
     }
 
     const from = this.btns[ (this.currentPage - 1)].from;
-    this.getSearch( from );
+    this.getMyServices( from );
 
   }
 
@@ -116,10 +138,27 @@ export class ServiciosProvComponent implements OnInit {
     }
 
     const from = this.btns[(this.currentPage - 1 )].from;
-    this.getSearch( from );
+    this.getMyServices( from );
 
   }
 
   //END PAGINATION
 
+  getById( id: string ) {
+    
+    this.spinner.show();
+    this.serviceService.getById( id ).subscribe( 
+      {
+        next: (res: any) => {
+          this.serviceInfo = res.result;
+          this.spinner.hide();
+        },
+        error: err => { 
+          this.spinner.hide();
+          console.log(err) 
+          showAlert( err.error.msg, Variant.error );
+        }
+      }
+    )
+  }
 }

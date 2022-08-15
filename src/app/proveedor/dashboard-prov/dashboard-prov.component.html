@@ -6,16 +6,114 @@
     </div> -->
     <div class="card-body">
       <div class="container mb-3">
+
+      
         <div class="row">
-          <div class="col">
-            <h3 class="card-title">Mi dashboard</h3>
+
+          <!-- PERSONAL STADISTICS -->
+          <div class="row">
+
+            <!-- STADISTICS ABOUT Cantidad de sevicios, dias, estrellas -->
+            <div class="col-6 ">
+                <div class="row">
+                    <div class="col-12 card-cantidad">
+                        <p class="number">{{data.eventsRecorded}}</p>
+                        <p class="text-number">Cantidad de servicios</p>
+                    </div>
+                    <div class="col-6 p-0 card-membresia">
+                      <p class="text-days">Tu membresía termina en:</p>
+                      <p class="number-days">{{data.memebresiaFin}}</p>
+                      <p class="text-card-stadistic">Dias</p>
+                    </div>
+                    <div class="col-6 p-0 stars-amount">
+                      <p class="text-days">Estrellas promedio:</p>
+                      <p class="number-days">{{data.promedioEstrellas}}</p>
+                      <p class="text-card-stadistic">Estrellas</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /STADISTICS ABOUT Cantidad de sevicios, dias, estrellas -->
+
+            <!-- SERVICIO MAS POPULAR -->
+            <div class="col-6 servicio-popular" >
+               <h5 class="text-center"> Tu servicio más popular </h5>
+
+               <div *ngIf="keysPopularNumber == 0">
+                  <p class="text-center">Aún no tienes un servicio como favorito.</p>
+               </div>
+
+               <div *ngIf="keysPopularNumber > 0">
+               <div class="row">
+                  <div class="col-4">
+                    <img src="{{ data.popularService.pictures.length > 0 ? data.popularService.pictures[data.popularService.pictures.length - 1].url : '../../../assets/Imagenes/servicio.png'  }}" class="w-100" style="height: 90px; width: 90px; max-width: 100%;" alt="">
+                  </div>
+                  <div class="col-8">
+                    <p>{{data.popularService.name}}</p>
+                    <app-stars-generate [amount]="data.popularService.rating" ></app-stars-generate>
+                  </div>
+                  
+               </div>
+               <div class="comentarios-section">
+                  <!-- Comment -->
+              <div *ngFor="let g of data.popularService?.grades" class="row bcolor mx-2 my-3 rounded">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center mt-2">
+
+                          <div *ngIf="g.user.pictures === null" >
+                            <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
+                          </div>
+                          <div *ngIf="g.user.picture !== null">
+                            <app-name-tag  [tag]="g.user.name.substring(0,1).toUpperCase()" ></app-name-tag>
+                          </div>
+                          
+                          <p class="mx-3 mb-0" style="color: black;"> {{ g.user.name }} </p>
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-12 stars-small my-1">
+                      <app-stars-generate [amount]="g.stars"></app-stars-generate>
+                  </div>
+                  <div class="col-12">
+                      <p style="color: black;"> {{ g.comments }} </p>
+                  </div>
+              </div>
+              <!-- /Comment -->
+               </div>
+              </div>
+            </div>
+            <!-- /SERVICIO MAS POPULAR -->
+
           </div>
+          <!-- /PERSONAL STADISTICS -->
+
+          <div class="row mt-4 d-flex align-items-center">
+            <h5 class="mb-4">Información que te puede ayudar</h5>
+            <div class="col-4 p-2 card-cantidad-type">
+              <p class="text-days">Tipo de servicio más popular: </p>
+              <p class="number">{{data.popularType.name}}</p>
+              <p class="text-number">{{data.popularType.amount}}</p>
+            </div>
+            <div class="col-8">
+              <ngx-charts-bar-vertical 
+              [view]="[620,250]"
+              [results]="data.chartTypes"
+              [xAxisLabel]="'Tipo'"
+              [legendTitle]="'Product Sale Chart'"
+              [yAxisLabel]="'Cantidad'"
+              [legend]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxis]="true"
+              [yAxis]="true"
+              [gradient]="true">
+              </ngx-charts-bar-vertical>
+            </div>
+          </div>
+          
          
         </div>
         
-      </div>
-      <div class="container ">
-       <p>Hola</p>
       </div>
     </div>
   </div>

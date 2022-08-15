@@ -19,4 +19,12 @@ export class StadisticService {
     return this.http.get<Response>( `${this.API_URI}/dashboard/planner`, { headers } );
   }
 
+  getDashboarProviderInfo( token: string ) {
+    const headers = new HttpHeaders({
+      'Authorization': token
+    });
+
+    return this.http.get<Response>( `${this.API_URI}/dashboard/provider`, { headers } );
+  }
+
 }
