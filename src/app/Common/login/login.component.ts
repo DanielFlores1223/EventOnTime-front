@@ -28,13 +28,13 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(this.user)
       .subscribe(res =>{
         const data = res.result;
-        
+        console.log("saludos");
         console.log(data);
         localStorage.setItem("name",data.name);
         localStorage.setItem("role",data.role);
         localStorage.setItem("token",data.token);
         localStorage.setItem("account",data.account);
-        localStorage.setItem("picture",data.picture.url);
+        localStorage.setItem("picture",data.picture?.url ?? '');
         //ALERTA DE CORRECTO
         //showAlert( res.msg , Variant.success );
       
